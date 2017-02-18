@@ -23,6 +23,7 @@ import (
 
 	"k8s.io/apimachinery/pkg/util/wait"
 	"k8s.io/apiserver/pkg/util/logs"
+	_ "k8s.io/client-go/plugin/pkg/client/auth"
 	"k8s.io/sample-apiserver/pkg/cmd/server"
 )
 
