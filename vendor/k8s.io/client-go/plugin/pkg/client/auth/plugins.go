@@ -14,30 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package main
+package auth
 
 import (
-	"flag"
-	"os"
-	"runtime"
-
-	"k8s.io/apimachinery/pkg/util/wait"
-	"k8s.io/apiserver/pkg/util/logs"
-	_ "k8s.io/client-go/plugin/pkg/client/auth"
-	"k8s.io/sample-apiserver/pkg/cmd/server"
+	// Initialize all known client auth plugins.
+	_ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
+	_ "k8s.io/client-go/plugin/pkg/client/auth/oidc"
 )
-
-func main() {
-	logs.InitLogs()
-	defer logs.FlushLogs()
-
-	if len(os.Getenv("GOMAXPROCS")) == 0 {
-		runtime.GOMAXPROCS(runtime.NumCPU())
-	}
-
-	cmd := server.NewCommandStartWardleServer(os.Stdout, os.Stderr, wait.NeverStop)
-	cmd.Flags().AddGoFlagSet(flag.CommandLine)
-	if err := cmd.Execute(); err != nil {
-		panic(err)
-	}
-}
