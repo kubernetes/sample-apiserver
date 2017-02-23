@@ -51,20 +51,15 @@ import (
 	"google.golang.org/grpc/grpclog"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/peer"
-	"google.golang.org/grpc/stats"
 )
 
 // http2Client implements the ClientTransport interface with HTTP2.
 type http2Client struct {
-	ctx        context.Context
-	target     string // server name/addr
-	userAgent  string
-	md         interface{}
-	conn       net.Conn // underlying communication channel
-	remoteAddr net.Addr
-	localAddr  net.Addr
-	authInfo   credentials.AuthInfo // auth info about the connection
-	nextID     uint32               // the next stream ID to be used
+	target    string // server name/addr
+	userAgent string
+	conn      net.Conn             // underlying communication channel
+	authInfo  credentials.AuthInfo // auth info about the connection
+	nextID    uint32               // the next stream ID to be used
 
 	// writableChan synchronizes write access to the transport.
 	// A writer acquires the write lock by sending a value on writableChan
@@ -99,8 +94,6 @@ type http2Client struct {
 
 	creds []credentials.PerRPCCredentials
 
-	statsHandler stats.Handler
-
 	mu            sync.Mutex     // guard the following variables
 	state         transportState // the state of underlying connection
 	activeStreams map[uint32]*Stream
@@ -114,52 +107,21 @@ type http2Client struct {
 	prevGoAwayID uint32
 }
 
-func dial(ctx context.Context, fn func(context.Context, string) (net.Conn, error), addr string) (net.Conn, error) {
+func dial(fn func(context.Context, string) (net.Conn, error), ctx context.Context, addr string) (net.Conn, error) {
 	if fn != nil {
 		return fn(ctx, addr)
 	}
 	return dialContext(ctx, "tcp", addr)
 }
 
-func isTemporary(err error) bool {
-	switch err {
-	case io.EOF:
-		// Connection closures may be resolved upon retry, and are thus
-		// treated as temporary.
-		return true
-	case context.DeadlineExceeded:
-		// In Go 1.7, context.DeadlineExceeded implements Timeout(), and this
-		// special case is not needed. Until then, we need to keep this
-		// clause.
-		return true
-	}
-
-	switch err := err.(type) {
-	case interface {
-		Temporary() bool
-	}:
-		return err.Temporary()
-	case interface {
-		Timeout() bool
-	}:
-		// Timeouts may be resolved upon retry, and are thus treated as
-		// temporary.
-		return err.Timeout()
-	}
-	return false
-}
-
 // newHTTP2Client constructs a connected ClientTransport to addr based on HTTP2
 // and starts to receive messages on it. Non-nil error returns if construction
 // fails.
-func newHTTP2Client(ctx context.Context, addr TargetInfo, opts ConnectOptions) (_ ClientTransport, err error) {
+func newHTTP2Client(ctx context.Context, addr string, opts ConnectOptions) (_ ClientTransport, err error) {
 	scheme := "http"
-	conn, err := dial(ctx, opts.Dialer, addr.Addr)
-	if err != nil {
-		if opts.FailOnNonTempDialError {
-			return nil, connectionErrorf(isTemporary(err), err, "transport: %v", err)
-		}
-		return nil, connectionErrorf(true, err, "transport: %v", err)
+	conn, connErr := dial(opts.Dialer, ctx, addr)
+	if connErr != nil {
+		return nil, ConnectionErrorf(true, connErr, "transport: %v", connErr)
 	}
 	// Any further errors will close the underlying connection
 	defer func(conn net.Conn) {
@@ -170,13 +132,12 @@ func newHTTP2Client(ctx context.Context, addr TargetInfo, opts ConnectOptions) (
 	var authInfo credentials.AuthInfo
 	if creds := opts.TransportCredentials; creds != nil {
 		scheme = "https"
-		conn, authInfo, err = creds.ClientHandshake(ctx, addr.Addr, conn)
-		if err != nil {
-			// Credentials handshake errors are typically considered permanent
-			// to avoid retrying on e.g. bad certificates.
-			temp := isTemporary(err)
-			return nil, connectionErrorf(temp, err, "transport: %v", err)
-		}
+		conn, authInfo, connErr = creds.ClientHandshake(ctx, addr, conn)
+	}
+	if connErr != nil {
+		// Credentials handshake error is not a temporary error (unless the error
+		// was the connection closing).
+		return nil, ConnectionErrorf(connErr == io.EOF, connErr, "transport: %v", connErr)
 	}
 	ua := primaryUA
 	if opts.UserAgent != "" {
@@ -184,14 +145,10 @@ func newHTTP2Client(ctx context.Context, addr TargetInfo, opts ConnectOptions) (
 	}
 	var buf bytes.Buffer
 	t := &http2Client{
-		ctx:        ctx,
-		target:     addr.Addr,
-		userAgent:  ua,
-		md:         addr.Metadata,
-		conn:       conn,
-		remoteAddr: conn.RemoteAddr(),
-		localAddr:  conn.LocalAddr(),
-		authInfo:   authInfo,
+		target:    addr,
+		userAgent: ua,
+		conn:      conn,
+		authInfo:  authInfo,
 		// The client initiated stream id is odd starting from 1.
 		nextID:          1,
 		writableChan:    make(chan int, 1),
@@ -210,17 +167,6 @@ func newHTTP2Client(ctx context.Context, addr TargetInfo, opts ConnectOptions) (
 		creds:           opts.PerRPCCredentials,
 		maxStreams:      math.MaxInt32,
 		streamSendQuota: defaultWindowSize,
-		statsHandler:    opts.StatsHandler,
-	}
-	if t.statsHandler != nil {
-		t.ctx = t.statsHandler.TagConn(t.ctx, &stats.ConnTagInfo{
-			RemoteAddr: t.remoteAddr,
-			LocalAddr:  t.localAddr,
-		})
-		connBegin := &stats.ConnBegin{
-			Client: true,
-		}
-		t.statsHandler.HandleConn(t.ctx, connBegin)
 	}
 	// Start the reader goroutine for incoming message. Each transport has
 	// a dedicated goroutine which reads HTTP2 frame from network. Then it
@@ -230,11 +176,11 @@ func newHTTP2Client(ctx context.Context, addr TargetInfo, opts ConnectOptions) (
 	n, err := t.conn.Write(clientPreface)
 	if err != nil {
 		t.Close()
-		return nil, connectionErrorf(true, err, "transport: %v", err)
+		return nil, ConnectionErrorf(true, err, "transport: %v", err)
 	}
 	if n != len(clientPreface) {
 		t.Close()
-		return nil, connectionErrorf(true, err, "transport: preface mismatch, wrote %d bytes; want %d", n, len(clientPreface))
+		return nil, ConnectionErrorf(true, err, "transport: preface mismatch, wrote %d bytes; want %d", n, len(clientPreface))
 	}
 	if initialWindowSize != defaultWindowSize {
 		err = t.framer.writeSettings(true, http2.Setting{
@@ -246,13 +192,13 @@ func newHTTP2Client(ctx context.Context, addr TargetInfo, opts ConnectOptions) (
 	}
 	if err != nil {
 		t.Close()
-		return nil, connectionErrorf(true, err, "transport: %v", err)
+		return nil, ConnectionErrorf(true, err, "transport: %v", err)
 	}
 	// Adjust the connection flow control window if needed.
 	if delta := uint32(initialConnWindowSize - defaultWindowSize); delta > 0 {
 		if err := t.framer.writeWindowUpdate(true, 0, delta); err != nil {
 			t.Close()
-			return nil, connectionErrorf(true, err, "transport: %v", err)
+			return nil, ConnectionErrorf(true, err, "transport: %v", err)
 		}
 	}
 	go t.controller()
@@ -277,10 +223,8 @@ func (t *http2Client) newStream(ctx context.Context, callHdr *CallHdr) *Stream {
 	s.windowHandler = func(n int) {
 		t.updateWindow(s, uint32(n))
 	}
-	// The client side stream context should have exactly the same life cycle with the user provided context.
-	// That means, s.ctx should be read-only. And s.ctx is done iff ctx is done.
-	// So we use the original context here instead of creating a copy.
-	s.ctx = ctx
+	// Make a stream be able to cancel the pending operations by itself.
+	s.ctx, s.cancel = context.WithCancel(ctx)
 	s.dec = &recvBufferReader{
 		ctx:    s.ctx,
 		goAway: s.goAway,
@@ -292,14 +236,23 @@ func (t *http2Client) newStream(ctx context.Context, callHdr *CallHdr) *Stream {
 // NewStream creates a stream and register it into the transport as "active"
 // streams.
 func (t *http2Client) NewStream(ctx context.Context, callHdr *CallHdr) (_ *Stream, err error) {
+	// Record the timeout value on the context.
+	var timeout time.Duration
+	if dl, ok := ctx.Deadline(); ok {
+		timeout = dl.Sub(time.Now())
+	}
+	select {
+	case <-ctx.Done():
+		return nil, ContextErr(ctx.Err())
+	default:
+	}
 	pr := &peer.Peer{
-		Addr: t.remoteAddr,
+		Addr: t.conn.RemoteAddr(),
 	}
 	// Attach Auth info if there is any.
 	if t.authInfo != nil {
 		pr.AuthInfo = t.authInfo
 	}
-	userCtx := ctx
 	ctx = peer.NewContext(ctx, pr)
 	authData := make(map[string]string)
 	for _, c := range t.creds {
@@ -313,12 +266,12 @@ func (t *http2Client) NewStream(ctx context.Context, callHdr *CallHdr) (_ *Strea
 		}
 		pos := strings.LastIndex(callHdr.Method, "/")
 		if pos == -1 {
-			return nil, streamErrorf(codes.InvalidArgument, "transport: malformed method name: %q", callHdr.Method)
+			return nil, StreamErrorf(codes.InvalidArgument, "transport: malformed method name: %q", callHdr.Method)
 		}
 		audience := "https://" + callHdr.Host + port + callHdr.Method[:pos]
 		data, err := c.GetRequestMetadata(ctx, audience)
 		if err != nil {
-			return nil, streamErrorf(codes.InvalidArgument, "transport: %v", err)
+			return nil, StreamErrorf(codes.InvalidArgument, "transport: %v", err)
 		}
 		for k, v := range data {
 			authData[k] = v
@@ -371,7 +324,6 @@ func (t *http2Client) NewStream(ctx context.Context, callHdr *CallHdr) (_ *Strea
 		return nil, ErrConnClosing
 	}
 	s := t.newStream(ctx, callHdr)
-	s.clientStatsCtx = userCtx
 	t.activeStreams[s.id] = s
 
 	// This stream is not counted when applySetings(...) initialize t.streamsQuota.
@@ -382,7 +334,7 @@ func (t *http2Client) NewStream(ctx context.Context, callHdr *CallHdr) (_ *Strea
 	}
 	t.mu.Unlock()
 	if reset {
-		t.streamsQuota.add(-1)
+		t.streamsQuota.reset(-1)
 	}
 
 	// HPACK encodes various headers. Note that once WriteField(...) is
@@ -400,12 +352,9 @@ func (t *http2Client) NewStream(ctx context.Context, callHdr *CallHdr) (_ *Strea
 	if callHdr.SendCompress != "" {
 		t.hEnc.WriteField(hpack.HeaderField{Name: "grpc-encoding", Value: callHdr.SendCompress})
 	}
-	if dl, ok := ctx.Deadline(); ok {
-		// Send out timeout regardless its value. The server can detect timeout context by itself.
-		timeout := dl.Sub(time.Now())
+	if timeout > 0 {
 		t.hEnc.WriteField(hpack.HeaderField{Name: "grpc-timeout", Value: encodeTimeout(timeout)})
 	}
-
 	for k, v := range authData {
 		// Capital header names are illegal in HTTP/2.
 		k = strings.ToLower(k)
@@ -427,18 +376,7 @@ func (t *http2Client) NewStream(ctx context.Context, callHdr *CallHdr) (_ *Strea
 			}
 		}
 	}
-	if md, ok := t.md.(*metadata.MD); ok {
-		for k, v := range *md {
-			if isReservedHeader(k) {
-				continue
-			}
-			for _, entry := range v {
-				t.hEnc.WriteField(hpack.HeaderField{Name: k, Value: entry})
-			}
-		}
-	}
 	first := true
-	bufLen := t.hBuf.Len()
 	// Sends the headers in a single batch even when they span multiple frames.
 	for !endHeaders {
 		size := t.hBuf.Len()
@@ -470,19 +408,8 @@ func (t *http2Client) NewStream(ctx context.Context, callHdr *CallHdr) (_ *Strea
 		}
 		if err != nil {
 			t.notifyError(err)
-			return nil, connectionErrorf(true, err, "transport: %v", err)
+			return nil, ConnectionErrorf(true, err, "transport: %v", err)
 		}
-	}
-	if t.statsHandler != nil {
-		outHeader := &stats.OutHeader{
-			Client:      true,
-			WireLength:  bufLen,
-			FullMethod:  callHdr.Method,
-			RemoteAddr:  t.remoteAddr,
-			LocalAddr:   t.localAddr,
-			Compression: callHdr.SendCompress,
-		}
-		t.statsHandler.HandleRPC(s.clientStatsCtx, outHeader)
 	}
 	t.writableChan <- 0
 	return s, nil
@@ -527,7 +454,7 @@ func (t *http2Client) CloseStream(s *Stream, err error) {
 	}
 	s.state = streamDone
 	s.mu.Unlock()
-	if se, ok := err.(StreamError); ok && se.Code != codes.DeadlineExceeded {
+	if _, ok := err.(StreamError); ok {
 		t.controlBuf.put(&resetStream{s.id, http2.ErrCodeCancel})
 	}
 }
@@ -561,12 +488,6 @@ func (t *http2Client) Close() (err error) {
 		}
 		s.mu.Unlock()
 		s.write(recvMsg{err: ErrConnClosing})
-	}
-	if t.statsHandler != nil {
-		connEnd := &stats.ConnEnd{
-			Client: true,
-		}
-		t.statsHandler.HandleConn(t.ctx, connEnd)
 	}
 	return
 }
@@ -625,14 +546,19 @@ func (t *http2Client) Write(s *Stream, data []byte, opts *Options) error {
 		var p []byte
 		if r.Len() > 0 {
 			size := http2MaxFrameLen
+			s.sendQuotaPool.add(0)
 			// Wait until the stream has some quota to send the data.
 			sq, err := wait(s.ctx, s.done, s.goAway, t.shutdownChan, s.sendQuotaPool.acquire())
 			if err != nil {
 				return err
 			}
+			t.sendQuotaPool.add(0)
 			// Wait until the transport has some quota to send the data.
 			tq, err := wait(s.ctx, s.done, s.goAway, t.shutdownChan, t.sendQuotaPool.acquire())
 			if err != nil {
+				if _, ok := err.(StreamError); ok || err == io.EOF {
+					t.sendQuotaPool.cancel()
+				}
 				return err
 			}
 			if sq < size {
@@ -696,7 +622,7 @@ func (t *http2Client) Write(s *Stream, data []byte, opts *Options) error {
 		// invoked.
 		if err := t.framer.writeData(forceFlush, s.id, endStream, p); err != nil {
 			t.notifyError(err)
-			return connectionErrorf(true, err, "transport: %v", err)
+			return ConnectionErrorf(true, err, "transport: %v", err)
 		}
 		if t.framer.adjustNumWriters(-1) == 0 {
 			t.framer.flushWrite()
@@ -744,7 +670,7 @@ func (t *http2Client) updateWindow(s *Stream, n uint32) {
 func (t *http2Client) handleData(f *http2.DataFrame) {
 	size := len(f.Data())
 	if err := t.fc.onData(uint32(size)); err != nil {
-		t.notifyError(connectionErrorf(true, err, "%v", err))
+		t.notifyError(ConnectionErrorf(true, err, "%v", err))
 		return
 	}
 	// Select the right stream to dispatch.
@@ -840,9 +766,6 @@ func (t *http2Client) handleSettings(f *http2.SettingsFrame) {
 }
 
 func (t *http2Client) handlePing(f *http2.PingFrame) {
-	if f.IsAck() { // Do nothing.
-		return
-	}
 	pingAck := &ping{ack: true}
 	copy(pingAck.data[:], f.Data[:])
 	t.controlBuf.put(pingAck)
@@ -853,7 +776,7 @@ func (t *http2Client) handleGoAway(f *http2.GoAwayFrame) {
 	if t.state == reachable || t.state == draining {
 		if f.LastStreamID > 0 && f.LastStreamID%2 != 1 {
 			t.mu.Unlock()
-			t.notifyError(connectionErrorf(true, nil, "received illegal http2 GOAWAY frame: stream ID %d is even", f.LastStreamID))
+			t.notifyError(ConnectionErrorf(true, nil, "received illegal http2 GOAWAY frame: stream ID %d is even", f.LastStreamID))
 			return
 		}
 		select {
@@ -862,7 +785,7 @@ func (t *http2Client) handleGoAway(f *http2.GoAwayFrame) {
 			// t.goAway has been closed (i.e.,multiple GoAways).
 			if id < f.LastStreamID {
 				t.mu.Unlock()
-				t.notifyError(connectionErrorf(true, nil, "received illegal http2 GOAWAY frame: previously recv GOAWAY frame with LastStramID %d, currently recv %d", id, f.LastStreamID))
+				t.notifyError(ConnectionErrorf(true, nil, "received illegal http2 GOAWAY frame: previously recv GOAWAY frame with LastStramID %d, currently recv %d", id, f.LastStreamID))
 				return
 			}
 			t.prevGoAwayID = id
@@ -900,36 +823,12 @@ func (t *http2Client) operateHeaders(frame *http2.MetaHeadersFrame) {
 		state.processHeaderField(hf)
 	}
 	if state.err != nil {
-		s.mu.Lock()
-		if !s.headerDone {
-			close(s.headerChan)
-			s.headerDone = true
-		}
-		s.mu.Unlock()
 		s.write(recvMsg{err: state.err})
 		// Something wrong. Stops reading even when there is remaining.
 		return
 	}
 
 	endStream := frame.StreamEnded()
-	var isHeader bool
-	defer func() {
-		if t.statsHandler != nil {
-			if isHeader {
-				inHeader := &stats.InHeader{
-					Client:     true,
-					WireLength: int(frame.Header().Length),
-				}
-				t.statsHandler.HandleRPC(s.clientStatsCtx, inHeader)
-			} else {
-				inTrailer := &stats.InTrailer{
-					Client:     true,
-					WireLength: int(frame.Header().Length),
-				}
-				t.statsHandler.HandleRPC(s.clientStatsCtx, inTrailer)
-			}
-		}
-	}()
 
 	s.mu.Lock()
 	if !endStream {
@@ -941,7 +840,6 @@ func (t *http2Client) operateHeaders(frame *http2.MetaHeadersFrame) {
 		}
 		close(s.headerChan)
 		s.headerDone = true
-		isHeader = true
 	}
 	if !endStream || s.state == streamDone {
 		s.mu.Unlock()
@@ -1002,7 +900,7 @@ func (t *http2Client) reader() {
 				t.mu.Unlock()
 				if s != nil {
 					// use error detail to provide better err message
-					handleMalformedHTTP2(s, streamErrorf(http2ErrConvTab[se.Code], "%v", t.framer.errorDetail()))
+					handleMalformedHTTP2(s, StreamErrorf(http2ErrConvTab[se.Code], "%v", t.framer.errorDetail()))
 				}
 				continue
 			} else {
@@ -1051,13 +949,13 @@ func (t *http2Client) applySettings(ss []http2.Setting) {
 			t.maxStreams = int(s.Val)
 			t.mu.Unlock()
 			if reset {
-				t.streamsQuota.add(int(s.Val) - ms)
+				t.streamsQuota.reset(int(s.Val) - ms)
 			}
 		case http2.SettingInitialWindowSize:
 			t.mu.Lock()
 			for _, stream := range t.activeStreams {
 				// Adjust the sending quota for each stream.
-				stream.sendQuotaPool.add(int(s.Val - t.streamSendQuota))
+				stream.sendQuotaPool.reset(int(s.Val - t.streamSendQuota))
 			}
 			t.streamSendQuota = s.Val
 			t.mu.Unlock()

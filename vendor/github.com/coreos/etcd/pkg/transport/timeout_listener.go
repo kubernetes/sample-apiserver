@@ -24,19 +24,15 @@ import (
 // If read/write on the accepted connection blocks longer than its time limit,
 // it will return timeout error.
 func NewTimeoutListener(addr string, scheme string, tlscfg *tls.Config, rdtimeoutd, wtimeoutd time.Duration) (net.Listener, error) {
-	ln, err := newListener(addr, scheme)
+	ln, err := NewListener(addr, scheme, tlscfg)
 	if err != nil {
 		return nil, err
 	}
-	ln = &rwTimeoutListener{
+	return &rwTimeoutListener{
 		Listener:   ln,
 		rdtimeoutd: rdtimeoutd,
 		wtimeoutd:  wtimeoutd,
-	}
-	if ln, err = wrapTLS(addr, scheme, tlscfg, ln); err != nil {
-		return nil, err
-	}
-	return ln, nil
+	}, nil
 }
 
 type rwTimeoutListener struct {

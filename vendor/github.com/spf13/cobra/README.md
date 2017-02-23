@@ -157,12 +157,7 @@ In a Cobra app, typically the main.go file is very bare. It serves, one purpose,
 ```go
 package main
 
-import (
-	"fmt"
-	"os"
-
-	"{pathToYourApp}/cmd"
-)
+import "{pathToYourApp}/cmd"
 
 func main() {
 	if err := cmd.RootCmd.Execute(); err != nil {
@@ -318,12 +313,7 @@ In a Cobra app, typically the main.go file is very bare. It serves, one purpose,
 ```go
 package main
 
-import (
-	"fmt"
-	"os"
-
-	"{pathToYourApp}/cmd"
-)
+import "{pathToYourApp}/cmd"
 
 func main() {
 	if err := cmd.RootCmd.Execute(); err != nil {
@@ -347,7 +337,6 @@ package cmd
 
 import (
 	"github.com/spf13/cobra"
-	"fmt"
 )
 
 func init() {
@@ -674,7 +663,7 @@ command.SetUsageTemplate(s string)
 
 ## PreRun or PostRun Hooks
 
-It is possible to run functions before or after the main `Run` function of your command. The `PersistentPreRun` and `PreRun` functions will be executed before `Run`. `PersistentPostRun` and `PostRun` will be executed after `Run`.  The `Persistent*Run` functions will be inherited by children if they do not declare their own.  These functions are run in the following order:
+It is possible to run functions before or after the main `Run` function of your command. The `PersistentPreRun` and `PreRun` functions will be executed before `Run`. `PersistentPostRun` and `PostRun` will be executed after `Run`.  The `Persistent*Run` functions will be inherrited by children if they do not declare their own.  These function are run in the following order:
 
 - `PersistentPreRun`
 - `PreRun`

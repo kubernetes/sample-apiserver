@@ -43,7 +43,6 @@ type (
 	AuthRoleListResponse             pb.AuthRoleListResponse
 
 	PermissionType authpb.Permission_Type
-	Permission     authpb.Permission
 )
 
 const (
@@ -116,12 +115,12 @@ func NewAuth(c *Client) Auth {
 }
 
 func (auth *auth) AuthEnable(ctx context.Context) (*AuthEnableResponse, error) {
-	resp, err := auth.remote.AuthEnable(ctx, &pb.AuthEnableRequest{}, grpc.FailFast(false))
+	resp, err := auth.remote.AuthEnable(ctx, &pb.AuthEnableRequest{})
 	return (*AuthEnableResponse)(resp), toErr(ctx, err)
 }
 
 func (auth *auth) AuthDisable(ctx context.Context) (*AuthDisableResponse, error) {
-	resp, err := auth.remote.AuthDisable(ctx, &pb.AuthDisableRequest{}, grpc.FailFast(false))
+	resp, err := auth.remote.AuthDisable(ctx, &pb.AuthDisableRequest{})
 	return (*AuthDisableResponse)(resp), toErr(ctx, err)
 }
 

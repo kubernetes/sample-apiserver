@@ -34,30 +34,27 @@ import (
 	"github.com/coreos/etcd/pkg/tlsutil"
 )
 
-func NewListener(addr, scheme string, tlscfg *tls.Config) (l net.Listener, err error) {
-	if l, err = newListener(addr, scheme); err != nil {
-		return nil, err
-	}
-	return wrapTLS(addr, scheme, tlscfg, l)
-}
-
-func newListener(addr string, scheme string) (net.Listener, error) {
+func NewListener(addr string, scheme string, tlscfg *tls.Config) (l net.Listener, err error) {
 	if scheme == "unix" || scheme == "unixs" {
 		// unix sockets via unix://laddr
-		return NewUnixListener(addr)
+		l, err = NewUnixListener(addr)
+	} else {
+		l, err = net.Listen("tcp", addr)
 	}
-	return net.Listen("tcp", addr)
-}
 
-func wrapTLS(addr, scheme string, tlscfg *tls.Config, l net.Listener) (net.Listener, error) {
-	if scheme != "https" && scheme != "unixs" {
-		return l, nil
+	if err != nil {
+		return nil, err
 	}
-	if tlscfg == nil {
-		l.Close()
-		return nil, fmt.Errorf("cannot listen on TLS for %s: KeyFile and CertFile are not presented", scheme+"://"+addr)
+
+	if scheme == "https" || scheme == "unixs" {
+		if tlscfg == nil {
+			return nil, fmt.Errorf("cannot listen on TLS for %s: KeyFile and CertFile are not presented", scheme+"://"+addr)
+		}
+
+		l = tls.NewListener(l, tlscfg)
 	}
-	return tls.NewListener(l, tlscfg), nil
+
+	return l, nil
 }
 
 type TLSInfo struct {
@@ -208,9 +205,6 @@ func (info TLSInfo) ServerConfig() (*tls.Config, error) {
 		cfg.ClientCAs = cp
 	}
 
-	// "h2" NextProtos is necessary for enabling HTTP2 for go's HTTP server
-	cfg.NextProtos = []string{"h2"}
-
 	return cfg, nil
 }
 
@@ -234,6 +228,8 @@ func (info TLSInfo) ClientConfig() (*tls.Config, error) {
 		if err != nil {
 			return nil, err
 		}
+		// if given a CA, trust any host with a cert signed by the CA
+		cfg.ServerName = ""
 	}
 
 	if info.selfCert {
