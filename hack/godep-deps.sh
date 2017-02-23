@@ -38,37 +38,15 @@ cp -R . ${goPath}/src/k8s.io/sample-apiserver
 
 pushd ${goPath}/src/k8s.io/sample-apiserver
 rm -rf vendor || true
-# this command fails because we've drifted from masters, but it gets us very close
-go get -d ./... || true
-popd
 
-# now that we're close, we can stomp any dependencies that have drifted with their versions from client-go
-pushd ${goPath}/src/k8s.io/client-go
+# restore what we have in our new manifest that we've sync
 godep restore
-popd
 
-# now we can mop up any we missed
-go get github.com/inconshreveable/mousetrap/...
-# because client-go is drifting behind (they still aren't auto-syncing well), we have to pull the latest 
-# apimachinery and apiserver manually.  Hopefully client-go will build a sync script that wires together properly
-rm -rf ${goPath}/src/k8s.io/apimachinery
-rm -rf ${goPath}/src/k8s.io/apiserver
-go get -d k8s.io/apimachinery/...
-go get -d k8s.io/apiserver/...
+# the manifest doesn't include any levels of k8s.io dependencies so load them using the go get
+# assume you sync all the repos at the same time, the leves you get will be correct
+go get -d ./... || true
 
-# pin a couple unruly levels until client-go can be sync'ed with matching sets of the rest of staging
-# TODO we can also pin these levels in a cloned and stripped down godep.json from the original k8s.io/kubernetes
-pushd ${goPath}/src/github.com/grpc-ecosystem/grpc-gateway
-git checkout f52d055dc48aec25854ed7d31862f78913cf17d1
-popd
-pushd ${goPath}/src/github.com/prometheus/client_golang
-git checkout e51041b3fa41cece0dca035740ba6411905be473
-popd
-pushd ${goPath}/src/github.com/coreos/go-systemd
-git checkout 4484981625c1a6a2ecb40a390fcb6a9bcfee76e3
-popd
-
-pushd ${goPath}/src/k8s.io/sample-apiserver
+# save the new levels of dependencies
 rm -rf vendor || true
 rm -rf Godeps || true
 godep save ./...
@@ -83,5 +61,5 @@ mv ${goPath}/src/k8s.io/sample-apiserver/vendor .
 mv ${goPath}/src/k8s.io/sample-apiserver/Godeps .
 git add vendor
 git add Godeps
-git commit -m "resync vendor folder"
+git commit -m "sync: resync vendor folder"
 
