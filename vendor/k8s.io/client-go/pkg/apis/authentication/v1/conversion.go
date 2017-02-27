@@ -1,5 +1,5 @@
 /*
-Copyright 2014 The Kubernetes Authors.
+Copyright 2017 The Kubernetes Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -14,14 +14,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package api
+package v1
 
 import (
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/runtime"
 )
 
-// HasObjectMetaSystemFieldValues returns true if fields that are managed by the system on ObjectMeta have values.
-func HasObjectMetaSystemFieldValues(meta *metav1.ObjectMeta) bool {
-	return !meta.CreationTimestamp.Time.IsZero() ||
-		len(meta.UID) != 0
+func addConversionFuncs(scheme *runtime.Scheme) error {
+	// Add non-generated conversion functions
+	return scheme.AddConversionFuncs()
 }
