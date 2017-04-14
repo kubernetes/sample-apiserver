@@ -1,5 +1,5 @@
 /*
-Copyright 2016 The Kubernetes Authors.
+Copyright 2017 The Kubernetes Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -14,23 +14,21 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+//TODO: consider making these methods functions, because we don't want helper
+//functions in the k8s.io/api repo.
+
 package api
 
 import (
-	"k8s.io/apimachinery/pkg/fields"
-	"k8s.io/apimachinery/pkg/labels"
-	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/apimachinery/pkg/runtime/schema"
 )
 
-func addDefaultingFuncs(scheme *runtime.Scheme) error {
-	return scheme.AddDefaultingFuncs(
-		func(obj *ListOptions) {
-			if obj.LabelSelector == nil {
-				obj.LabelSelector = labels.Everything()
-			}
-			if obj.FieldSelector == nil {
-				obj.FieldSelector = fields.Everything()
-			}
-		},
-	)
+func (obj *ObjectReference) SetGroupVersionKind(gvk schema.GroupVersionKind) {
+	obj.APIVersion, obj.Kind = gvk.ToAPIVersionAndKind()
 }
+
+func (obj *ObjectReference) GroupVersionKind() schema.GroupVersionKind {
+	return schema.FromAPIVersionAndKind(obj.APIVersion, obj.Kind)
+}
+
+func (obj *ObjectReference) GetObjectKind() schema.ObjectKind { return obj }
