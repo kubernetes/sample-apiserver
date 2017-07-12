@@ -19,9 +19,9 @@ package install
 import (
 	"testing"
 
-	apitesting "k8s.io/apimachinery/pkg/api/testing"
+	roundtrip "k8s.io/apimachinery/pkg/api/testing/roundtrip"
 )
 
 func TestRoundTripTypes(t *testing.T) {
-	apitesting.RoundTripTestForAPIGroup(t, Install, nil)
+	roundtrip.RoundTripTestForAPIGroup(t, Install, nil)
 }
