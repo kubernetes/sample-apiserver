@@ -84,7 +84,7 @@ var toDiscoveryKubeVerb = map[string]string{
 	"WATCHLIST":        "watch",
 }
 
-// Installs handlers for API resources.
+// Install handlers for API resources.
 func (a *APIInstaller) Install(ws *restful.WebService) (apiResources []metav1.APIResource, errors []error) {
 	errors = make([]error, 0)
 
@@ -577,6 +577,14 @@ func (a *APIInstaller) registerResourceHandlers(path string, storage rest.Storag
 
 		routes := []*restful.RouteBuilder{}
 
+		// If there is a subresource, kind should be the parent's kind.
+		if hasSubresource {
+			fqParentKind, err := a.getResourceKind(resource, a.group.Storage[resource])
+			if err != nil {
+				return nil, err
+			}
+			kind = fqParentKind.Kind
+		}
 		switch action.Verb {
 		case "GET": // Get a resource.
 			var handler restful.RouteFunction
@@ -841,7 +849,7 @@ func (a *APIInstaller) registerResourceHandlers(path string, storage rest.Storag
 	return &apiResource, nil
 }
 
-// This magic incantation returns *ptrToObject for an arbitrary pointer
+// indirectArbitraryPointer returns *ptrToObject for an arbitrary pointer
 func indirectArbitraryPointer(ptrToObject interface{}) interface{} {
 	return reflect.Indirect(reflect.ValueOf(ptrToObject)).Interface()
 }
