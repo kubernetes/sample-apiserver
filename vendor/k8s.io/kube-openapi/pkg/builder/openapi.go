@@ -14,10 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package openapi
+package builder
 
 import (
-	"crypto/sha512"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -27,34 +26,25 @@ import (
 	restful "github.com/emicklei/go-restful"
 	"github.com/go-openapi/spec"
 
-	"k8s.io/apimachinery/pkg/openapi"
-	"k8s.io/apiserver/pkg/util/trie"
+	"k8s.io/kube-openapi/pkg/common"
+	"k8s.io/kube-openapi/pkg/util"
 )
 
 const (
-	OpenAPIVersion  = "2.0"
+	OpenAPIVersion = "2.0"
+	// TODO: Make this configurable.
 	extensionPrefix = "x-kubernetes-"
-
-	JSON_EXT = ".json"
-
-	MIME_JSON = "application/json"
-	// TODO(mehdy): change @68f4ded to a version tag when gnostic add version tags.
-	MIME_PB    = "application/com.github.googleapis.gnostic.OpenAPIv2@68f4ded+protobuf"
-	MIME_PB_GZ = "application/x-gzip"
 )
 
 type openAPI struct {
-	config       *openapi.Config
+	config       *common.Config
 	swagger      *spec.Swagger
 	protocolList []string
-	definitions  map[string]openapi.OpenAPIDefinition
+	definitions  map[string]common.OpenAPIDefinition
 }
 
-func computeEtag(data []byte) string {
-	return fmt.Sprintf("\"%X\"", sha512.Sum512(data))
-}
-
-func BuildSwaggerSpec(webServices []*restful.WebService, config *openapi.Config) (*spec.Swagger, error) {
+// BuildOpenAPISpec builds OpenAPI spec given a list of webservices (containing routes) and common.Config to customize it.
+func BuildOpenAPISpec(webServices []*restful.WebService, config *common.Config) (*spec.Swagger, error) {
 	o := openAPI{
 		config: config,
 		swagger: &spec.Swagger{
@@ -88,7 +78,7 @@ func (o *openAPI) init(webServices []*restful.WebService) error {
 	}
 	o.definitions = o.config.GetDefinitions(func(name string) spec.Ref {
 		defName, _ := o.config.GetDefinitionName(name)
-		return spec.MustCreateRef(DEFINITION_PREFIX + openapi.EscapeJsonPointer(defName))
+		return spec.MustCreateRef("#/definitions/" + common.EscapeJsonPointer(defName))
 	})
 	if o.config.CommonResponses == nil {
 		o.config.CommonResponses = map[int]spec.Response{}
@@ -148,14 +138,14 @@ func (o *openAPI) buildDefinitionRecursively(name string) error {
 			}
 		}
 	} else {
-		return fmt.Errorf("cannot find model definition for %v. If you added a new type, you may need to add +k8s:openapi-gen=true to the package or type and run code-gen again.", name)
+		return fmt.Errorf("cannot find model definition for %v. If you added a new type, you may need to add +k8s:openapi-gen=true to the package or type and run code-gen again", name)
 	}
 	return nil
 }
 
 // buildDefinitionForType build a definition for a given type and return a referable name to it's definition.
 // This is the main function that keep track of definitions used in this spec and is depend on code generated
-// by k8s.io/kube-gen/cmd/openapi-gen.
+// by k8s.io/kubernetes/cmd/libs/go2idl/openapi-gen.
 func (o *openAPI) buildDefinitionForType(sample interface{}) (string, error) {
 	t := reflect.TypeOf(sample)
 	if t.Kind() == reflect.Ptr {
@@ -166,12 +156,12 @@ func (o *openAPI) buildDefinitionForType(sample interface{}) (string, error) {
 		return "", err
 	}
 	defName, _ := o.config.GetDefinitionName(name)
-	return DEFINITION_PREFIX + openapi.EscapeJsonPointer(defName), nil
+	return "#/definitions/" + common.EscapeJsonPointer(defName), nil
 }
 
 // buildPaths builds OpenAPI paths using go-restful's web services.
 func (o *openAPI) buildPaths(webServices []*restful.WebService) error {
-	pathsToIgnore := trie.New(o.config.IgnorePrefixes)
+	pathsToIgnore := util.NewTrie(o.config.IgnorePrefixes)
 	duplicateOpId := make(map[string]string)
 	for _, w := range webServices {
 		rootPath := w.RootPath()
@@ -219,7 +209,7 @@ func (o *openAPI) buildPaths(webServices []*restful.WebService) error {
 				}
 				dpath, exists := duplicateOpId[op.ID]
 				if exists {
-					return fmt.Errorf("Duplicate Operation ID %v for path %v and %v.", op.ID, dpath, path)
+					return fmt.Errorf("duplicate Operation ID %v for path %v and %v", op.ID, dpath, path)
 				} else {
 					duplicateOpId[op.ID] = path
 				}
@@ -337,7 +327,7 @@ func (o *openAPI) findCommonParameters(routes []restful.Route) (map[interface{}]
 			key := mapKeyFromParam(param)
 			if routeParamDuplicateMap[key] {
 				msg, _ := json.Marshal(route.ParameterDocs)
-				return commonParamsMap, fmt.Errorf("duplicate parameter %v for route %v, %v.", param.Data().Name, string(msg), s)
+				return commonParamsMap, fmt.Errorf("duplicate parameter %v for route %v, %v", param.Data().Name, string(msg), s)
 			}
 			routeParamDuplicateMap[key] = true
 			paramOpsCountByName[key]++
@@ -358,7 +348,7 @@ func (o *openAPI) findCommonParameters(routes []restful.Route) (map[interface{}]
 }
 
 func (o *openAPI) toSchema(model interface{}) (_ *spec.Schema, err error) {
-	if openAPIType, openAPIFormat := openapi.GetOpenAPITypeFormat(getCanonicalizeTypeName(reflect.TypeOf(model))); openAPIType != "" {
+	if openAPIType, openAPIFormat := common.GetOpenAPITypeFormat(getCanonicalizeTypeName(reflect.TypeOf(model))); openAPIType != "" {
 		return &spec.Schema{
 			SchemaProps: spec.SchemaProps{
 				Type:   []string{openAPIType},
@@ -412,7 +402,7 @@ func (o *openAPI) buildParameter(restParam restful.ParameterData, bodySample int
 	default:
 		return ret, fmt.Errorf("unknown restful operation kind : %v", restParam.Kind)
 	}
-	openAPIType, openAPIFormat := openapi.GetOpenAPITypeFormat(restParam.DataType)
+	openAPIType, openAPIFormat := common.GetOpenAPITypeFormat(restParam.DataType)
 	if openAPIType == "" {
 		return ret, fmt.Errorf("non-body Restful parameter type should be a simple type, but got : %v", restParam.DataType)
 	}

@@ -14,17 +14,17 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package trie
+package util
 
-// A simple trie implementation with Add an HasPrefix methods only.
+// A simple trie implementation with Add and HasPrefix methods only.
 type Trie struct {
 	children map[byte]*Trie
 	wordTail bool
 	word     string
 }
 
-// New creates a Trie and add all strings in the provided list to it.
-func New(list []string) Trie {
+// NewTrie creates a Trie and add all strings in the provided list to it.
+func NewTrie(list []string) Trie {
 	ret := Trie{
 		children: make(map[byte]*Trie),
 		wordTail: false,
