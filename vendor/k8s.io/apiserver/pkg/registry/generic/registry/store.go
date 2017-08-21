@@ -52,6 +52,14 @@ import (
 // object.
 type ObjectFunc func(obj runtime.Object) error
 
+// GenericStore interface can be used for type assertions when we need to access the underlying strategies.
+type GenericStore interface {
+	GetCreateStrategy() rest.RESTCreateStrategy
+	GetUpdateStrategy() rest.RESTUpdateStrategy
+	GetDeleteStrategy() rest.RESTDeleteStrategy
+	GetExportStrategy() rest.RESTExportStrategy
+}
+
 // Store implements pkg/api/rest.StandardStorage. It's intended to be
 // embeddable and allows the consumer to implement any non-generic functions
 // that are required. This object is intended to be copyable so that it can be
@@ -177,6 +185,7 @@ type Store struct {
 var _ rest.StandardStorage = &Store{}
 var _ rest.Exporter = &Store{}
 var _ rest.TableConvertor = &Store{}
+var _ GenericStore = &Store{}
 
 const OptimisticLockErrorMsg = "the object has been modified; please apply your changes to the latest version and try again"
 
@@ -231,6 +240,26 @@ func (e *Store) New() runtime.Object {
 // NewList implements rest.Lister.
 func (e *Store) NewList() runtime.Object {
 	return e.NewListFunc()
+}
+
+// GetCreateStrategy implements GenericStore.
+func (e *Store) GetCreateStrategy() rest.RESTCreateStrategy {
+	return e.CreateStrategy
+}
+
+// GetUpdateStrategy implements GenericStore.
+func (e *Store) GetUpdateStrategy() rest.RESTUpdateStrategy {
+	return e.UpdateStrategy
+}
+
+// GetDeleteStrategy implements GenericStore.
+func (e *Store) GetDeleteStrategy() rest.RESTDeleteStrategy {
+	return e.DeleteStrategy
+}
+
+// GetExportStrategy implements GenericStore.
+func (e *Store) GetExportStrategy() rest.RESTExportStrategy {
+	return e.ExportStrategy
 }
 
 // List returns a list of items matching labels and field according to the
@@ -1019,18 +1048,6 @@ func (e *Store) Delete(ctx genericapirequest.Context, name string, options *meta
 	return out, true, err
 }
 
-// copyListOptions copies list options for mutation.
-func copyListOptions(options *metainternalversion.ListOptions) *metainternalversion.ListOptions {
-	if options == nil {
-		return &metainternalversion.ListOptions{}
-	}
-	copied, err := metainternalversion.Copier.Copy(options)
-	if err != nil {
-		panic(err)
-	}
-	return copied.(*metainternalversion.ListOptions)
-}
-
 // DeleteCollection removes all items returned by List with a given ListOptions from storage.
 //
 // DeleteCollection is currently NOT atomic. It can happen that only subset of objects
@@ -1042,10 +1059,15 @@ func copyListOptions(options *metainternalversion.ListOptions) *metainternalvers
 // possibly with storage API, but watch is not delivered correctly then).
 // It will be possible to fix it with v3 etcd API.
 func (e *Store) DeleteCollection(ctx genericapirequest.Context, options *metav1.DeleteOptions, listOptions *metainternalversion.ListOptions) (runtime.Object, error) {
+	if listOptions == nil {
+		listOptions = &metainternalversion.ListOptions{}
+	} else {
+		listOptions = listOptions.DeepCopy()
+	}
+
 	// DeleteCollection must remain backwards compatible with old clients that expect it to
 	// remove all resources, initialized or not, within the type. It is also consistent with
 	// Delete which does not require IncludeUninitialized
-	listOptions = copyListOptions(listOptions)
 	listOptions.IncludeUninitialized = true
 
 	listObj, err := e.List(ctx, listOptions)

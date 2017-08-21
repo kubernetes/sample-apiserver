@@ -29,12 +29,14 @@ import (
 	autoscalingv1 "k8s.io/client-go/kubernetes/typed/autoscaling/v1"
 	autoscalingv2alpha1 "k8s.io/client-go/kubernetes/typed/autoscaling/v2alpha1"
 	batchv1 "k8s.io/client-go/kubernetes/typed/batch/v1"
+	batchv1beta1 "k8s.io/client-go/kubernetes/typed/batch/v1beta1"
 	batchv2alpha1 "k8s.io/client-go/kubernetes/typed/batch/v2alpha1"
 	certificatesv1beta1 "k8s.io/client-go/kubernetes/typed/certificates/v1beta1"
 	corev1 "k8s.io/client-go/kubernetes/typed/core/v1"
 	extensionsv1beta1 "k8s.io/client-go/kubernetes/typed/extensions/v1beta1"
 	networkingv1 "k8s.io/client-go/kubernetes/typed/networking/v1"
 	policyv1beta1 "k8s.io/client-go/kubernetes/typed/policy/v1beta1"
+	rbacv1 "k8s.io/client-go/kubernetes/typed/rbac/v1"
 	rbacv1alpha1 "k8s.io/client-go/kubernetes/typed/rbac/v1alpha1"
 	rbacv1beta1 "k8s.io/client-go/kubernetes/typed/rbac/v1beta1"
 	schedulingv1alpha1 "k8s.io/client-go/kubernetes/typed/scheduling/v1alpha1"
@@ -69,6 +71,7 @@ type Interface interface {
 	BatchV1() batchv1.BatchV1Interface
 	// Deprecated: please explicitly pick a version if possible.
 	Batch() batchv1.BatchV1Interface
+	BatchV1beta1() batchv1beta1.BatchV1beta1Interface
 	BatchV2alpha1() batchv2alpha1.BatchV2alpha1Interface
 	CertificatesV1beta1() certificatesv1beta1.CertificatesV1beta1Interface
 	// Deprecated: please explicitly pick a version if possible.
@@ -85,9 +88,10 @@ type Interface interface {
 	PolicyV1beta1() policyv1beta1.PolicyV1beta1Interface
 	// Deprecated: please explicitly pick a version if possible.
 	Policy() policyv1beta1.PolicyV1beta1Interface
-	RbacV1beta1() rbacv1beta1.RbacV1beta1Interface
+	RbacV1() rbacv1.RbacV1Interface
 	// Deprecated: please explicitly pick a version if possible.
-	Rbac() rbacv1beta1.RbacV1beta1Interface
+	Rbac() rbacv1.RbacV1Interface
+	RbacV1beta1() rbacv1beta1.RbacV1beta1Interface
 	RbacV1alpha1() rbacv1alpha1.RbacV1alpha1Interface
 	SchedulingV1alpha1() schedulingv1alpha1.SchedulingV1alpha1Interface
 	// Deprecated: please explicitly pick a version if possible.
@@ -115,12 +119,14 @@ type Clientset struct {
 	autoscalingV1                 *autoscalingv1.AutoscalingV1Client
 	autoscalingV2alpha1           *autoscalingv2alpha1.AutoscalingV2alpha1Client
 	batchV1                       *batchv1.BatchV1Client
+	batchV1beta1                  *batchv1beta1.BatchV1beta1Client
 	batchV2alpha1                 *batchv2alpha1.BatchV2alpha1Client
 	certificatesV1beta1           *certificatesv1beta1.CertificatesV1beta1Client
 	coreV1                        *corev1.CoreV1Client
 	extensionsV1beta1             *extensionsv1beta1.ExtensionsV1beta1Client
 	networkingV1                  *networkingv1.NetworkingV1Client
 	policyV1beta1                 *policyv1beta1.PolicyV1beta1Client
+	rbacV1                        *rbacv1.RbacV1Client
 	rbacV1beta1                   *rbacv1beta1.RbacV1beta1Client
 	rbacV1alpha1                  *rbacv1alpha1.RbacV1alpha1Client
 	schedulingV1alpha1            *schedulingv1alpha1.SchedulingV1alpha1Client
@@ -215,6 +221,11 @@ func (c *Clientset) Batch() batchv1.BatchV1Interface {
 	return c.batchV1
 }
 
+// BatchV1beta1 retrieves the BatchV1beta1Client
+func (c *Clientset) BatchV1beta1() batchv1beta1.BatchV1beta1Interface {
+	return c.batchV1beta1
+}
+
 // BatchV2alpha1 retrieves the BatchV2alpha1Client
 func (c *Clientset) BatchV2alpha1() batchv2alpha1.BatchV2alpha1Interface {
 	return c.batchV2alpha1
@@ -275,14 +286,19 @@ func (c *Clientset) Policy() policyv1beta1.PolicyV1beta1Interface {
 	return c.policyV1beta1
 }
 
-// RbacV1beta1 retrieves the RbacV1beta1Client
-func (c *Clientset) RbacV1beta1() rbacv1beta1.RbacV1beta1Interface {
-	return c.rbacV1beta1
+// RbacV1 retrieves the RbacV1Client
+func (c *Clientset) RbacV1() rbacv1.RbacV1Interface {
+	return c.rbacV1
 }
 
 // Deprecated: Rbac retrieves the default version of RbacClient.
 // Please explicitly pick a version.
-func (c *Clientset) Rbac() rbacv1beta1.RbacV1beta1Interface {
+func (c *Clientset) Rbac() rbacv1.RbacV1Interface {
+	return c.rbacV1
+}
+
+// RbacV1beta1 retrieves the RbacV1beta1Client
+func (c *Clientset) RbacV1beta1() rbacv1beta1.RbacV1beta1Interface {
 	return c.rbacV1beta1
 }
 
@@ -385,6 +401,10 @@ func NewForConfig(c *rest.Config) (*Clientset, error) {
 	if err != nil {
 		return nil, err
 	}
+	cs.batchV1beta1, err = batchv1beta1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
 	cs.batchV2alpha1, err = batchv2alpha1.NewForConfig(&configShallowCopy)
 	if err != nil {
 		return nil, err
@@ -406,6 +426,10 @@ func NewForConfig(c *rest.Config) (*Clientset, error) {
 		return nil, err
 	}
 	cs.policyV1beta1, err = policyv1beta1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
+	cs.rbacV1, err = rbacv1.NewForConfig(&configShallowCopy)
 	if err != nil {
 		return nil, err
 	}
@@ -456,12 +480,14 @@ func NewForConfigOrDie(c *rest.Config) *Clientset {
 	cs.autoscalingV1 = autoscalingv1.NewForConfigOrDie(c)
 	cs.autoscalingV2alpha1 = autoscalingv2alpha1.NewForConfigOrDie(c)
 	cs.batchV1 = batchv1.NewForConfigOrDie(c)
+	cs.batchV1beta1 = batchv1beta1.NewForConfigOrDie(c)
 	cs.batchV2alpha1 = batchv2alpha1.NewForConfigOrDie(c)
 	cs.certificatesV1beta1 = certificatesv1beta1.NewForConfigOrDie(c)
 	cs.coreV1 = corev1.NewForConfigOrDie(c)
 	cs.extensionsV1beta1 = extensionsv1beta1.NewForConfigOrDie(c)
 	cs.networkingV1 = networkingv1.NewForConfigOrDie(c)
 	cs.policyV1beta1 = policyv1beta1.NewForConfigOrDie(c)
+	cs.rbacV1 = rbacv1.NewForConfigOrDie(c)
 	cs.rbacV1beta1 = rbacv1beta1.NewForConfigOrDie(c)
 	cs.rbacV1alpha1 = rbacv1alpha1.NewForConfigOrDie(c)
 	cs.schedulingV1alpha1 = schedulingv1alpha1.NewForConfigOrDie(c)
@@ -486,12 +512,14 @@ func New(c rest.Interface) *Clientset {
 	cs.autoscalingV1 = autoscalingv1.New(c)
 	cs.autoscalingV2alpha1 = autoscalingv2alpha1.New(c)
 	cs.batchV1 = batchv1.New(c)
+	cs.batchV1beta1 = batchv1beta1.New(c)
 	cs.batchV2alpha1 = batchv2alpha1.New(c)
 	cs.certificatesV1beta1 = certificatesv1beta1.New(c)
 	cs.coreV1 = corev1.New(c)
 	cs.extensionsV1beta1 = extensionsv1beta1.New(c)
 	cs.networkingV1 = networkingv1.New(c)
 	cs.policyV1beta1 = policyv1beta1.New(c)
+	cs.rbacV1 = rbacv1.New(c)
 	cs.rbacV1beta1 = rbacv1beta1.New(c)
 	cs.rbacV1alpha1 = rbacv1alpha1.New(c)
 	cs.schedulingV1alpha1 = schedulingv1alpha1.New(c)
