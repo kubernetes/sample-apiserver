@@ -19,14 +19,10 @@ In order to build the sample apiserver image we will need to build the apiserver
 
 ```
 cd $GOPATH/src
-mkdir -p github.com/kubernetes
-cd github.com/kubernetes
+mkdir -p k8s.io
+cd k8s.io
 git clone https://github.com/kubernetes/sample-apiserver.git
 ``` 
-
-## Rename the package imports
-
-After cloning from the repo, the imports will be referencing ```k8s.io/sample-apiserver``` these need to be changed to ```github.com/kubernetes/sample-apiserver```. Recommend you do this with your favourite editor and a find all and replace.
 
 ## Build the binary
 
@@ -76,7 +72,7 @@ Save this file and we are then ready to deploy and try out the sample apiserver.
 
 ## Deploy to Minikube
 
-We will need to create several objects in order to setup the sample apiserver you will need to ensure you have the ```kubectl``` tool installed. [Install kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
+We will need to create several objects in order to setup the sample apiserver so you will need to ensure you have the ```kubectl``` tool installed. [Install kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
 
 ```
 # create the namespace to run the apiserver in
