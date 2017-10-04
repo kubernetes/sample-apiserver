@@ -46,23 +46,7 @@ docker build -t <YOUR_DOCKERHUB_USER>/kube-sample-apiserver:latest ./artifacts/s
 docker push <YOUR_DOCKERHUB_USER>/kube-sample-apiserver 
 ```
 
-## Modify the the replication controller start command
-
-In the current version of Minikube ```v0.22.0``` at the time of writing, there is some missing configuration required for running an extension apiserver. This has been fixed in the following [PR](https://github.com/kubernetes/minikube/pull/1918) so hopefully in the next release this step will no longer be needed:
-
-In your favourite editor open the replication controller template:
-
-``` 
-vi artifacts/example/rc.yaml
-```
-Under the containers sections, right after the line that specifies the etcd server address : ```- "--etcd-servers=http://localhost:2379"``` add the following:
-
-```
-        - --requestheader-client-ca-file=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
-        - --requestheader-username-headers=X-Remote-User
-        - --requestheader-group-headers=X-Remote-Group
-        - --requestheader-extra-headers-prefix=X-Remote-Extra        
-```
+## Modify the the replication controller
 
 You need to change the ```imagePullPolicy``` to ```Always``` or ```IfNotPresent```.
 
