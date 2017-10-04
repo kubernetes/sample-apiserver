@@ -17,3 +17,7 @@ HEAD of this repo will match HEAD of k8s.io/apiserver, k8s.io/apimachinery, and 
 `sample-apiserver` is synced from https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/sample-apiserver.
 Code changes are made in that location, merged into `k8s.io/kubernetes` and later synced here.
 
+## Walkthrough to try out the server on Minikube
+
+[Minikube walkthrough](./docs/minikube-walkthrough.md)
+
