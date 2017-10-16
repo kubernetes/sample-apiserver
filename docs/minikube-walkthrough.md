@@ -1,6 +1,6 @@
-# Minikube walkthrough 
+# Minikube walkthrough
 
-This document will take you through setting up and trying the sample apiserver on a local minikube from a fresh clone of this repo. 
+This document will take you through setting up and trying the sample apiserver on a local minikube from a fresh clone of this repo.
 
 ## Pre requisites
 
@@ -9,20 +9,20 @@ This document will take you through setting up and trying the sample apiserver o
 
 ## Install Minikube
 
-Minikube is a single node Kubernetes cluster that runs on your local machine. The Minikube docs have installation instructions for your OS. 
+Minikube is a single node Kubernetes cluster that runs on your local machine. The Minikube docs have installation instructions for your OS.
 - [minikube installation](https://github.com/kubernetes/minikube#installation)
 
 
 ## Clone the repository
 
-In order to build the sample apiserver image we will need to build the apiserver binary. 
+In order to build the sample apiserver image we will need to build the apiserver binary.
 
 ```
 cd $GOPATH/src
 mkdir -p k8s.io
 cd k8s.io
 git clone https://github.com/kubernetes/sample-apiserver.git
-``` 
+```
 
 ## Build the binary
 
@@ -43,14 +43,23 @@ Again from the root of this repo run the following commands:
 ```
 cp ./sample-apiserver ./artifacts/simple-image/kube-sample-apiserver
 docker build -t <YOUR_DOCKERHUB_USER>/kube-sample-apiserver:latest ./artifacts/simple-image
-docker push <YOUR_DOCKERHUB_USER>/kube-sample-apiserver 
+docker push <YOUR_DOCKERHUB_USER>/kube-sample-apiserver
 ```
 
 ## Modify the the replication controller
 
-You need to change the ```imagePullPolicy``` to ```Always``` or ```IfNotPresent```.
+You need to modify the [artifacts/example/rc.yaml](/artifacts/example/rc.yaml) file to change the ```imagePullPolicy``` to ```Always``` or ```IfNotPresent```.
 
-You also need to change the image from ```kube-sample-apiserver:latest``` to ```<YOUR_DOCKERHUB_USER>/kube-sample-apiserver:latest```
+You also need to change the image from ```kube-sample-apiserver:latest``` to ```<YOUR_DOCKERHUB_USER>/kube-sample-apiserver:latest```. For example:
+
+```yaml
+...
+      containers:
+      - name: wardle-server
+        image: <YOUR_DOCKERHUB_USER>/kube-sample-apiserver:latest
+        imagePullPolicy: Always
+...
+```
 
 Save this file and we are then ready to deploy and try out the sample apiserver.
 
@@ -91,7 +100,7 @@ You can then get this resource by running:
 ```
 kubectl get flunder my-first-flunder
 
-#outputs 
+#outputs
 # NAME               KIND
 # my-first-flunder   Flunder.v1alpha1.wardle.k8s.io
 ```
