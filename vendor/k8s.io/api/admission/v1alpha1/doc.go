@@ -14,19 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package server
+// +k8s:deepcopy-gen=package,register
+// +k8s:openapi-gen=false
 
-// This file exists to force the desired plugin implementations to be linked into genericapi pkg.
-import (
-	"k8s.io/apiserver/pkg/admission"
-	"k8s.io/apiserver/pkg/admission/plugin/initialization"
-	"k8s.io/apiserver/pkg/admission/plugin/namespace/lifecycle"
-	"k8s.io/apiserver/pkg/admission/plugin/webhook/webhook"
-)
-
-// RegisterAllAdmissionPlugins registers all admission plugins
-func RegisterAllAdmissionPlugins(plugins *admission.Plugins) {
-	lifecycle.Register(plugins)
-	initialization.Register(plugins)
-	webhook.Register(plugins)
-}
+// +groupName=admission.k8s.io
+package v1alpha1
