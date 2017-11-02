@@ -151,11 +151,13 @@ func (a *GenericAdmissionWebhook) SetScheme(scheme *runtime.Scheme) {
 	}
 }
 
+// WantsExternalKubeClientSet defines a function which sets external ClientSet for admission plugins that need it
 func (a *GenericAdmissionWebhook) SetExternalKubeClientSet(client clientset.Interface) {
 	a.hookSource = configuration.NewExternalAdmissionHookConfigurationManager(client.Admissionregistration().ExternalAdmissionHookConfigurations())
 }
 
-func (a *GenericAdmissionWebhook) Validate() error {
+// ValidateInitialization implements the InitializationValidator interface.
+func (a *GenericAdmissionWebhook) ValidateInitialization() error {
 	if a.hookSource == nil {
 		return fmt.Errorf("the GenericAdmissionWebhook admission plugin requires a Kubernetes client to be provided")
 	}
@@ -298,5 +300,6 @@ func (a *GenericAdmissionWebhook) hookClient(h *v1alpha1.ExternalAdmissionHook) 
 	cfg.TLSClientConfig.ServerName = serverName
 	cfg.TLSClientConfig.CAData = h.ClientConfig.CABundle
 	cfg.ContentConfig.NegotiatedSerializer = a.negotiatedSerializer
+	cfg.ContentConfig.ContentType = runtime.ContentTypeJSON
 	return rest.UnversionedRESTClientFor(cfg)
 }
