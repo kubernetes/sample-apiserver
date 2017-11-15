@@ -14,5 +14,5 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// Package webhook checks a webhook for configured operation admission
-package webhook
+// Package validating checks a non-mutating webhook for configured operation admission
+package validating
