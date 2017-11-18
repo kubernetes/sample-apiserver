@@ -14,6 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// Package validating makes calls to validating (i.e., non-mutating) webhooks
-// during the admission process.
-package validating
+// Package mutating makes calls to mutating webhooks during the admission
+// process.
+package mutating
