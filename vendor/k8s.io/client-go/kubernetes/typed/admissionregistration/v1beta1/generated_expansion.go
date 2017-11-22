@@ -14,8 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// +k8s:deepcopy-gen=package
-// +k8s:openapi-gen=false
+package v1beta1
 
-// +groupName=admission.k8s.io
-package v1alpha1
+type MutatingWebhookConfigurationExpansion interface{}
+
+type ValidatingWebhookConfigurationExpansion interface{}
