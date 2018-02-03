@@ -3021,6 +3021,15 @@ type PodStatus struct {
 	// e.g. 'Evicted'
 	// +optional
 	Reason string `json:"reason,omitempty" protobuf:"bytes,4,opt,name=reason"`
+	// nominatedNodeName is set only when this pod preempts other pods on the node, but it cannot be
+	// scheduled right away as preemption victims receive their graceful termination periods.
+	// This field does not guarantee that the pod will be scheduled on this node. Scheduler may decide
+	// to place the pod elsewhere if other nodes become available sooner. Scheduler may also decide to
+	// give the resources on this node to a higher priority pod that is created after preemption.
+	// As a result, this field may be different than PodSpec.nodeName when the pod is
+	// scheduled.
+	// +optional
+	NominatedNodeName string `json:"nominatedNodeName,omitempty" protobuf:"bytes,11,opt,name=nominatedNodeName"`
 
 	// IP address of the host to which the pod is assigned. Empty if not yet scheduled.
 	// +optional
@@ -4940,8 +4949,21 @@ type ConfigMap struct {
 
 	// Data contains the configuration data.
 	// Each key must consist of alphanumeric characters, '-', '_' or '.'.
+	// Values with non-UTF-8 byte sequences must use the BinaryData field.
+	// The keys stored in Data must not overlap with the keys in
+	// the BinaryData field, this is enforced during validation process.
 	// +optional
 	Data map[string]string `json:"data,omitempty" protobuf:"bytes,2,rep,name=data"`
+
+	// BinaryData contains the binary data.
+	// Each key must consist of alphanumeric characters, '-', '_' or '.'.
+	// BinaryData can contain byte sequences that are not in the UTF-8 range.
+	// The keys stored in BinaryData must not overlap with the ones in
+	// the Data field, this is enforced during validation process.
+	// Using this field will require 1.10+ apiserver and
+	// kubelet.
+	// +optional
+	BinaryData map[string][]byte `json:"binaryData,omitempty" protobuf:"bytes,3,rep,name=binaryData"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -219,9 +219,10 @@ func (ComponentStatusList) SwaggerDoc() map[string]string {
 }
 
 var map_ConfigMap = map[string]string{
-	"":         "ConfigMap holds configuration data for pods to consume.",
-	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
-	"data":     "Data contains the configuration data. Each key must consist of alphanumeric characters, '-', '_' or '.'.",
+	"":           "ConfigMap holds configuration data for pods to consume.",
+	"metadata":   "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+	"data":       "Data contains the configuration data. Each key must consist of alphanumeric characters, '-', '_' or '.'. Values with non-UTF-8 byte sequences must use the BinaryData field. The keys stored in Data must not overlap with the keys in the BinaryData field, this is enforced during validation process.",
+	"binaryData": "BinaryData contains the binary data. Each key must consist of alphanumeric characters, '-', '_' or '.'. BinaryData can contain byte sequences that are not in the UTF-8 range. The keys stored in BinaryData must not overlap with the ones in the Data field, this is enforced during validation process. Using this field will require 1.10+ apiserver and kubelet.",
 }
 
 func (ConfigMap) SwaggerDoc() map[string]string {
@@ -1527,6 +1528,7 @@ var map_PodStatus = map[string]string{
 	"conditions":            "Current service state of pod. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions",
 	"message":               "A human readable message indicating details about why the pod is in this condition.",
 	"reason":                "A brief CamelCase message indicating details about why the pod is in this state. e.g. 'Evicted'",
+	"nominatedNodeName":     "nominatedNodeName is set only when this pod preempts other pods on the node, but it cannot be scheduled right away as preemption victims receive their graceful termination periods. This field does not guarantee that the pod will be scheduled on this node. Scheduler may decide to place the pod elsewhere if other nodes become available sooner. Scheduler may also decide to give the resources on this node to a higher priority pod that is created after preemption. As a result, this field may be different than PodSpec.nodeName when the pod is scheduled.",
 	"hostIP":                "IP address of the host to which the pod is assigned. Empty if not yet scheduled.",
 	"podIP":                 "IP address allocated to the pod. Routable at least within the cluster. Empty if not yet allocated.",
 	"startTime":             "RFC 3339 date and time at which the object was acknowledged by the Kubelet. This is before the Kubelet pulled the container image(s) for the pod.",

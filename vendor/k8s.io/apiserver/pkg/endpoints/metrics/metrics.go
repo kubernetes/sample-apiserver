@@ -78,11 +78,20 @@ var (
 		},
 		[]string{"verb", "resource", "subresource", "scope"},
 	)
-	// DroppedRequests is a number of requests dropped with 'Try again later' reponse"
+	// DroppedRequests is a number of requests dropped with 'Try again later' response"
 	DroppedRequests = prometheus.NewCounterVec(
 		prometheus.CounterOpts{
 			Name: "apiserver_dropped_requests",
-			Help: "Number of requests dropped with 'Try again later' reponse",
+			Help: "Number of requests dropped with 'Try again later' response",
+		},
+		[]string{"requestKind"},
+	)
+	// Becasue of volatality of the base metric this is pre-aggregated one. Instead of reporing current usage all the time
+	// it reports maximal usage during the last second.
+	currentInflightRequests = prometheus.NewGaugeVec(
+		prometheus.GaugeOpts{
+			Name: "apiserver_current_inflight_requests",
+			Help: "Maximal mumber of currently used inflight request limit of this apiserver per request kind in last second.",
 		},
 		[]string{"requestKind"},
 	)
@@ -104,6 +113,12 @@ func init() {
 	prometheus.MustRegister(requestLatenciesSummary)
 	prometheus.MustRegister(responseSizes)
 	prometheus.MustRegister(DroppedRequests)
+	prometheus.MustRegister(currentInflightRequests)
+}
+
+func UpdateInflightRequestMetrics(nonmutating, mutating int) {
+	currentInflightRequests.WithLabelValues(ReadOnlyKind).Set(float64(nonmutating))
+	currentInflightRequests.WithLabelValues(MutatingKind).Set(float64(mutating))
 }
 
 // Record records a single request to the standard metrics endpoints. For use by handlers that perform their own
