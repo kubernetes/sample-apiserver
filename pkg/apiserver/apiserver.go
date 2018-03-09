@@ -17,17 +17,17 @@ limitations under the License.
 package apiserver
 
 import (
+	admissionv1beta1 "k8s.io/api/admission/v1beta1"
 	"k8s.io/apimachinery/pkg/apimachinery/announced"
 	"k8s.io/apimachinery/pkg/apimachinery/registered"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/apimachinery/pkg/runtime/serializer"
+	"k8s.io/apimachinery/pkg/util/sets"
 	"k8s.io/apimachinery/pkg/version"
 	"k8s.io/apiserver/pkg/registry/rest"
 	genericapiserver "k8s.io/apiserver/pkg/server"
-	admissioninstall "k8s.io/kubernetes/pkg/apis/admission/install"
-	authenticationinstall "k8s.io/kubernetes/pkg/apis/authentication/install"
 
 	"k8s.io/sample-apiserver/pkg/apis/wardle"
 	"k8s.io/sample-apiserver/pkg/apis/wardle/install"
@@ -44,10 +44,24 @@ var (
 	Codecs               = serializer.NewCodecFactory(Scheme)
 )
 
+func AdmissionInstall(groupFactoryRegistry announced.APIGroupFactoryRegistry, registry *registered.APIRegistrationManager, scheme *runtime.Scheme) {
+	if err := announced.NewGroupMetaFactory(
+		&announced.GroupMetaFactoryArgs{
+			GroupName:              admissionv1beta1.GroupName,
+			VersionPreferenceOrder: []string{admissionv1beta1.SchemeGroupVersion.Version},
+			RootScopedKinds:        sets.NewString("AdmissionReview"),
+		},
+		announced.VersionToSchemeFunc{
+			admissionv1beta1.SchemeGroupVersion.Version: admissionv1beta1.AddToScheme,
+		},
+	).Announce(groupFactoryRegistry).RegisterAndEnable(registry, scheme); err != nil {
+		panic(err)
+	}
+}
+
 func init() {
 	install.Install(groupFactoryRegistry, registry, Scheme)
-	admissioninstall.Install(groupFactoryRegistry, registry, Scheme)
-	authenticationinstall.Install(groupFactoryRegistry, registry, Scheme)
+	AdmissionInstall(groupFactoryRegistry, registry, Scheme)
 
 	// we need to add the options to empty v1
 	// TODO fix the server code to avoid this
