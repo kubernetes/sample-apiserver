@@ -26,6 +26,8 @@ import (
 	"k8s.io/apimachinery/pkg/version"
 	"k8s.io/apiserver/pkg/registry/rest"
 	genericapiserver "k8s.io/apiserver/pkg/server"
+	admissioninstall "k8s.io/kubernetes/pkg/apis/admission/install"
+	authenticationinstall "k8s.io/kubernetes/pkg/apis/authentication/install"
 
 	"k8s.io/sample-apiserver/pkg/apis/wardle"
 	"k8s.io/sample-apiserver/pkg/apis/wardle/install"
@@ -44,6 +46,8 @@ var (
 
 func init() {
 	install.Install(groupFactoryRegistry, registry, Scheme)
+	admissioninstall.Install(groupFactoryRegistry, registry, Scheme)
+	authenticationinstall.Install(groupFactoryRegistry, registry, Scheme)
 
 	// we need to add the options to empty v1
 	// TODO fix the server code to avoid this
