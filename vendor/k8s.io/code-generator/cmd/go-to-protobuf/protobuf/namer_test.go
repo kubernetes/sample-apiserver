@@ -14,20 +14,37 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package generators
+package protobuf
 
-import (
-	"github.com/golang/glog"
-	"k8s.io/gengo/types"
-)
+import "testing"
 
-// extractBoolTagOrDie gets the comment-tags for the key and asserts that, if
-// it exists, the value is boolean.  If the tag did not exist, it returns
-// false.
-func extractBoolTagOrDie(key string, lines []string) bool {
-	val, err := types.ExtractSingleBoolCommentTag("+", key, false, lines)
-	if err != nil {
-		glog.Fatalf(err.Error())
+func TestProtoSafePackage(t *testing.T) {
+	tests := []struct {
+		pkg      string
+		expected string
+	}{
+		{
+			pkg:      "foo",
+			expected: "foo",
+		},
+		{
+			pkg:      "foo/bar",
+			expected: "foo.bar",
+		},
+		{
+			pkg:      "foo/bar/baz",
+			expected: "foo.bar.baz",
+		},
+		{
+			pkg:      "foo/bar-baz/x/y-z/q",
+			expected: "foo.bar_baz.x.y_z.q",
+		},
 	}
-	return val
+
+	for _, test := range tests {
+		actual := protoSafePackage(test.pkg)
+		if e, a := test.expected, actual; e != a {
+			t.Errorf("%s: expected %s, got %s", test.pkg, e, a)
+		}
+	}
 }
