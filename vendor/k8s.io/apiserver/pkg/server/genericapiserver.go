@@ -27,6 +27,7 @@ import (
 	"github.com/emicklei/go-restful-swagger12"
 	"github.com/golang/glog"
 
+	"k8s.io/apimachinery/pkg/api/meta"
 	"k8s.io/apimachinery/pkg/apimachinery"
 	"k8s.io/apimachinery/pkg/apimachinery/registered"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -422,8 +423,7 @@ func (s *GenericAPIServer) newAPIGroupVersion(apiGroupInfo *APIGroupInfo, groupV
 		UnsafeConvertor: runtime.UnsafeObjectConvertor(apiGroupInfo.Scheme),
 		Defaulter:       apiGroupInfo.Scheme,
 		Typer:           apiGroupInfo.Scheme,
-		Linker:          apiGroupInfo.GroupMeta.SelfLinker,
-		Mapper:          apiGroupInfo.GroupMeta.RESTMapper,
+		Linker:          runtime.SelfLinker(meta.NewAccessor()),
 
 		Admit:                        s.admissionControl,
 		MinRequestTimeout:            s.minRequestTimeout,
