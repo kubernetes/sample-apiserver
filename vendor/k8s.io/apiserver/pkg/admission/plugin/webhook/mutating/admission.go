@@ -32,7 +32,6 @@ import (
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
-	"k8s.io/apimachinery/pkg/runtime/serializer"
 	"k8s.io/apimachinery/pkg/runtime/serializer/json"
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
 	"k8s.io/apimachinery/pkg/util/wait"
@@ -112,6 +111,7 @@ type MutatingWebhook struct {
 	namespaceMatcher namespace.Matcher
 	clientManager    config.ClientManager
 	convertor        versioned.Convertor
+	defaulter        runtime.ObjectDefaulter
 	jsonSerializer   runtime.Serializer
 }
 
@@ -133,10 +133,8 @@ func (a *MutatingWebhook) SetServiceResolver(sr config.ServiceResolver) {
 // SetScheme sets a serializer(NegotiatedSerializer) which is derived from the scheme
 func (a *MutatingWebhook) SetScheme(scheme *runtime.Scheme) {
 	if scheme != nil {
-		a.clientManager.SetNegotiatedSerializer(serializer.NegotiatedSerializerWrapper(runtime.SerializerInfo{
-			Serializer: serializer.NewCodecFactory(scheme).LegacyCodec(admissionv1beta1.SchemeGroupVersion),
-		}))
 		a.convertor.Scheme = scheme
+		a.defaulter = scheme
 		a.jsonSerializer = json.NewSerializer(json.DefaultMetaFactory, scheme, scheme, false)
 	}
 }
@@ -170,6 +168,9 @@ func (a *MutatingWebhook) ValidateInitialization() error {
 	}
 	if err := a.convertor.Validate(); err != nil {
 		return fmt.Errorf("MutatingWebhook.convertor is not properly setup: %v", err)
+	}
+	if a.defaulter == nil {
+		return fmt.Errorf("MutatingWebhook.defaulter is not properly setup")
 	}
 	go a.hookSource.Run(wait.NeverStop)
 	return nil
@@ -312,10 +313,9 @@ func (a *MutatingWebhook) callAttrMutatingHook(ctx context.Context, h *v1beta1.W
 	if err != nil {
 		return apierrors.NewInternalError(err)
 	}
-	// TODO: if we have multiple mutating webhooks, we can remember the json
-	// instead of encoding and decoding for each one.
 	if _, _, err := a.jsonSerializer.Decode(patchedJS, nil, attr.Object); err != nil {
 		return apierrors.NewInternalError(err)
 	}
+	a.defaulter.Default(attr.Object)
 	return nil
 }
