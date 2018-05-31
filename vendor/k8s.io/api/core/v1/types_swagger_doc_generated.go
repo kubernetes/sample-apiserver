@@ -266,8 +266,8 @@ var map_ConfigMapNodeConfigSource = map[string]string{
 	"":                 "ConfigMapNodeConfigSource contains the information to reference a ConfigMap as a config source for the Node.",
 	"namespace":        "Namespace is the metadata.namespace of the referenced ConfigMap. This field is required in all cases.",
 	"name":             "Name is the metadata.name of the referenced ConfigMap. This field is required in all cases.",
-	"uid":              "UID is the metadata.UID of the referenced ConfigMap. This field is currently reqired in Node.Spec.",
-	"resourceVersion":  "ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap. This field is forbidden in Node.Spec.",
+	"uid":              "UID is the metadata.UID of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.",
+	"resourceVersion":  "ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.",
 	"kubeletConfigKey": "KubeletConfigKey declares which key of the referenced ConfigMap corresponds to the KubeletConfiguration structure This field is required in all cases.",
 }
 
@@ -990,6 +990,18 @@ func (NodeConfigSource) SwaggerDoc() map[string]string {
 	return map_NodeConfigSource
 }
 
+var map_NodeConfigStatus = map[string]string{
+	"":              "NodeConfigStatus describes the status of the config assigned by Node.Spec.ConfigSource.",
+	"assigned":      "Assigned reports the checkpointed config the node will try to use. When Node.Spec.ConfigSource is updated, the node checkpoints the associated config payload to local disk, along with a record indicating intended config. The node refers to this record to choose its config checkpoint, and reports this record in Assigned. Assigned only updates in the status after the record has been checkpointed to disk. When the Kubelet is restarted, it tries to make the Assigned config the Active config by loading and validating the checkpointed payload identified by Assigned.",
+	"active":        "Active reports the checkpointed config the node is actively using. Active will represent either the current version of the Assigned config, or the current LastKnownGood config, depending on whether attempting to use the Assigned config results in an error.",
+	"lastKnownGood": "LastKnownGood reports the checkpointed config the node will fall back to when it encounters an error attempting to use the Assigned config. The Assigned config becomes the LastKnownGood config when the node determines that the Assigned config is stable and correct. This is currently implemented as a 10-minute soak period starting when the local record of Assigned config is updated. If the Assigned config is Active at the end of this period, it becomes the LastKnownGood. Note that if Spec.ConfigSource is reset to nil (use local defaults), the LastKnownGood is also immediately reset to nil, because the local default config is always assumed good. You should not make assumptions about the node's method of determining config stability and correctness, as this may change or become configurable in the future.",
+	"error":         "Error describes any problems reconciling the Spec.ConfigSource to the Active config. Errors may occur, for example, attempting to checkpoint Spec.ConfigSource to the local Assigned record, attempting to checkpoint the payload associated with Spec.ConfigSource, attempting to load or validate the Assigned config, etc. Errors may occur at different points while syncing config. Earlier errors (e.g. download or checkpointing errors) will not result in a rollback to LastKnownGood, and may resolve across Kubelet retries. Later errors (e.g. loading or validating a checkpointed config) will result in a rollback to LastKnownGood. In the latter case, it is usually possible to resolve the error by fixing the config assigned in Spec.ConfigSource. You can find additional information for debugging by searching the error message in the Kubelet log. Error is a human-readable description of the error state; machines can check whether or not Error is empty, but should not rely on the stability of the Error text across Kubelet versions.",
+}
+
+func (NodeConfigStatus) SwaggerDoc() map[string]string {
+	return map_NodeConfigStatus
+}
+
 var map_NodeDaemonEndpoints = map[string]string{
 	"":                "NodeDaemonEndpoints lists ports opened by daemons running on the Node.",
 	"kubeletEndpoint": "Endpoint on which Kubelet is listening.",
@@ -1083,6 +1095,7 @@ var map_NodeStatus = map[string]string{
 	"images":          "List of container images on this node",
 	"volumesInUse":    "List of attachable volumes in use (mounted) by the node.",
 	"volumesAttached": "List of volumes that are attached to the node.",
+	"config":          "Status of the config assigned to the node via the dynamic Kubelet config feature.",
 }
 
 func (NodeStatus) SwaggerDoc() map[string]string {
@@ -1975,6 +1988,17 @@ func (ServiceAccountList) SwaggerDoc() map[string]string {
 	return map_ServiceAccountList
 }
 
+var map_ServiceAccountTokenProjection = map[string]string{
+	"":                  "ServiceAccountTokenProjection represents a projected service account token volume. This projection can be used to insert a service account token into the pods runtime filesystem for use against APIs (Kubernetes API Server or otherwise).",
+	"audience":          "Audience is the intended audience of the token. A recipient of a token must identify itself with an identifier specified in the audience of the token, and otherwise should reject the token. The audience defaults to the identifier of the apiserver.",
+	"expirationSeconds": "ExpirationSeconds is the requested duration of validity of the service account token. As the token approaches expiration, the kubelet volume plugin will proactively rotate the service account token. The kubelet will start trying to rotate the token if the token is older than 80 percent of its time to live or if the token is older than 24 hours.Defaults to 1 hour and must be at least 10 minutes.",
+	"path":              "Path is the path relative to the mount point of the file to project the token into.",
+}
+
+func (ServiceAccountTokenProjection) SwaggerDoc() map[string]string {
+	return map_ServiceAccountTokenProjection
+}
+
 var map_ServiceList = map[string]string{
 	"":         "ServiceList holds a list of services.",
 	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
@@ -2159,10 +2183,11 @@ func (VolumeNodeAffinity) SwaggerDoc() map[string]string {
 }
 
 var map_VolumeProjection = map[string]string{
-	"":            "Projection that may be projected along with other supported volume types",
-	"secret":      "information about the secret data to project",
-	"downwardAPI": "information about the downwardAPI data to project",
-	"configMap":   "information about the configMap data to project",
+	"":                    "Projection that may be projected along with other supported volume types",
+	"secret":              "information about the secret data to project",
+	"downwardAPI":         "information about the downwardAPI data to project",
+	"configMap":           "information about the configMap data to project",
+	"serviceAccountToken": "information about the serviceAccountToken data to project",
 }
 
 func (VolumeProjection) SwaggerDoc() map[string]string {
