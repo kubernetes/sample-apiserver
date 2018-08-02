@@ -28,6 +28,7 @@ import (
 	"k8s.io/apimachinery/pkg/api/errors"
 	metainternalversion "k8s.io/apimachinery/pkg/apis/meta/internalversion"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/apis/meta/v1/validation"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/apimachinery/pkg/types"
@@ -96,6 +97,11 @@ func PatchResource(r rest.Patcher, scope RequestScope, admit admission.Interface
 			scope.err(err, w, req)
 			return
 		}
+		if errs := validation.ValidateUpdateOptions(options); len(errs) > 0 {
+			err := errors.NewInvalid(schema.GroupKind{Group: metav1.GroupName, Kind: "UpdateOptions"}, "", errs)
+			scope.err(err, w, req)
+			return
+		}
 
 		ae := request.AuditEventFrom(ctx)
 		admit = admission.WithAudit(admit, ae)
@@ -127,6 +133,7 @@ func PatchResource(r rest.Patcher, scope RequestScope, admit admission.Interface
 			userInfo,
 		)
 		admissionCheck := func(updatedObject runtime.Object, currentObject runtime.Object) error {
+			// if we allow create-on-patch, we have this TODO: call the mutating admission chain with the CREATE verb instead of UPDATE
 			if mutatingAdmission, ok := admit.(admission.MutationInterface); ok && admit.Handles(admission.Update) {
 				return mutatingAdmission.Admit(admission.NewAttributesRecord(
 					updatedObject,
