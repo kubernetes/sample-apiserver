@@ -26,6 +26,7 @@ import (
 	"github.com/spf13/pflag"
 
 	"k8s.io/api/core/v1"
+	"k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apiserver/pkg/authentication/authenticatorfactory"
 	"k8s.io/apiserver/pkg/server"
@@ -106,6 +107,9 @@ type DelegatingAuthenticationOptions struct {
 	// RemoteKubeConfigFile is the file to use to connect to a "normal" kube API server which hosts the
 	// TokenAccessReview.authentication.k8s.io endpoint for checking tokens.
 	RemoteKubeConfigFile string
+	// RemoteKubeConfigFileOptional is specifying whether not specifying the kubeconfig or
+	// a missing in-cluster config will be fatal.
+	RemoteKubeConfigFileOptional bool
 
 	// CacheTTL is the length of time that a token authentication answer will be cached.
 	CacheTTL time.Duration
@@ -139,9 +143,13 @@ func (s *DelegatingAuthenticationOptions) AddFlags(fs *pflag.FlagSet) {
 		return
 	}
 
+	var optionalKubeConfigSentence string
+	if s.RemoteKubeConfigFileOptional {
+		optionalKubeConfigSentence = " This is optional. If empty, all token requests are considered to be anonymous and no client CA is looked up in the cluster."
+	}
 	fs.StringVar(&s.RemoteKubeConfigFile, "authentication-kubeconfig", s.RemoteKubeConfigFile, ""+
 		"kubeconfig file pointing at the 'core' kubernetes server with enough rights to create "+
-		"tokenaccessreviews.authentication.k8s.io.")
+		"tokenaccessreviews.authentication.k8s.io."+optionalKubeConfigSentence)
 
 	fs.DurationVar(&s.CacheTTL, "authentication-token-webhook-cache-ttl", s.CacheTTL,
 		"The duration to cache responses from the webhook token authenticator.")
@@ -152,7 +160,6 @@ func (s *DelegatingAuthenticationOptions) AddFlags(fs *pflag.FlagSet) {
 	fs.BoolVar(&s.SkipInClusterLookup, "authentication-skip-lookup", s.SkipInClusterLookup, ""+
 		"If false, the authentication-kubeconfig will be used to lookup missing authentication "+
 		"configuration from the cluster.")
-
 }
 
 func (s *DelegatingAuthenticationOptions) ApplyTo(c *server.AuthenticationInfo, servingInfo *server.SecureServingInfo, openAPIConfig *openapicommon.Config) error {
@@ -161,15 +168,19 @@ func (s *DelegatingAuthenticationOptions) ApplyTo(c *server.AuthenticationInfo, 
 		return nil
 	}
 
+	cfg := authenticatorfactory.DelegatingAuthenticatorConfig{
+		Anonymous: true,
+		CacheTTL:  s.CacheTTL,
+	}
+
 	client, err := s.getClient()
 	if err != nil {
 		return fmt.Errorf("failed to get delegated authentication kubeconfig: %v", err)
 	}
 
-	cfg := authenticatorfactory.DelegatingAuthenticatorConfig{
-		Anonymous:               true,
-		CacheTTL:                s.CacheTTL,
-		TokenAccessReviewClient: client.AuthenticationV1beta1().TokenReviews(),
+	// configure token review
+	if client != nil {
+		cfg.TokenAccessReviewClient = client.AuthenticationV1beta1().TokenReviews()
 	}
 
 	// look into configmaps/external-apiserver-authentication for missing authn info
@@ -217,36 +228,56 @@ func (s *DelegatingAuthenticationOptions) lookupMissingConfigInCluster(client ku
 	if len(s.ClientCert.ClientCA) > 0 && len(s.RequestHeader.ClientCAFile) > 0 {
 		return nil
 	}
+	if client == nil {
+		if len(s.ClientCert.ClientCA) == 0 {
+			glog.Warningf("No authentication-kubeconfig provided in order to lookup client-ca-file in configmap/%s in %s, so client certificate authentication to extension api-server won't work.", authenticationConfigMapName, authenticationConfigMapNamespace)
+		}
+		if len(s.RequestHeader.ClientCAFile) == 0 {
+			glog.Warningf("No authentication-kubeconfig provided in order to lookup requestheader-client-ca-file in configmap/%s in %s, so request-header client certificate authentication to extension api-server won't work.", authenticationConfigMapName, authenticationConfigMapNamespace)
+		}
+		return nil
+	}
 
 	authConfigMap, err := client.CoreV1().ConfigMaps(authenticationConfigMapNamespace).Get(authenticationConfigMapName, metav1.GetOptions{})
-	if err != nil {
+	switch {
+	case errors.IsNotFound(err):
+		// ignore, authConfigMap is nil now
+	case errors.IsForbidden(err):
 		glog.Warningf("Unable to get configmap/%s in %s.  Usually fixed by "+
 			"'kubectl create rolebinding -n %s ROLE_NAME --role=%s --serviceaccount=YOUR_NS:YOUR_SA'",
 			authenticationConfigMapName, authenticationConfigMapNamespace, authenticationConfigMapNamespace, authenticationRoleName)
 		return err
+	case err != nil:
+		return err
 	}
 
 	if len(s.ClientCert.ClientCA) == 0 {
-		opt, err := inClusterClientCA(authConfigMap)
-		if err != nil {
-			return err
+		if authConfigMap != nil {
+			opt, err := inClusterClientCA(authConfigMap)
+			if err != nil {
+				return err
+			}
+			if opt != nil {
+				s.ClientCert = *opt
+			}
 		}
-		if opt == nil {
+		if len(s.ClientCert.ClientCA) == 0 {
 			glog.Warningf("Cluster doesn't provide client-ca-file in configmap/%s in %s, so client certificate authentication to extension api-server won't work.", authenticationConfigMapName, authenticationConfigMapNamespace)
-		} else {
-			s.ClientCert = *opt
 		}
 	}
 
 	if len(s.RequestHeader.ClientCAFile) == 0 {
-		opt, err := inClusterRequestHeader(authConfigMap)
-		if err != nil {
-			return err
+		if authConfigMap != nil {
+			opt, err := inClusterRequestHeader(authConfigMap)
+			if err != nil {
+				return err
+			}
+			if opt != nil {
+				s.RequestHeader = *opt
+			}
 		}
-		if opt == nil {
+		if len(s.RequestHeader.ClientCAFile) == 0 {
 			glog.Warningf("Cluster doesn't provide requestheader-client-ca-file in configmap/%s in %s, so request-header client certificate authentication to extension api-server won't work.", authenticationConfigMapName, authenticationConfigMapNamespace)
-		} else {
-			s.RequestHeader = *opt
 		}
 	}
 
@@ -321,6 +352,8 @@ func deserializeStrings(in string) ([]string, error) {
 	return ret, nil
 }
 
+// getClient returns a Kubernetes clientset. If s.RemoteKubeConfigFileOptional is true, nil will be returned
+// if no kubeconfig is specified by the user and the in-cluster config is not found.
 func (s *DelegatingAuthenticationOptions) getClient() (kubernetes.Interface, error) {
 	var clientConfig *rest.Config
 	var err error
@@ -329,11 +362,13 @@ func (s *DelegatingAuthenticationOptions) getClient() (kubernetes.Interface, err
 		loader := clientcmd.NewNonInteractiveDeferredLoadingClientConfig(loadingRules, &clientcmd.ConfigOverrides{})
 
 		clientConfig, err = loader.ClientConfig()
-
 	} else {
 		// without the remote kubeconfig file, try to use the in-cluster config.  Most addon API servers will
 		// use this path
 		clientConfig, err = rest.InClusterConfig()
+		if err == rest.ErrNotInCluster && s.RemoteKubeConfigFileOptional {
+			return nil, nil
+		}
 	}
 	if err != nil {
 		return nil, fmt.Errorf("failed to get delegated authentication kubeconfig: %v", err)
