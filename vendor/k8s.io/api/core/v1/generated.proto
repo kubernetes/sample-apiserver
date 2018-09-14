@@ -1724,10 +1724,14 @@ message LocalObjectReference {
 message LocalVolumeSource {
   // The full path to the volume on the node.
   // It can be either a directory or block device (disk, partition, ...).
-  // Directories can be represented only by PersistentVolume with VolumeMode=Filesystem.
-  // Block devices can be represented only by VolumeMode=Block, which also requires the
-  // BlockVolume alpha feature gate to be enabled.
   optional string path = 1;
+
+  // Filesystem type to mount.
+  // It applies only when the Path is a block device.
+  // Must be a filesystem type supported by the host operating system.
+  // Ex. "ext4", "xfs", "ntfs". The default value is to auto-select a fileystem if unspecified.
+  // +optional
+  optional string fsType = 2;
 }
 
 // Represents an NFS mount that lasts the lifetime of a pod.
@@ -4040,6 +4044,13 @@ message SecurityContext {
   // 2) has CAP_SYS_ADMIN
   // +optional
   optional bool allowPrivilegeEscalation = 7;
+
+  // procMount denotes the type of proc mount to use for the containers.
+  // The default is DefaultProcMount which uses the container runtime defaults for
+  // readonly paths and masked paths.
+  // This requires the ProcMountType feature flag to be enabled.
+  // +optional
+  optional string procMount = 9;
 }
 
 // SerializedReference is a reference to serialized object.
