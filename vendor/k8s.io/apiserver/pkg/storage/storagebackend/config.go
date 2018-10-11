@@ -42,8 +42,6 @@ type Config struct {
 	KeyFile  string
 	CertFile string
 	CAFile   string
-	// Quorum indicates that whether read operations should be quorum-level consistent.
-	Quorum bool
 	// Paging indicates whether the server implementation should allow paging (if it is
 	// supported). This is generally configured by feature gating, or by a specific
 	// resource type not wishing to allow paging, and is not intended for end users to
@@ -72,8 +70,7 @@ func NewDefaultConfig(prefix string, codec runtime.Codec) *Config {
 		// Default cache size to 0 - if unset, its size will be set based on target
 		// memory usage.
 		DeserializationCacheSize: 0,
-		Codec:              codec,
-		CompactionInterval: DefaultCompactInterval,
-		Quorum:             true,
+		Codec:                    codec,
+		CompactionInterval:       DefaultCompactInterval,
 	}
 }
