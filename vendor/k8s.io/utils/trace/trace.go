@@ -30,16 +30,20 @@ type traceStep struct {
 	msg      string
 }
 
+// Trace keeps track of a set of "steps" and allows us to log a specific
+// step if it took longer than its share of the total allowed time
 type Trace struct {
 	name      string
 	startTime time.Time
 	steps     []traceStep
 }
 
+// New creates a Trace with the specified name
 func New(name string) *Trace {
 	return &Trace{name, time.Now(), nil}
 }
 
+// Step adds a new step with a specific message
 func (t *Trace) Step(msg string) {
 	if t.steps == nil {
 		// traces almost always have less than 6 steps, do this to avoid more than a single allocation
@@ -48,6 +52,7 @@ func (t *Trace) Step(msg string) {
 	t.steps = append(t.steps, traceStep{time.Now(), msg})
 }
 
+// Log is used to dump all the steps in the Trace
 func (t *Trace) Log() {
 	// an explicit logging request should dump all the steps out at the higher level
 	t.logWithStepThreshold(0)
@@ -76,6 +81,7 @@ func (t *Trace) logWithStepThreshold(stepThreshold time.Duration) {
 	klog.Info(buffer.String())
 }
 
+// LogIfLong is used to dump steps that took longer than its share
 func (t *Trace) LogIfLong(threshold time.Duration) {
 	if time.Since(t.startTime) >= threshold {
 		// if any step took more than it's share of the total allowed time, it deserves a higher log level
@@ -84,6 +90,7 @@ func (t *Trace) LogIfLong(threshold time.Duration) {
 	}
 }
 
+// TotalTime can be used to figure out how long it took since the Trace was created
 func (t *Trace) TotalTime() time.Duration {
 	return time.Since(t.startTime)
 }
