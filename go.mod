@@ -11,9 +11,9 @@ require (
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/spf13/cobra v0.0.0-20180319062004-c439c4fa0937
 	k8s.io/apimachinery v0.0.0-20190404065847-4a4abcd45006
-	k8s.io/apiserver v0.0.0-20190404070726-04665e6b9c70
-	k8s.io/client-go v0.0.0-20190404070121-75debb4b680d
-	k8s.io/code-generator v0.0.0-20190404065638-916349668d3d
+	k8s.io/apiserver v0.0.0-20190404070729-bf0cd89bc409
+	k8s.io/client-go v0.0.0-20190404172613-2e1a3ed22ac5
+	k8s.io/code-generator v0.0.0-20190404080254-edcfb81a444e
 	k8s.io/component-base v0.0.0-20190404070505-d7891e8054ca
 	k8s.io/klog v0.0.0-20190306015804-8e90cee79f82
 )
@@ -273,9 +273,9 @@ replace (
 	gotest.tools => gotest.tools v2.2.0+incompatible
 	k8s.io/api => k8s.io/api v0.0.0-20190404065945-709cf190c7b7
 	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20190404065847-4a4abcd45006
-	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20190404070726-04665e6b9c70
-	k8s.io/client-go => k8s.io/client-go v0.0.0-20190404070121-75debb4b680d
-	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20190404065638-916349668d3d
+	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20190404070729-bf0cd89bc409
+	k8s.io/client-go => k8s.io/client-go v0.0.0-20190404172613-2e1a3ed22ac5
+	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20190404080254-edcfb81a444e
 	k8s.io/component-base => k8s.io/component-base v0.0.0-20190404070505-d7891e8054ca
 	k8s.io/gengo => k8s.io/gengo v0.0.0-20181106084056-51747d6e00da
 	k8s.io/heapster => k8s.io/heapster v1.2.0-beta.1
