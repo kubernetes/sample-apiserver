@@ -8,11 +8,11 @@ require (
 	github.com/google/gofuzz v0.0.0-20170612174753-24818f796faf
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/spf13/cobra v0.0.0-20180319062004-c439c4fa0937
-	k8s.io/apimachinery v0.0.0
-	k8s.io/apiserver v0.0.0
-	k8s.io/client-go v0.0.0
-	k8s.io/code-generator v0.0.0
-	k8s.io/component-base v0.0.0
+	k8s.io/apimachinery v0.0.0-20190409092423-760d1845f48b
+	k8s.io/apiserver v0.0.0-20190409093229-67d6e044d2ef
+	k8s.io/client-go v0.0.0-20190409092706-ca8df85b1798
+	k8s.io/code-generator v0.0.0-20190409092313-826a68e0d120
+	k8s.io/component-base v0.0.0-20190409093041-e34633071963
 	k8s.io/klog v0.0.0-20190306015804-8e90cee79f82
 )
 
@@ -136,31 +136,15 @@ replace (
 	gopkg.in/yaml.v1 => gopkg.in/yaml.v1 v1.0.0-20140924161607-9f9df34309c0
 	gopkg.in/yaml.v2 => gopkg.in/yaml.v2 v2.2.1
 	gotest.tools => gotest.tools v2.2.0+incompatible
-	k8s.io/api => ../api
-	k8s.io/apiextensions-apiserver => ../apiextensions-apiserver
-	k8s.io/apimachinery => ../apimachinery
-	k8s.io/apiserver => ../apiserver
-	k8s.io/cli-runtime => ../cli-runtime
-	k8s.io/client-go => ../client-go
-	k8s.io/cloud-provider => ../cloud-provider
-	k8s.io/cluster-bootstrap => ../cluster-bootstrap
-	k8s.io/code-generator => ../code-generator
-	k8s.io/component-base => ../component-base
-	k8s.io/cri-api => ../cri-api
-	k8s.io/csi-translation-lib => ../csi-translation-lib
+	k8s.io/api => k8s.io/api v0.0.0-20190409092523-d687e77c8ae9
+	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20190409092423-760d1845f48b
+	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20190409093229-67d6e044d2ef
+	k8s.io/client-go => k8s.io/client-go v0.0.0-20190409092706-ca8df85b1798
+	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20190409092313-826a68e0d120
+	k8s.io/component-base => k8s.io/component-base v0.0.0-20190409093041-e34633071963
 	k8s.io/gengo => k8s.io/gengo v0.0.0-20190116091435-f8a0810f38af
 	k8s.io/klog => k8s.io/klog v0.0.0-20190306015804-8e90cee79f82
-	k8s.io/kube-aggregator => ../kube-aggregator
-	k8s.io/kube-controller-manager => ../kube-controller-manager
 	k8s.io/kube-openapi => k8s.io/kube-openapi v0.0.0-20190228160746-b3a7cee44a30
-	k8s.io/kube-proxy => ../kube-proxy
-	k8s.io/kube-scheduler => ../kube-scheduler
-	k8s.io/kubelet => ../kubelet
-	k8s.io/metrics => ../metrics
-	k8s.io/node-api => ../node-api
-	k8s.io/sample-apiserver => ../sample-apiserver
-	k8s.io/sample-cli-plugin => ../sample-cli-plugin
-	k8s.io/sample-controller => ../sample-controller
 	k8s.io/utils => k8s.io/utils v0.0.0-20190221042446-c2654d5206da
 	modernc.org/cc => modernc.org/cc v1.0.0
 	modernc.org/golex => modernc.org/golex v1.0.0
