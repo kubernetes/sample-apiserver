@@ -84,7 +84,7 @@
 		},
 		{
 			"ImportPath": "github.com/docker/docker",
-			"Rev": "a9fbbdc8dd87"
+			"Rev": "be7ac8be2ae0"
 		},
 		{
 			"ImportPath": "github.com/docker/spdystream",
@@ -181,10 +181,6 @@
 		{
 			"ImportPath": "github.com/gorilla/websocket",
 			"Rev": "4201258b820c"
-		},
-		{
-			"ImportPath": "github.com/gotestyourself/gotestyourself",
-			"Rev": "v2.2.0"
 		},
 		{
 			"ImportPath": "github.com/gregjones/httpcache",
@@ -492,11 +488,11 @@
 		},
 		{
 			"ImportPath": "k8s.io/apiserver",
-			"Rev": "67d6e044d2ef"
+			"Rev": "7a95013359ce"
 		},
 		{
 			"ImportPath": "k8s.io/client-go",
-			"Rev": "ca8df85b1798"
+			"Rev": "7a6b4715b709"
 		},
 		{
 			"ImportPath": "k8s.io/code-generator",
