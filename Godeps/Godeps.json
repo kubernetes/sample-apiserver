@@ -48,7 +48,7 @@
 		},
 		{
 			"ImportPath": "github.com/coreos/etcd",
-			"Rev": "v3.3.10"
+			"Rev": "v3.3.13"
 		},
 		{
 			"ImportPath": "github.com/coreos/go-oidc",
@@ -251,10 +251,6 @@
 			"Rev": "v2.0.1"
 		},
 		{
-			"ImportPath": "github.com/philhofer/fwd",
-			"Rev": "v1.0.0"
-		},
-		{
 			"ImportPath": "github.com/pkg/errors",
 			"Rev": "v0.8.0"
 		},
@@ -265,10 +261,6 @@
 		{
 			"ImportPath": "github.com/pquerna/cachecontrol",
 			"Rev": "0dec1b30a021"
-		},
-		{
-			"ImportPath": "github.com/pquerna/ffjson",
-			"Rev": "af8b230fcd20"
 		},
 		{
 			"ImportPath": "github.com/prometheus/client_golang",
@@ -315,16 +307,8 @@
 			"Rev": "v1.2.2"
 		},
 		{
-			"ImportPath": "github.com/tinylib/msgp",
-			"Rev": "v1.1.0"
-		},
-		{
 			"ImportPath": "github.com/tmc/grpc-websocket-proxy",
 			"Rev": "89b8d40f7ca8"
-		},
-		{
-			"ImportPath": "github.com/ugorji/go",
-			"Rev": "bdcc60b419d1"
 		},
 		{
 			"ImportPath": "github.com/xiang90/probing",
@@ -444,7 +428,7 @@
 		},
 		{
 			"ImportPath": "k8s.io/api",
-			"Rev": "7e767885ee5c"
+			"Rev": "61630f889b3c"
 		},
 		{
 			"ImportPath": "k8s.io/apimachinery",
@@ -452,7 +436,7 @@
 		},
 		{
 			"ImportPath": "k8s.io/apiserver",
-			"Rev": "0804cc0e5ea8"
+			"Rev": "d03d7cbc3eab"
 		},
 		{
 			"ImportPath": "k8s.io/client-go",
