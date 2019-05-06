@@ -40,7 +40,7 @@
 		},
 		{
 			"ImportPath": "github.com/beorn7/perks",
-			"Rev": "3a771d992973"
+			"Rev": "3ac7bf7a47d1"
 		},
 		{
 			"ImportPath": "github.com/coreos/bbolt",
@@ -432,11 +432,11 @@
 		},
 		{
 			"ImportPath": "k8s.io/apimachinery",
-			"Rev": "a44ef629a3c9"
+			"Rev": "7a17edec881a"
 		},
 		{
 			"ImportPath": "k8s.io/apiserver",
-			"Rev": "d03d7cbc3eab"
+			"Rev": "31dae0fcea7c"
 		},
 		{
 			"ImportPath": "k8s.io/client-go",
