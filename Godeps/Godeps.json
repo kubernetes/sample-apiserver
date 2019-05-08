@@ -43,6 +43,10 @@
 			"Rev": "3ac7bf7a47d1"
 		},
 		{
+			"ImportPath": "github.com/blang/semver",
+			"Rev": "v3.5.0"
+		},
+		{
 			"ImportPath": "github.com/coreos/bbolt",
 			"Rev": "v1.3.1-coreos.6"
 		},
@@ -432,15 +436,15 @@
 		},
 		{
 			"ImportPath": "k8s.io/apimachinery",
-			"Rev": "7a17edec881a"
+			"Rev": "a3da69d3723c"
 		},
 		{
 			"ImportPath": "k8s.io/apiserver",
-			"Rev": "31dae0fcea7c"
+			"Rev": "4756b09d7af2"
 		},
 		{
 			"ImportPath": "k8s.io/client-go",
-			"Rev": "65184652c889"
+			"Rev": "1babf78c8b32"
 		},
 		{
 			"ImportPath": "k8s.io/code-generator",
@@ -448,7 +452,7 @@
 		},
 		{
 			"ImportPath": "k8s.io/component-base",
-			"Rev": "9fe063da3132"
+			"Rev": "40efa6d42997"
 		},
 		{
 			"ImportPath": "k8s.io/gengo",
