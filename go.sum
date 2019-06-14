@@ -18,8 +18,8 @@ github.com/coreos/bbolt v1.3.1-coreos.6/go.mod h1:iRUV2dpdMOn7Bo10OQBFzIJO9kkE55
 github.com/coreos/etcd v3.3.13+incompatible h1:8F3hqu9fGYLBifCmRCJsicFqDx/D68Rt3q1JMazcgBQ=
 github.com/coreos/etcd v3.3.13+incompatible/go.mod h1:uF7uidLiAD3TWHmW31ZFd/JWoc32PjwdhPthX9715RE=
 github.com/coreos/go-oidc v0.0.0-20180117170138-065b426bd416/go.mod h1:CgnwVTmzoESiwO9qyAFEMiHoZ1nMCKZlZ9V6mm3/LKc=
-github.com/coreos/go-semver v0.0.0-20180108230905-e214231b295a h1:WqY2Kv7eI1jeoU3pC05YYK/kK4tdXyLzzaBzCR51r9M=
-github.com/coreos/go-semver v0.0.0-20180108230905-e214231b295a/go.mod h1:nnelYz7RCh+5ahJtPPxZlU+153eP4D4r3EedlOD2RNk=
+github.com/coreos/go-semver v0.3.0 h1:wkHLiw0WNATZnSG7epLsujiMCgPAc9xhjJ4tgnAxmfM=
+github.com/coreos/go-semver v0.3.0/go.mod h1:nnelYz7RCh+5ahJtPPxZlU+153eP4D4r3EedlOD2RNk=
 github.com/coreos/go-systemd v0.0.0-20180511133405-39ca1b05acc7 h1:u9SHYsPQNyt5tgDm3YN7+9dYrpK96E5wFilTFWIDZOM=
 github.com/coreos/go-systemd v0.0.0-20180511133405-39ca1b05acc7/go.mod h1:F5haX7vjVVG0kc13fIWeqUViNPyEJxv/OmvnBo0Yme4=
 github.com/coreos/pkg v0.0.0-20180108230652-97fdf19511ea h1:n2Ltr3SrfQlf/9nOna1DoGKxLx3qTSI8Ttl6Xrqp6mw=
@@ -203,12 +203,6 @@ gopkg.in/yaml.v1 v1.0.0-20140924161607-9f9df34309c0/go.mod h1:WDnlLJ4WF5VGsH/HVa
 gopkg.in/yaml.v2 v2.2.1 h1:mUhvW9EsL+naU5Q3cakzfE91YhliOondGd6ZrsDBHQE=
 gopkg.in/yaml.v2 v2.2.1/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI=
 gotest.tools v2.2.0+incompatible/go.mod h1:DsYFclhRJ6vuDpmuTbkuFWG+y2sxOXAzmJt81HFBacw=
-k8s.io/api v0.0.0-20190612125737-db0771252981/go.mod h1:SR4nMi8IQTDnEi4768MsMCoZ9DyfRls7wy+TbRrFicA=
-k8s.io/apimachinery v0.0.0-20190612125636-6a5db36e93ad/go.mod h1:I4A+glKBHiTgiEjQiCCQfCAIcIMFGt291SmsvcrFzJA=
-k8s.io/apiserver v0.0.0-20190614170213-5c4672425150/go.mod h1:p7416D9NaDWSqi1keGmvsdehfkz5yvNpXg9Mr9138z8=
-k8s.io/client-go v0.0.0-20190614125942-9f52f725d4f3/go.mod h1:ElCnOBWqvEffJopQHDgJf1jrf7j/f2rNbGv6uUkuHrU=
-k8s.io/code-generator v0.0.0-20190612125529-c522cb6c26aa/go.mod h1:G8bQwmHm2eafm5bgtX67XDZQ8CWKSGu9DekI+yN4Y5I=
-k8s.io/component-base v0.0.0-20190613150421-38b4fa3a8b0d/go.mod h1:MmIDXnint3qMN0cqXHKrSiJ2XQKo3J1BPIz7in7NvO0=
 k8s.io/gengo v0.0.0-20190116091435-f8a0810f38af h1:SwjZbO0u5ZuaV6TRMWOGB40iaycX8sbdMQHtjNZ19dk=
 k8s.io/gengo v0.0.0-20190116091435-f8a0810f38af/go.mod h1:ezvh/TsK7cY6rbqRK0oQQ8IAqLxYwwyPxAX1Pzy0ii0=
 k8s.io/klog v0.3.1 h1:RVgyDHY/kFKtLqh67NvEWIgkMneNoIrdkN0CxDSQc68=
