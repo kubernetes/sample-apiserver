@@ -172,7 +172,7 @@
 		},
 		{
 			"ImportPath": "github.com/gophercloud/gophercloud",
-			"Rev": "c818fa66e4c8"
+			"Rev": "v0.1.0"
 		},
 		{
 			"ImportPath": "github.com/gorilla/websocket",
@@ -504,11 +504,11 @@
 		},
 		{
 			"ImportPath": "k8s.io/apiserver",
-			"Rev": "88be64598d7d"
+			"Rev": "760aa681203e"
 		},
 		{
 			"ImportPath": "k8s.io/client-go",
-			"Rev": "5aceab658876"
+			"Rev": "07281898b0f0"
 		},
 		{
 			"ImportPath": "k8s.io/code-generator",
