@@ -496,7 +496,7 @@
 		},
 		{
 			"ImportPath": "k8s.io/api",
-			"Rev": "653c86b0609b"
+			"Rev": "c8a0b81cb10e"
 		},
 		{
 			"ImportPath": "k8s.io/apimachinery",
@@ -504,7 +504,7 @@
 		},
 		{
 			"ImportPath": "k8s.io/apiserver",
-			"Rev": "66f73161fd7f"
+			"Rev": "c3b4e4d29c28"
 		},
 		{
 			"ImportPath": "k8s.io/client-go",
@@ -556,7 +556,7 @@
 		},
 		{
 			"ImportPath": "sigs.k8s.io/structured-merge-diff",
-			"Rev": "15d366b2352e"
+			"Rev": "059502f64143"
 		},
 		{
 			"ImportPath": "sigs.k8s.io/yaml",
