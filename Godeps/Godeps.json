@@ -192,7 +192,7 @@
 		},
 		{
 			"ImportPath": "github.com/grpc-ecosystem/go-grpc-prometheus",
-			"Rev": "2500245aa611"
+			"Rev": "v1.2.0"
 		},
 		{
 			"ImportPath": "github.com/grpc-ecosystem/grpc-gateway",
@@ -516,7 +516,7 @@
 		},
 		{
 			"ImportPath": "k8s.io/apiserver",
-			"Rev": "1e246162210b"
+			"Rev": "f1bcc2994023"
 		},
 		{
 			"ImportPath": "k8s.io/client-go",
@@ -524,7 +524,7 @@
 		},
 		{
 			"ImportPath": "k8s.io/code-generator",
-			"Rev": "5654a2f3dfb8"
+			"Rev": "6483f25b1faf"
 		},
 		{
 			"ImportPath": "k8s.io/component-base",
