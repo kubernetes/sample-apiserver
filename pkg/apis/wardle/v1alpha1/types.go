@@ -78,3 +78,19 @@ type FischerList struct {
 
 	Items []Fischer `json:"items" protobuf:"bytes,2,rep,name=items"`
 }
+
+type Whitelist struct {
+	metav1.TypeMeta   `json:",inline"`
+	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+
+	ID   int32    `json:"id,omitempty"`
+	Ips  []string `json:"ips"`
+	Name string   `json:"name,omitempty"`
+}
+
+type WhitelistList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+
+	Items []Whitelist `json:"items" protobuf:"bytes,2,rep,name=items"`
+}

@@ -119,10 +119,6 @@
 			"Rev": "c7ce16629ff4"
 		},
 		{
-			"ImportPath": "github.com/go-logr/logr",
-			"Rev": "v0.1.0"
-		},
-		{
 			"ImportPath": "github.com/go-openapi/jsonpointer",
 			"Rev": "v0.19.2"
 		},
@@ -192,7 +188,7 @@
 		},
 		{
 			"ImportPath": "github.com/grpc-ecosystem/go-grpc-prometheus",
-			"Rev": "v1.2.0"
+			"Rev": "2500245aa611"
 		},
 		{
 			"ImportPath": "github.com/grpc-ecosystem/grpc-gateway",
@@ -224,7 +220,7 @@
 		},
 		{
 			"ImportPath": "github.com/json-iterator/go",
-			"Rev": "v1.1.7"
+			"Rev": "v1.1.6"
 		},
 		{
 			"ImportPath": "github.com/kisielk/errcheck",
@@ -428,7 +424,7 @@
 		},
 		{
 			"ImportPath": "golang.org/x/net",
-			"Rev": "cdfb69ac37fc"
+			"Rev": "65e2d4e15006"
 		},
 		{
 			"ImportPath": "golang.org/x/oauth2",
@@ -508,35 +504,35 @@
 		},
 		{
 			"ImportPath": "k8s.io/api",
-			"Rev": "0772a1bdf941"
+			"Rev": "8b51d7113622"
 		},
 		{
 			"ImportPath": "k8s.io/apimachinery",
-			"Rev": "533d101be9a6"
+			"Rev": "162a2dabc72f"
 		},
 		{
 			"ImportPath": "k8s.io/apiserver",
-			"Rev": "f1bcc2994023"
+			"Rev": "f4eec59356e4"
 		},
 		{
 			"ImportPath": "k8s.io/client-go",
-			"Rev": "e290f153d148"
+			"Rev": "4fd06e107451"
 		},
 		{
 			"ImportPath": "k8s.io/code-generator",
-			"Rev": "6483f25b1faf"
+			"Rev": "c4ef572adb98"
 		},
 		{
 			"ImportPath": "k8s.io/component-base",
-			"Rev": "2c85c628702c"
+			"Rev": "ddf6c23a6db8"
 		},
 		{
 			"ImportPath": "k8s.io/gengo",
-			"Rev": "955ffa8fcfc9"
+			"Rev": "0689ccc1d7d6"
 		},
 		{
 			"ImportPath": "k8s.io/klog",
-			"Rev": "v0.4.0"
+			"Rev": "v0.3.1"
 		},
 		{
 			"ImportPath": "k8s.io/kube-openapi",

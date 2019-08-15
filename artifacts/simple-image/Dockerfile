@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM fedora
+FROM alpine:3.5
+
 ADD kube-sample-apiserver /
 ENTRYPOINT ["/kube-sample-apiserver"]

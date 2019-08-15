@@ -82,12 +82,16 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"k8s.io/apimachinery/pkg/runtime.TypeMeta":                       schema_k8sio_apimachinery_pkg_runtime_TypeMeta(ref),
 		"k8s.io/apimachinery/pkg/runtime.Unknown":                        schema_k8sio_apimachinery_pkg_runtime_Unknown(ref),
 		"k8s.io/apimachinery/pkg/version.Info":                           schema_k8sio_apimachinery_pkg_version_Info(ref),
+		"k8s.io/sample-apiserver/pkg/apis/wardle/v1.Whitelist2":          schema_pkg_apis_wardle_v1_Whitelist2(ref),
+		"k8s.io/sample-apiserver/pkg/apis/wardle/v1.Whitelist2List":      schema_pkg_apis_wardle_v1_Whitelist2List(ref),
 		"k8s.io/sample-apiserver/pkg/apis/wardle/v1alpha1.Fischer":       schema_pkg_apis_wardle_v1alpha1_Fischer(ref),
 		"k8s.io/sample-apiserver/pkg/apis/wardle/v1alpha1.FischerList":   schema_pkg_apis_wardle_v1alpha1_FischerList(ref),
 		"k8s.io/sample-apiserver/pkg/apis/wardle/v1alpha1.Flunder":       schema_pkg_apis_wardle_v1alpha1_Flunder(ref),
 		"k8s.io/sample-apiserver/pkg/apis/wardle/v1alpha1.FlunderList":   schema_pkg_apis_wardle_v1alpha1_FlunderList(ref),
 		"k8s.io/sample-apiserver/pkg/apis/wardle/v1alpha1.FlunderSpec":   schema_pkg_apis_wardle_v1alpha1_FlunderSpec(ref),
 		"k8s.io/sample-apiserver/pkg/apis/wardle/v1alpha1.FlunderStatus": schema_pkg_apis_wardle_v1alpha1_FlunderStatus(ref),
+		"k8s.io/sample-apiserver/pkg/apis/wardle/v1alpha1.Whitelist":     schema_pkg_apis_wardle_v1alpha1_Whitelist(ref),
+		"k8s.io/sample-apiserver/pkg/apis/wardle/v1alpha1.WhitelistList": schema_pkg_apis_wardle_v1alpha1_WhitelistList(ref),
 		"k8s.io/sample-apiserver/pkg/apis/wardle/v1beta1.Flunder":        schema_pkg_apis_wardle_v1beta1_Flunder(ref),
 		"k8s.io/sample-apiserver/pkg/apis/wardle/v1beta1.FlunderList":    schema_pkg_apis_wardle_v1beta1_FlunderList(ref),
 		"k8s.io/sample-apiserver/pkg/apis/wardle/v1beta1.FlunderSpec":    schema_pkg_apis_wardle_v1beta1_FlunderSpec(ref),
@@ -983,7 +987,7 @@ func schema_pkg_apis_meta_v1_ListMeta(ref common.ReferenceCallback) common.OpenA
 				Properties: map[string]spec.Schema{
 					"selfLink": {
 						SchemaProps: spec.SchemaProps{
-							Description: "selfLink is a URL representing this object. Populated by the system. Read-only.\n\nDEPRECATED Kubernetes will stop propagating this field in 1.20 release and the field is planned to be removed in 1.21 release.",
+							Description: "selfLink is a URL representing this object. Populated by the system. Read-only.",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -1188,7 +1192,7 @@ func schema_pkg_apis_meta_v1_ObjectMeta(ref common.ReferenceCallback) common.Ope
 					},
 					"selfLink": {
 						SchemaProps: spec.SchemaProps{
-							Description: "SelfLink is a URL representing this object. Populated by the system. Read-only.\n\nDEPRECATED Kubernetes will stop propagating this field in 1.20 release and the field is planned to be removed in 1.21 release.",
+							Description: "SelfLink is a URL representing this object. Populated by the system. Read-only.",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -2335,6 +2339,111 @@ func schema_k8sio_apimachinery_pkg_version_Info(ref common.ReferenceCallback) co
 	}
 }
 
+func schema_pkg_apis_wardle_v1_Whitelist2(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"ips": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"ips"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+	}
+}
+
+func schema_pkg_apis_wardle_v1_Whitelist2List(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("k8s.io/sample-apiserver/pkg/apis/wardle/v1.Whitelist2"),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "k8s.io/sample-apiserver/pkg/apis/wardle/v1.Whitelist2"},
+	}
+}
+
 func schema_pkg_apis_wardle_v1alpha1_Fischer(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -2552,6 +2661,111 @@ func schema_pkg_apis_wardle_v1alpha1_FlunderStatus(ref common.ReferenceCallback)
 				Type: []string{"object"},
 			},
 		},
+	}
+}
+
+func schema_pkg_apis_wardle_v1alpha1_Whitelist(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"ips": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"ips"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+	}
+}
+
+func schema_pkg_apis_wardle_v1alpha1_WhitelistList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("k8s.io/sample-apiserver/pkg/apis/wardle/v1alpha1.Whitelist"),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "k8s.io/sample-apiserver/pkg/apis/wardle/v1alpha1.Whitelist"},
 	}
 }
 
