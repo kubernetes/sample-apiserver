@@ -25,6 +25,8 @@ import (
 	fakediscovery "k8s.io/client-go/discovery/fake"
 	"k8s.io/client-go/testing"
 	clientset "k8s.io/sample-apiserver/pkg/generated/clientset/versioned"
+	wardlev1 "k8s.io/sample-apiserver/pkg/generated/clientset/versioned/typed/wardle/v1"
+	fakewardlev1 "k8s.io/sample-apiserver/pkg/generated/clientset/versioned/typed/wardle/v1/fake"
 	wardlev1alpha1 "k8s.io/sample-apiserver/pkg/generated/clientset/versioned/typed/wardle/v1alpha1"
 	fakewardlev1alpha1 "k8s.io/sample-apiserver/pkg/generated/clientset/versioned/typed/wardle/v1alpha1/fake"
 	wardlev1beta1 "k8s.io/sample-apiserver/pkg/generated/clientset/versioned/typed/wardle/v1beta1"
@@ -86,4 +88,9 @@ func (c *Clientset) WardleV1alpha1() wardlev1alpha1.WardleV1alpha1Interface {
 // WardleV1beta1 retrieves the WardleV1beta1Client
 func (c *Clientset) WardleV1beta1() wardlev1beta1.WardleV1beta1Interface {
 	return &fakewardlev1beta1.FakeWardleV1beta1{Fake: &c.Fake}
+}
+
+// WardleV1 retrieves the WardleV1Client
+func (c *Clientset) WardleV1() wardlev1.WardleV1Interface {
+	return &fakewardlev1.FakeWardleV1{Fake: &c.Fake}
 }
