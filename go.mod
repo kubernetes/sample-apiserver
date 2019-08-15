@@ -8,11 +8,11 @@ require (
 	github.com/go-openapi/spec v0.19.2
 	github.com/google/gofuzz v1.0.0
 	github.com/spf13/cobra v0.0.4
-	k8s.io/apimachinery v0.0.0-20190814100815-533d101be9a6
-	k8s.io/apiserver v0.0.0-20190814141433-f1bcc2994023
-	k8s.io/client-go v0.0.0-20190814101625-e290f153d148
-	k8s.io/code-generator v0.0.0-20190814140513-6483f25b1faf
-	k8s.io/component-base v0.0.0-20190814102701-2c85c628702c
+	k8s.io/apimachinery v0.0.0
+	k8s.io/apiserver v0.0.0
+	k8s.io/client-go v0.0.0
+	k8s.io/code-generator v0.0.0
+	k8s.io/component-base v0.0.0
 	k8s.io/klog v0.4.0
 	k8s.io/kube-openapi v0.0.0-20190709113604-33be087ad058
 )
@@ -23,10 +23,11 @@ replace (
 	golang.org/x/sys => golang.org/x/sys v0.0.0-20190209173611-3b5209105503
 	golang.org/x/text => golang.org/x/text v0.3.1-0.20181227161524-e6919f6577db
 	golang.org/x/tools => golang.org/x/tools v0.0.0-20190313210603-aa82965741a9
-	k8s.io/api => k8s.io/api v0.0.0-20190814101207-0772a1bdf941
-	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20190814100815-533d101be9a6
-	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20190814141433-f1bcc2994023
-	k8s.io/client-go => k8s.io/client-go v0.0.0-20190814101625-e290f153d148
-	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20190814140513-6483f25b1faf
-	k8s.io/component-base => k8s.io/component-base v0.0.0-20190814102701-2c85c628702c
+	k8s.io/api => ../api
+	k8s.io/apimachinery => ../apimachinery
+	k8s.io/apiserver => ../apiserver
+	k8s.io/client-go => ../client-go
+	k8s.io/code-generator => ../code-generator
+	k8s.io/component-base => ../component-base
+	k8s.io/sample-apiserver => ../sample-apiserver
 )
