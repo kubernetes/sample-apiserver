@@ -120,6 +120,7 @@ bindata.go	./vendor/github.com/go-openapi/spec/bindata.go	1
 blas64.go	./vendor/gonum.org/v1/gonum/blas/blas64/blas64.go	1
 blas.go	./vendor/gonum.org/v1/gonum/blas/blas.go	1
 bluetooth_linux.go	./vendor/golang.org/x/sys/unix/bluetooth_linux.go	1
+boilerplate.go	./hack/boilerplate.go	1
 bool.go	./vendor/github.com/spf13/pflag/bool.go	1
 bool_slice.go	./vendor/github.com/spf13/pflag/bool_slice.go	1
 bracket.go	./vendor/golang.org/x/text/unicode/bidi/bracket.go	1
@@ -176,7 +177,9 @@ client.go	./vendor/golang.org/x/net/websocket/client.go	1
 client.go	./vendor/k8s.io/apiserver/pkg/util/webhook/client.go	1
 client.go	./vendor/k8s.io/client-go/rest/client.go	1
 client_reporter.go	./vendor/github.com/grpc-ecosystem/go-grpc-prometheus/client_reporter.go	1
+clientset_generated.go	./pkg/client/clientset/versioned/fake/clientset_generated.go	1
 clientset_generated.go	./pkg/generated/clientset/versioned/fake/clientset_generated.go	1
+clientset.go	./pkg/client/clientset/versioned/clientset.go	1
 clientset.go	./pkg/generated/clientset/versioned/clientset.go	1
 clientset.go	./vendor/k8s.io/client-go/kubernetes/clientset.go	1
 clique_graph.go	./vendor/gonum.org/v1/gonum/graph/topo/clique_graph.go	1
@@ -507,6 +510,15 @@ doc.go	./pkg/apis/wardle/doc.go	1
 doc.go	./pkg/apis/wardle/v1alpha1/doc.go	1
 doc.go	./pkg/apis/wardle/v1beta1/doc.go	1
 doc.go	./pkg/apis/wardle/v1/doc.go	1
+doc.go	./pkg/client/clientset/versioned/doc.go	1
+doc.go	./pkg/client/clientset/versioned/fake/doc.go	1
+doc.go	./pkg/client/clientset/versioned/scheme/doc.go	1
+doc.go	./pkg/client/clientset/versioned/typed/wardle/v1alpha1/doc.go	1
+doc.go	./pkg/client/clientset/versioned/typed/wardle/v1alpha1/fake/doc.go	1
+doc.go	./pkg/client/clientset/versioned/typed/wardle/v1beta1/doc.go	1
+doc.go	./pkg/client/clientset/versioned/typed/wardle/v1beta1/fake/doc.go	1
+doc.go	./pkg/client/clientset/versioned/typed/wardle/v1/doc.go	1
+doc.go	./pkg/client/clientset/versioned/typed/wardle/v1/fake/doc.go	1
 doc.go	./pkg/generated/clientset/versioned/doc.go	1
 doc.go	./pkg/generated/clientset/versioned/fake/doc.go	1
 doc.go	./pkg/generated/clientset/versioned/scheme/doc.go	1
@@ -920,11 +932,17 @@ factory_interfaces.go	./pkg/generated/informers/externalversions/internalinterfa
 factory_interfaces.go	./vendor/k8s.io/client-go/informers/internalinterfaces/factory_interfaces.go	1
 fake_client_generator.go	./vendor/k8s.io/code-generator/cmd/client-gen/generators/fake/fake_client_generator.go	1
 fake_custom_store.go	./vendor/k8s.io/client-go/tools/cache/fake_custom_store.go	1
+fake_fischer.go	./pkg/client/clientset/versioned/typed/wardle/v1alpha1/fake/fake_fischer.go	1
 fake_fischer.go	./pkg/generated/clientset/versioned/typed/wardle/v1alpha1/fake/fake_fischer.go	1
+fake_flunder.go	./pkg/client/clientset/versioned/typed/wardle/v1alpha1/fake/fake_flunder.go	1
+fake_flunder.go	./pkg/client/clientset/versioned/typed/wardle/v1beta1/fake/fake_flunder.go	1
 fake_flunder.go	./pkg/generated/clientset/versioned/typed/wardle/v1alpha1/fake/fake_flunder.go	1
 fake_flunder.go	./pkg/generated/clientset/versioned/typed/wardle/v1beta1/fake/fake_flunder.go	1
 fake.go	./vendor/k8s.io/client-go/testing/fake.go	1
 fake.go	./vendor/k8s.io/client-go/tools/record/fake.go	1
+fake_wardle_client.go	./pkg/client/clientset/versioned/typed/wardle/v1alpha1/fake/fake_wardle_client.go	1
+fake_wardle_client.go	./pkg/client/clientset/versioned/typed/wardle/v1beta1/fake/fake_wardle_client.go	1
+fake_wardle_client.go	./pkg/client/clientset/versioned/typed/wardle/v1/fake/fake_wardle_client.go	1
 fake_wardle_client.go	./pkg/generated/clientset/versioned/typed/wardle/v1alpha1/fake/fake_wardle_client.go	1
 fake_wardle_client.go	./pkg/generated/clientset/versioned/typed/wardle/v1beta1/fake/fake_wardle_client.go	1
 fake_wardle_client.go	./pkg/generated/clientset/versioned/typed/wardle/v1/fake/fake_wardle_client.go	1
@@ -953,6 +971,7 @@ filter.go	./vendor/github.com/emicklei/go-restful/filter.go	1
 filter.go	./vendor/k8s.io/apimachinery/pkg/watch/filter.go	1
 fingerprinting.go	./vendor/github.com/prometheus/common/model/fingerprinting.go	1
 firsthit_restmapper.go	./vendor/k8s.io/apimachinery/pkg/api/meta/firsthit_restmapper.go	1
+fischer.go	./pkg/client/clientset/versioned/typed/wardle/v1alpha1/fischer.go	1
 fischer.go	./pkg/generated/clientset/versioned/typed/wardle/v1alpha1/fischer.go	1
 fischer.go	./pkg/generated/informers/externalversions/wardle/v1alpha1/fischer.go	1
 fischer.go	./pkg/generated/listers/wardle/v1alpha1/fischer.go	1
@@ -969,6 +988,8 @@ float64.go	./vendor/github.com/spf13/pflag/float64.go	1
 floats.go	./vendor/gonum.org/v1/gonum/floats/floats.go	1
 flowcontrol.go	./vendor/google.golang.org/grpc/transport/flowcontrol.go	1
 flow.go	./vendor/golang.org/x/net/http2/flow.go	1
+flunder.go	./pkg/client/clientset/versioned/typed/wardle/v1alpha1/flunder.go	1
+flunder.go	./pkg/client/clientset/versioned/typed/wardle/v1beta1/flunder.go	1
 flunder.go	./pkg/generated/clientset/versioned/typed/wardle/v1alpha1/flunder.go	1
 flunder.go	./pkg/generated/clientset/versioned/typed/wardle/v1beta1/flunder.go	1
 flunder.go	./pkg/generated/informers/externalversions/wardle/v1alpha1/flunder.go	1
@@ -1003,6 +1024,9 @@ ge_amd64.go	./vendor/gonum.org/v1/gonum/internal/asm/f32/ge_amd64.go	1
 ge_amd64.go	./vendor/gonum.org/v1/gonum/internal/asm/f64/ge_amd64.go	1
 gemv.go	./vendor/gonum.org/v1/gonum/blas/gonum/gemv.go	1
 gen_common.go	./vendor/golang.org/x/text/width/gen_common.go	1
+generated_expansion.go	./pkg/client/clientset/versioned/typed/wardle/v1alpha1/generated_expansion.go	1
+generated_expansion.go	./pkg/client/clientset/versioned/typed/wardle/v1beta1/generated_expansion.go	1
+generated_expansion.go	./pkg/client/clientset/versioned/typed/wardle/v1/generated_expansion.go	1
 generated_expansion.go	./pkg/generated/clientset/versioned/typed/wardle/v1alpha1/generated_expansion.go	1
 generated_expansion.go	./pkg/generated/clientset/versioned/typed/wardle/v1beta1/generated_expansion.go	1
 generated_expansion.go	./pkg/generated/clientset/versioned/typed/wardle/v1/generated_expansion.go	1
@@ -1789,6 +1813,8 @@ register.go	./pkg/apis/wardle/register.go	1
 register.go	./pkg/apis/wardle/v1alpha1/register.go	1
 register.go	./pkg/apis/wardle/v1beta1/register.go	1
 register.go	./pkg/apis/wardle/v1/register.go	1
+register.go	./pkg/client/clientset/versioned/fake/register.go	1
+register.go	./pkg/client/clientset/versioned/scheme/register.go	1
 register.go	./pkg/generated/clientset/versioned/fake/register.go	1
 register.go	./pkg/generated/clientset/versioned/scheme/register.go	1
 register.go	./vendor/k8s.io/api/admissionregistration/v1beta1/register.go	1
@@ -2086,6 +2112,8 @@ storage_codec.go	./vendor/k8s.io/apiserver/pkg/server/storage/storage_codec.go	1
 storage_decorator.go	./vendor/k8s.io/apiserver/pkg/registry/generic/storage_decorator.go	1
 storage_factory.go	./vendor/k8s.io/apiserver/pkg/registry/generic/registry/storage_factory.go	1
 storage_factory.go	./vendor/k8s.io/apiserver/pkg/server/storage/storage_factory.go	1
+storage.go	./pkg/registry/wardle/flunder/storage.go	1
+storage.go	./pkg/registry/wardle/whitelist2/storage.go	1
 storage.go	./vendor/k8s.io/apiserver/pkg/storage/errors/storage.go	1
 storageversionhash.go	./vendor/k8s.io/apiserver/pkg/endpoints/discovery/storageversionhash.go	1
 store.go	./vendor/k8s.io/apiserver/pkg/registry/generic/registry/store.go	1
@@ -2531,6 +2559,9 @@ wait.go	./vendor/k8s.io/apimachinery/pkg/util/wait/wait.go	1
 waitgroup.go	./vendor/k8s.io/apimachinery/pkg/util/waitgroup/waitgroup.go	1
 waitgroup.go	./vendor/k8s.io/apiserver/pkg/server/filters/waitgroup.go	1
 walk.go	./vendor/golang.org/x/tools/internal/gopathwalk/walk.go	1
+wardle_client.go	./pkg/client/clientset/versioned/typed/wardle/v1alpha1/wardle_client.go	1
+wardle_client.go	./pkg/client/clientset/versioned/typed/wardle/v1beta1/wardle_client.go	1
+wardle_client.go	./pkg/client/clientset/versioned/typed/wardle/v1/wardle_client.go	1
 wardle_client.go	./pkg/generated/clientset/versioned/typed/wardle/v1alpha1/wardle_client.go	1
 wardle_client.go	./pkg/generated/clientset/versioned/typed/wardle/v1beta1/wardle_client.go	1
 wardle_client.go	./pkg/generated/clientset/versioned/typed/wardle/v1/wardle_client.go	1
