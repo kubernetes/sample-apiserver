@@ -76,12 +76,12 @@ func (o *WardleOptions) ApplyTo(config *server.RecommendedConfig) error {
 	if err := o.SecureServing.ApplyTo(&config.Config.SecureServing, &config.Config.LoopbackClientConfig); err != nil {
 		return err
 	}
-	if err := o.Authentication.ApplyTo(&config.Config.Authentication, config.SecureServing, config.OpenAPIConfig); err != nil {
-		return err
-	}
-	if err := o.Authorization.ApplyTo(&config.Config.Authorization); err != nil {
-		return err
-	}
+	//if err := o.Authentication.ApplyTo(&config.Config.Authentication, config.SecureServing, config.OpenAPIConfig); err != nil {
+	//	return err
+	//}
+	//if err := o.Authorization.ApplyTo(&config.Config.Authorization); err != nil {
+	//	return err
+	//}
 	if err := o.Features.ApplyTo(&config.Config); err != nil {
 		return err
 	}
