@@ -203,3 +203,16 @@ only this superuser group is authorized.
    http --verify=no --cert client.crt --cert-key client.key \
       https://localhost:8443/apis/wardle.k8s.io/v1alpha1/namespaces/default/flunders
    ```
+## TEP POC
+
+### RUN Server
+
+```bash
+make
+artifacts/simple-image/kube-sample-apiserver --secure-port 8443 --etcd-servers http://127.0.0.1:2379 --v=7
+```
+
+### Call API
+```bash
+wget -O- --no-check-certificate https://localhost:8443/apis/wardle.k8s.io/v1/whitelist2?fieldSelector=name%3Dabc
+```
