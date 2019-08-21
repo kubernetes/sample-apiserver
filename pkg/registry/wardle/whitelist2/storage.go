@@ -18,11 +18,10 @@ package whitelist2
 
 import (
 	"context"
-
-	metainternalversion "k8s.io/apimachinery/pkg/apis/meta/internalversion"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/sample-apiserver/pkg/apis/wardle/v1"
+	"k8s.io/sample-apiserver/pkg/list"
 )
 
 type Whitelist2Storage struct {
@@ -40,16 +39,24 @@ func (s *Whitelist2Storage) New() runtime.Object {
 	return &v1.Whitelist2{}
 }
 
-func (s *Whitelist2Storage) NewList() runtime.Object {
-	return &v1.Whitelist2List{}
-}
+//func (m *Whitelist2Storage) Get(ctx context.Context, name string, opts *metav1.GetOptions) (runtime.Object, error) {
+//	return &v1.Whitelist2{}, nil
+//}
 
-func (m *Whitelist2Storage) Get(ctx context.Context, name string, opts *metav1.GetOptions) (runtime.Object, error) {
+func (m *Whitelist2Storage) Get(ctx context.Context, name string, options *metav1.GetOptions) (runtime.Object, error) {
 	return &v1.Whitelist2{}, nil
 }
 
-func (m *Whitelist2Storage) List(ctx context.Context, options *metainternalversion.ListOptions) (runtime.Object, error) {
+//func (m *Whitelist2Storage) NewGetOptions() (runtime.Object, bool, string) {
+//	return &v1.Whitelist2{}, true, ""
+//}
+
+func (m *Whitelist2Storage) List(ctx context.Context, options *list.ListOptions) (runtime.Object, error) {
 	return &v1.Whitelist2List{}, nil
+}
+
+func (s *Whitelist2Storage) NewList() runtime.Object {
+	return &v1.Whitelist2List{}
 }
 
 func (m *Whitelist2Storage) NamespaceScoped() bool {

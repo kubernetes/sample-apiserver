@@ -119,7 +119,9 @@ func (c completedConfig) New() (*WardleServer, error) {
 	v1storage["whitelist2"] = whitelist2storage.NewStorage()
 	apiGroupInfo.VersionedResourcesStorageMap["v1"] = v1storage
 
-	if err := s.GenericAPIServer.InstallAPIGroup(&apiGroupInfo); err != nil {
+	installer := &APIGroupInstaller{GenericAPIServer: genericServer}
+	err = installer.InstallAPIGroups(&apiGroupInfo)
+	if err != nil {
 		return nil, err
 	}
 
