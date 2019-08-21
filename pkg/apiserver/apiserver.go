@@ -24,7 +24,6 @@ import (
 	"k8s.io/apimachinery/pkg/version"
 	"k8s.io/apiserver/pkg/registry/rest"
 	genericapiserver "k8s.io/apiserver/pkg/server"
-
 	"k8s.io/sample-apiserver/pkg/apis/wardle"
 	"k8s.io/sample-apiserver/pkg/apis/wardle/install"
 	flunderstorage "k8s.io/sample-apiserver/pkg/registry/wardle/flunder"

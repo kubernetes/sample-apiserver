@@ -22,6 +22,8 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/sample-apiserver/pkg/apis/wardle/v1"
 	"k8s.io/sample-apiserver/pkg/list"
+
+	metainternalversion "k8s.io/apimachinery/pkg/apis/meta/internalversion"
 )
 
 type Whitelist2Storage struct {
@@ -51,7 +53,7 @@ func (m *Whitelist2Storage) Get(ctx context.Context, name string, options *metav
 //	return &v1.Whitelist2{}, true, ""
 //}
 
-func (m *Whitelist2Storage) List(ctx context.Context, options *list.ListOptions) (runtime.Object, error) {
+func (m *Whitelist2Storage) List(ctx context.Context, options *metainternalversion.ListOptions, extraOptions *list.ListOptions) (runtime.Object, error) {
 	return &v1.Whitelist2List{}, nil
 }
 

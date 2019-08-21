@@ -251,8 +251,13 @@ func ListResource(r list.Lister, rw rest.Watcher, scope *handlers.RequestScope, 
 		// Log only long List requests (ignore Watch).
 		defer trace.LogIfLong(500 * time.Millisecond)
 		trace.Step("About to List from storage")
-		o := &list.ListOptions{Limit: 10}
-		result, err := r.List(ctx, o)
+		o := list.ListOptions{Size: 10}
+		if err := list.ParameterCodec.DecodeParameters(req.URL.Query(), scope.Kind.GroupVersion(), &o); err != nil {
+			err = errors.NewBadRequest(err.Error())
+			errResponse(scope, err, w, req)
+			return
+		}
+		result, err := r.List(ctx, &opts, &o)
 		if err != nil {
 			errResponse(scope, err, w, req)
 			return
