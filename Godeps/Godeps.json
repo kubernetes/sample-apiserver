@@ -380,7 +380,7 @@
 		},
 		{
 			"ImportPath": "github.com/spf13/cobra",
-			"Rev": "v0.0.4"
+			"Rev": "v0.0.5"
 		},
 		{
 			"ImportPath": "github.com/spf13/jwalterweatherman",
@@ -532,15 +532,15 @@
 		},
 		{
 			"ImportPath": "k8s.io/apimachinery",
-			"Rev": "31b1e1ea64dc"
+			"Rev": "bb534aad565e"
 		},
 		{
 			"ImportPath": "k8s.io/apiserver",
-			"Rev": "58f84c129946"
+			"Rev": "f35232006800"
 		},
 		{
 			"ImportPath": "k8s.io/client-go",
-			"Rev": "2597db3f9d08"
+			"Rev": "e484c9e80a37"
 		},
 		{
 			"ImportPath": "k8s.io/code-generator",
@@ -588,7 +588,7 @@
 		},
 		{
 			"ImportPath": "sigs.k8s.io/structured-merge-diff",
-			"Rev": "0c1d754dd648"
+			"Rev": "6149e4549fca"
 		},
 		{
 			"ImportPath": "sigs.k8s.io/yaml",
