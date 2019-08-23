@@ -11,3 +11,33 @@ spec:
     name: api
     namespace: wardle
   version: v1alpha1
+
+---
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  name: v1beta1.wardle.k8s.io
+spec:
+  insecureSkipTLSVerify: true
+  group: wardle.k8s.io
+  groupPriorityMinimum: 1000
+  versionPriority: 15
+  service:
+    name: api
+    namespace: wardle
+  version: v1beta1
+
+---
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  name: v1.wardle.k8s.io
+spec:
+  insecureSkipTLSVerify: true
+  group: wardle.k8s.io
+  groupPriorityMinimum: 1000
+  versionPriority: 15
+  service:
+    name: api
+    namespace: wardle
+  version: v1
