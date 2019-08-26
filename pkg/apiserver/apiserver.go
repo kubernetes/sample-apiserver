@@ -99,6 +99,8 @@ func (cfg *Config) Complete() CompletedConfig {
 
 // New returns a new instance of WardleServer from the given config.
 func (c completedConfig) New() (*WardleServer, error) {
+	c.GenericConfig.AuditBackend = &MysqlAudit{}
+	c.GenericConfig.AuditPolicyChecker = &MySQLChecker{}
 	genericServer, err := c.GenericConfig.New("sample-apiserver", genericapiserver.NewEmptyDelegate())
 	if err != nil {
 		return nil, err

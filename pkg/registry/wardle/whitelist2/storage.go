@@ -20,6 +20,7 @@ import (
 	"context"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/apiserver/pkg/registry/rest"
 	"k8s.io/sample-apiserver/pkg/apis/wardle/v1"
 	"k8s.io/sample-apiserver/pkg/list"
 
@@ -37,8 +38,14 @@ func (s *Whitelist2Storage) Kind() string {
 	return "Whitelist2"
 }
 
-func (s *Whitelist2Storage) New() runtime.Object {
-	return &v1.Whitelist2{}
+func (m *Whitelist2Storage) New() runtime.Object {
+	obj := &v1.Whitelist2{}
+	obj.Name = "ccc"
+	return obj
+}
+
+func (m *Whitelist2Storage) Create(ctx context.Context, obj runtime.Object, createValidation rest.ValidateObjectFunc, options *metav1.CreateOptions) (runtime.Object, error) {
+	return obj, nil
 }
 
 //func (m *Whitelist2Storage) Get(ctx context.Context, name string, opts *metav1.GetOptions) (runtime.Object, error) {

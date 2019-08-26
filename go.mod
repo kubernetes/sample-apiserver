@@ -5,11 +5,15 @@ module k8s.io/sample-apiserver
 go 1.12
 
 require (
+	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751 // indirect
+	github.com/alecthomas/units v0.0.0-20190717042225-c3de453c63f4 // indirect
 	github.com/emicklei/go-restful v2.9.5+incompatible
 	github.com/go-openapi/spec v0.19.2
 	github.com/google/gofuzz v1.0.0
+	github.com/prometheus/common v0.0.0-20181126121408-4724e9255275
 	github.com/spf13/cobra v0.0.4
 	github.com/spf13/pflag v1.0.3
+	gopkg.in/alecthomas/kingpin.v2 v2.2.6 // indirect
 	k8s.io/apimachinery v0.0.0-20190806215851-162a2dabc72f
 	k8s.io/apiserver v0.0.0-20190807062106-f4eec59356e4
 	k8s.io/client-go v0.0.0-20190807061213-4fd06e107451

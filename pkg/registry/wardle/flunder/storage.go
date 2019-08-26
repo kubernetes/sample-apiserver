@@ -18,6 +18,8 @@ package flunder
 
 import (
 	"context"
+	"k8s.io/apiserver/pkg/registry/rest"
+	"k8s.io/sample-apiserver/pkg/list"
 
 	metainternalversion "k8s.io/apimachinery/pkg/apis/meta/internalversion"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -48,8 +50,16 @@ func (m *FlunderStorage) Get(ctx context.Context, name string, opts *metav1.GetO
 	return &v1beta1.Flunder{}, nil
 }
 
-func (m *FlunderStorage) List(ctx context.Context, options *metainternalversion.ListOptions) (runtime.Object, error) {
-	return &v1beta1.FlunderList{}, nil
+func (m *FlunderStorage) Create(ctx context.Context, obj runtime.Object, createValidation rest.ValidateObjectFunc, options *metav1.CreateOptions) (runtime.Object, error) {
+	return obj, nil
+}
+
+//func (m *FlunderStorage) List(ctx context.Context, options *metainternalversion.ListOptions) (runtime.Object, error) {
+//	return &v1beta1.FlunderList{}, nil
+//}
+
+func (m *FlunderStorage) List(ctx context.Context, options *metainternalversion.ListOptions, extraOptions *list.ListOptions) (runtime.Object, error) {
+	return &v1beta1.Flunder{}, nil
 }
 
 func (m *FlunderStorage) NamespaceScoped() bool {
