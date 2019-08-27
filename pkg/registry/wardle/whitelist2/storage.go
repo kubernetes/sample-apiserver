@@ -21,7 +21,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apiserver/pkg/registry/rest"
-	"k8s.io/sample-apiserver/pkg/apis/wardle/v1"
+	"k8s.io/sample-apiserver/pkg/apis/wardle"
 	"k8s.io/sample-apiserver/pkg/list"
 
 	metainternalversion "k8s.io/apimachinery/pkg/apis/meta/internalversion"
@@ -39,7 +39,7 @@ func (s *Whitelist2Storage) Kind() string {
 }
 
 func (m *Whitelist2Storage) New() runtime.Object {
-	obj := &v1.Whitelist2{}
+	obj := &wardle.Whitelist2{}
 	obj.Name = "ccc"
 	return obj
 }
@@ -53,19 +53,36 @@ func (m *Whitelist2Storage) Create(ctx context.Context, obj runtime.Object, crea
 //}
 
 func (m *Whitelist2Storage) Get(ctx context.Context, name string, options *metav1.GetOptions) (runtime.Object, error) {
-	return &v1.Whitelist2{}, nil
+	return &wardle.Whitelist2{
+		Name: name,
+		Ips:  []string{"127.0.0.3", "127.0.0.4"},
+		ID:   1,
+	}, nil
 }
 
 //func (m *Whitelist2Storage) NewGetOptions() (runtime.Object, bool, string) {
-//	return &v1.Whitelist2{}, true, ""
+//	return &wardle.Whitelist2{}, true, ""
 //}
 
 func (m *Whitelist2Storage) List(ctx context.Context, options *metainternalversion.ListOptions, extraOptions *list.ListOptions) (runtime.Object, error) {
-	return &v1.Whitelist2List{}, nil
+	return &wardle.Whitelist2List{
+		Items: []wardle.Whitelist2{
+			{
+				Name: "default",
+				Ips:  []string{"127.0.0.1", "127.0.0.2"},
+				ID:   1,
+			},
+			{
+				Name: "localhost",
+				Ips:  []string{"127.0.0.3", "127.0.0.4"},
+				ID:   2,
+			},
+		},
+	}, nil
 }
 
 func (s *Whitelist2Storage) NewList() runtime.Object {
-	return &v1.Whitelist2List{}
+	return &wardle.Whitelist2List{}
 }
 
 func (m *Whitelist2Storage) NamespaceScoped() bool {

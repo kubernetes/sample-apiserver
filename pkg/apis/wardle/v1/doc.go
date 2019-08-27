@@ -20,5 +20,5 @@ limitations under the License.
 // +k8s:defaulter-gen=TypeMeta
 // +groupName=wardle.k8s.io
 
-// Package v1alpha1 is the v1alpha1 version of the API.
-package v1 // import "k8s.io/sample-apiserver/pkg/apis/wardle/v1alpha1"
+// Package v1 is the v1 version of the API.
+package v1 // import "k8s.io/sample-apiserver/pkg/apis/wardle/v1"

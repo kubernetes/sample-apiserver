@@ -29,3 +29,11 @@ type FlunderListerExpansion interface{}
 // FlunderNamespaceListerExpansion allows custom methods to be added to
 // FlunderNamespaceLister.
 type FlunderNamespaceListerExpansion interface{}
+
+// Whitelist2ListerExpansion allows custom methods to be added to
+// Whitelist2Lister.
+type Whitelist2ListerExpansion interface{}
+
+// Whitelist2NamespaceListerExpansion allows custom methods to be added to
+// Whitelist2NamespaceLister.
+type Whitelist2NamespaceListerExpansion interface{}

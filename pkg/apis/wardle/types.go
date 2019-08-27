@@ -81,3 +81,25 @@ type FischerList struct {
 	// Items is a list of Fischers
 	Items []Fischer
 }
+
+// +genclient:nonNamespaced
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +k8s:openapi-gen=true
+type Whitelist2 struct {
+	metav1.TypeMeta
+	metav1.ObjectMeta
+
+	ID   int32
+	Ips  []string
+	Name string
+}
+
+// +genclient:nonNamespaced
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type Whitelist2List struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+
+	Items []Whitelist2 `json:"items" protobuf:"bytes,2,rep,name=items"`
+}

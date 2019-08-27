@@ -3,11 +3,9 @@ package apiserver
 import (
 	"fmt"
 	"k8s.io/apimachinery/pkg/api/meta"
-	"k8s.io/apiserver/pkg/endpoints/discovery"
 	"k8s.io/klog"
 	"strings"
 
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/apiserver/pkg/registry/rest"
@@ -43,32 +41,32 @@ func (s *APIGroupInstaller) InstallAPIGroups(apiGroupInfos ...*genericapiserver.
 			return fmt.Errorf("unable to install api resources: %v", err)
 		}
 
-		// setup discovery
-		// Install the version handler.
-		// Add a handler at /apis/<groupName> to enumerate all versions supported by this group.
-		apiVersionsForDiscovery := []metav1.GroupVersionForDiscovery{}
-		for _, groupVersion := range apiGroupInfo.PrioritizedVersions {
-			// Check the config to make sure that we elide versions that don't have any resources
-			if len(apiGroupInfo.VersionedResourcesStorageMap[groupVersion.Version]) == 0 {
-				continue
-			}
-			apiVersionsForDiscovery = append(apiVersionsForDiscovery, metav1.GroupVersionForDiscovery{
-				GroupVersion: groupVersion.String(),
-				Version:      groupVersion.Version,
-			})
-		}
-		preferredVersionForDiscovery := metav1.GroupVersionForDiscovery{
-			GroupVersion: apiGroupInfo.PrioritizedVersions[0].String(),
-			Version:      apiGroupInfo.PrioritizedVersions[0].Version,
-		}
-		apiGroup := metav1.APIGroup{
-			Name:             apiGroupInfo.PrioritizedVersions[0].Group,
-			Versions:         apiVersionsForDiscovery,
-			PreferredVersion: preferredVersionForDiscovery,
-		}
-
-		s.GenericAPIServer.DiscoveryGroupManager.AddGroup(apiGroup)
-		s.GenericAPIServer.Handler.GoRestfulContainer.Add(discovery.NewAPIGroupHandler(s.GenericAPIServer.Serializer, apiGroup).WebService())
+		//// setup discovery
+		//// Install the version handler.
+		//// Add a handler at /apis/<groupName> to enumerate all versions supported by this group.
+		//apiVersionsForDiscovery := []metav1.GroupVersionForDiscovery{}
+		//for _, groupVersion := range apiGroupInfo.PrioritizedVersions {
+		//	// Check the config to make sure that we elide versions that don't have any resources
+		//	if len(apiGroupInfo.VersionedResourcesStorageMap[groupVersion.Version]) == 0 {
+		//		continue
+		//	}
+		//	apiVersionsForDiscovery = append(apiVersionsForDiscovery, metav1.GroupVersionForDiscovery{
+		//		GroupVersion: groupVersion.String(),
+		//		Version:      groupVersion.Version,
+		//	})
+		//}
+		//preferredVersionForDiscovery := metav1.GroupVersionForDiscovery{
+		//	GroupVersion: apiGroupInfo.PrioritizedVersions[0].String(),
+		//	Version:      apiGroupInfo.PrioritizedVersions[0].Version,
+		//}
+		//apiGroup := metav1.APIGroup{
+		//	Name:             apiGroupInfo.PrioritizedVersions[0].Group,
+		//	Versions:         apiVersionsForDiscovery,
+		//	PreferredVersion: preferredVersionForDiscovery,
+		//}
+		//
+		//s.GenericAPIServer.DiscoveryGroupManager.AddGroup(apiGroup)
+		//s.GenericAPIServer.Handler.GoRestfulContainer.Add(discovery.NewAPIGroupHandler(s.GenericAPIServer.Serializer, apiGroup).WebService())
 	}
 	return nil
 }

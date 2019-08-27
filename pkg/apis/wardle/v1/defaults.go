@@ -21,5 +21,11 @@ import (
 )
 
 func addDefaultingFuncs(scheme *runtime.Scheme) error {
+	scheme.AddTypeDefaultingFunc(
+		&Whitelist2{}, func(i interface{}) {
+			whitelist := i.(*Whitelist2)
+			whitelist.Name = "default name"
+		},
+	)
 	return RegisterDefaults(scheme)
 }

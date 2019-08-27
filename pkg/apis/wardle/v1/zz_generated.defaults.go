@@ -21,18 +21,12 @@ limitations under the License.
 package v1
 
 import (
-	"k8s.io/apimachinery/pkg/runtime"
+	runtime "k8s.io/apimachinery/pkg/runtime"
 )
 
 // RegisterDefaults adds defaulters functions to the given scheme.
 // Public to allow building arbitrary schemes.
 // All generated defaulters are covering - they call all nested defaulters.
 func RegisterDefaults(scheme *runtime.Scheme) error {
-	scheme.AddTypeDefaultingFunc(
-		&Whitelist2{}, func(i interface{}) {
-			whitelist := i.(*Whitelist2)
-			whitelist.Name = "default name"
-		},
-	)
 	return nil
 }

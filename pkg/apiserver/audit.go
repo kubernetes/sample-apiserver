@@ -1,6 +1,7 @@
 package apiserver
 
 import (
+	"fmt"
 	"github.com/prometheus/common/log"
 	auditinternal "k8s.io/apiserver/pkg/apis/audit"
 	"k8s.io/apiserver/pkg/authorization/authorizer"
@@ -11,7 +12,7 @@ type MysqlAudit struct {
 
 func (m *MysqlAudit) ProcessEvents(events ...*auditinternal.Event) bool {
 	for _, e := range events {
-		log.Info("audit log", e.Kind, e.User, e.Level, e.RequestURI, e.SourceIPs, e.ObjectRef)
+		log.Info(fmt.Sprintf("api is called, action=%s, user=%s, ip=%s, group=%s, resource=%s, ", e.Verb, e.User.Username, e.SourceIPs[0], e.ObjectRef.APIGroup, e.ObjectRef.Resource))
 	}
 	return true
 }
