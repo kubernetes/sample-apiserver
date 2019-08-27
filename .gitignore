@@ -2,3 +2,4 @@ cscope.files
 filenametags
 tags
 artifacts/simple-image
+.idea/*
