@@ -36,10 +36,6 @@ func (c *FakeWardleV1alpha1) Flunders(namespace string) v1alpha1.FlunderInterfac
 	return &FakeFlunders{c, namespace}
 }
 
-func (c *FakeWardleV1alpha1) Whitelist2s(namespace string) v1alpha1.Whitelist2Interface {
-	return &FakeWhitelist2s{c, namespace}
-}
-
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakeWardleV1alpha1) RESTClient() rest.Interface {

@@ -21,5 +21,3 @@ package v1alpha1
 type FischerExpansion interface{}
 
 type FlunderExpansion interface{}
-
-type Whitelist2Expansion interface{}

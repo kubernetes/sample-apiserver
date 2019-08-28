@@ -28,8 +28,6 @@ type Interface interface {
 	Fischers() FischerInformer
 	// Flunders returns a FlunderInformer.
 	Flunders() FlunderInformer
-	// Whitelist2s returns a Whitelist2Informer.
-	Whitelist2s() Whitelist2Informer
 }
 
 type version struct {
@@ -51,9 +49,4 @@ func (v *version) Fischers() FischerInformer {
 // Flunders returns a FlunderInformer.
 func (v *version) Flunders() FlunderInformer {
 	return &flunderInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
-}
-
-// Whitelist2s returns a Whitelist2Informer.
-func (v *version) Whitelist2s() Whitelist2Informer {
-	return &whitelist2Informer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

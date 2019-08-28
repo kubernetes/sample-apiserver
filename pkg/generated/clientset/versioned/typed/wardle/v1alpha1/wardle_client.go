@@ -28,7 +28,6 @@ type WardleV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	FischersGetter
 	FlundersGetter
-	Whitelist2sGetter
 }
 
 // WardleV1alpha1Client is used to interact with features provided by the wardle.k8s.io group.
@@ -42,10 +41,6 @@ func (c *WardleV1alpha1Client) Fischers() FischerInterface {
 
 func (c *WardleV1alpha1Client) Flunders(namespace string) FlunderInterface {
 	return newFlunders(c, namespace)
-}
-
-func (c *WardleV1alpha1Client) Whitelist2s(namespace string) Whitelist2Interface {
-	return newWhitelist2s(c, namespace)
 }
 
 // NewForConfig creates a new WardleV1alpha1Client for the given config.

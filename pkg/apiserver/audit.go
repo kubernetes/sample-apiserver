@@ -12,7 +12,7 @@ type MysqlAudit struct {
 
 func (m *MysqlAudit) ProcessEvents(events ...*auditinternal.Event) bool {
 	for _, e := range events {
-		log.Info(fmt.Sprintf("api is called, action=%s, user=%s, ip=%s, group=%s, resource=%s, ", e.Verb, e.User.Username, e.SourceIPs[0], e.ObjectRef.APIGroup, e.ObjectRef.Resource))
+		log.Info(fmt.Sprintf("api is called, action=%s", e.Verb))
 	}
 	return true
 }
