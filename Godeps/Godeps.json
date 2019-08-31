@@ -88,7 +88,7 @@
 		},
 		{
 			"ImportPath": "github.com/coreos/go-oidc",
-			"Rev": "065b426bd416"
+			"Rev": "v2.1.0"
 		},
 		{
 			"ImportPath": "github.com/coreos/go-semver",
@@ -576,7 +576,7 @@
 		},
 		{
 			"ImportPath": "k8s.io/apiserver",
-			"Rev": "d70030a0cfca"
+			"Rev": "fa157b05a9eb"
 		},
 		{
 			"ImportPath": "k8s.io/client-go",
