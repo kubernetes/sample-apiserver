@@ -592,7 +592,7 @@
 		},
 		{
 			"ImportPath": "gopkg.in/yaml.v2",
-			"Rev": "v2.2.2"
+			"Rev": "v2.2.4"
 		},
 		{
 			"ImportPath": "gotest.tools",
@@ -604,27 +604,27 @@
 		},
 		{
 			"ImportPath": "k8s.io/api",
-			"Rev": "5d581ce610b0"
+			"Rev": "10e821c09743"
 		},
 		{
 			"ImportPath": "k8s.io/apimachinery",
-			"Rev": "4b0ceda2f81e"
+			"Rev": "c930edf45883"
 		},
 		{
 			"ImportPath": "k8s.io/apiserver",
-			"Rev": "586fbfe74a16"
+			"Rev": "fc290d820806"
 		},
 		{
 			"ImportPath": "k8s.io/client-go",
-			"Rev": "ad4f099992b0"
+			"Rev": "a746c2f219b7"
 		},
 		{
 			"ImportPath": "k8s.io/code-generator",
-			"Rev": "c7cbe8586c8b"
+			"Rev": "700b1226c0bd"
 		},
 		{
 			"ImportPath": "k8s.io/component-base",
-			"Rev": "804254d56004"
+			"Rev": "be468d5d6790"
 		},
 		{
 			"ImportPath": "k8s.io/gengo",
