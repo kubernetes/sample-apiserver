@@ -104,7 +104,7 @@
 		},
 		{
 			"ImportPath": "github.com/coreos/go-systemd",
-			"Rev": "39ca1b05acc7"
+			"Rev": "95778dfbb74e"
 		},
 		{
 			"ImportPath": "github.com/coreos/pkg",
@@ -608,15 +608,15 @@
 		},
 		{
 			"ImportPath": "k8s.io/apimachinery",
-			"Rev": "e71eb83a557c"
+			"Rev": "f9f2f3f8ab02"
 		},
 		{
 			"ImportPath": "k8s.io/apiserver",
-			"Rev": "85b7c497d833"
+			"Rev": "c29386a6051d"
 		},
 		{
 			"ImportPath": "k8s.io/client-go",
-			"Rev": "b1fd78950135"
+			"Rev": "1210218b4a26"
 		},
 		{
 			"ImportPath": "k8s.io/code-generator",
@@ -624,7 +624,7 @@
 		},
 		{
 			"ImportPath": "k8s.io/component-base",
-			"Rev": "f5216b94ab44"
+			"Rev": "86c6082c6a20"
 		},
 		{
 			"ImportPath": "k8s.io/gengo",
