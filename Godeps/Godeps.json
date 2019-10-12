@@ -88,7 +88,7 @@
 		},
 		{
 			"ImportPath": "github.com/coreos/etcd",
-			"Rev": "v3.3.15"
+			"Rev": "v3.3.17"
 		},
 		{
 			"ImportPath": "github.com/coreos/go-etcd",
@@ -612,7 +612,7 @@
 		},
 		{
 			"ImportPath": "k8s.io/apiserver",
-			"Rev": "934c73955b69"
+			"Rev": "357923dfd168"
 		},
 		{
 			"ImportPath": "k8s.io/client-go",
