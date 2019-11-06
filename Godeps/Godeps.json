@@ -403,10 +403,6 @@
 			"Rev": "v1.7.0"
 		},
 		{
-			"ImportPath": "github.com/pborman/uuid",
-			"Rev": "v1.2.0"
-		},
-		{
 			"ImportPath": "github.com/pelletier/go-toml",
 			"Rev": "v1.2.0"
 		},
@@ -660,19 +656,19 @@
 		},
 		{
 			"ImportPath": "k8s.io/api",
-			"Rev": "0fe51414ed68"
+			"Rev": "ccca0f5a3d9c"
 		},
 		{
 			"ImportPath": "k8s.io/apimachinery",
-			"Rev": "650de2ebb2e8"
+			"Rev": "e1faffd14b0f"
 		},
 		{
 			"ImportPath": "k8s.io/apiserver",
-			"Rev": "735590cc6ea5"
+			"Rev": "99222540de36"
 		},
 		{
 			"ImportPath": "k8s.io/client-go",
-			"Rev": "60db0a7b4e4d"
+			"Rev": "5fc7a9e1ae72"
 		},
 		{
 			"ImportPath": "k8s.io/code-generator",
@@ -680,7 +676,7 @@
 		},
 		{
 			"ImportPath": "k8s.io/component-base",
-			"Rev": "28c829bff12f"
+			"Rev": "5d1e7ba2b923"
 		},
 		{
 			"ImportPath": "k8s.io/gengo",
