@@ -10,8 +10,8 @@ require (
 	github.com/spf13/cobra v0.0.5
 	k8s.io/apimachinery v0.0.0-20200209065656-fb45917aae8b
 	k8s.io/apiserver v0.0.0-20200209070848-1c0edf621c0d
-	k8s.io/client-go v0.0.0-20200209070100-c44f517f891f
-	k8s.io/code-generator v0.0.0-20200208144352-dd255cc51571
+	k8s.io/client-go v0.0.0-20200209070101-af50d22222d3
+	k8s.io/code-generator v0.0.0-20200209044353-396603da40fa
 	k8s.io/component-base v0.0.0-20200209070609-0d86229a457e
 	k8s.io/klog v1.0.0
 	k8s.io/kube-openapi v0.0.0-20200121204235-bf4fb3bd569c
@@ -23,7 +23,7 @@ replace (
 	k8s.io/api => k8s.io/api v0.0.0-20200209065837-d5ab0ddd8b73
 	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20200209065656-fb45917aae8b
 	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20200209070848-1c0edf621c0d
-	k8s.io/client-go => k8s.io/client-go v0.0.0-20200209070100-c44f517f891f
-	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20200208144352-dd255cc51571
+	k8s.io/client-go => k8s.io/client-go v0.0.0-20200209070101-af50d22222d3
+	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20200209044353-396603da40fa
 	k8s.io/component-base => k8s.io/component-base v0.0.0-20200209070609-0d86229a457e
 )
