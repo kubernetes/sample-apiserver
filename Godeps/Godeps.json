@@ -516,7 +516,7 @@
 		},
 		{
 			"ImportPath": "go.etcd.io/etcd",
-			"Rev": "3cf2f69b5738"
+			"Rev": "c65a9e2dd1fd"
 		},
 		{
 			"ImportPath": "go.opencensus.io",
@@ -652,11 +652,11 @@
 		},
 		{
 			"ImportPath": "k8s.io/apiserver",
-			"Rev": "65cd4b10b832"
+			"Rev": "b4e16c24b3da"
 		},
 		{
 			"ImportPath": "k8s.io/client-go",
-			"Rev": "c426e0f36d6b"
+			"Rev": "364a20b9b1d7"
 		},
 		{
 			"ImportPath": "k8s.io/code-generator",
