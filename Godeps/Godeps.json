@@ -168,7 +168,7 @@
 		},
 		{
 			"ImportPath": "github.com/fsnotify/fsnotify",
-			"Rev": "v1.4.7"
+			"Rev": "v1.4.9"
 		},
 		{
 			"ImportPath": "github.com/ghodss/yaml",
@@ -652,19 +652,19 @@
 		},
 		{
 			"ImportPath": "k8s.io/api",
-			"Rev": "fa879b399cd0"
+			"Rev": "0200c590acbd"
 		},
 		{
 			"ImportPath": "k8s.io/apimachinery",
-			"Rev": "fa0d5bf06730"
+			"Rev": "c01355f0e896"
 		},
 		{
 			"ImportPath": "k8s.io/apiserver",
-			"Rev": "fa3c8ad6d7af"
+			"Rev": "8a33f2a0250b"
 		},
 		{
 			"ImportPath": "k8s.io/client-go",
-			"Rev": "fe32aa3b9449"
+			"Rev": "2a5c88adcc5c"
 		},
 		{
 			"ImportPath": "k8s.io/code-generator",
@@ -672,7 +672,7 @@
 		},
 		{
 			"ImportPath": "k8s.io/component-base",
-			"Rev": "26edb4fa15c5"
+			"Rev": "c5daff24cc0e"
 		},
 		{
 			"ImportPath": "k8s.io/gengo",
