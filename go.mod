@@ -8,6 +8,7 @@ require (
 	github.com/go-openapi/spec v0.19.3
 	github.com/google/gofuzz v1.1.0
 	github.com/spf13/cobra v1.0.0
+	k8s.io/api v0.0.0-20200831211624-9a1561067c54 // indirect
 	k8s.io/apimachinery v0.0.0-20200830011411-94222d04a590
 	k8s.io/apiserver v0.0.0-20200830052217-08a1a1826d93
 	k8s.io/client-go v0.0.0-20200830171815-57f65489c11a
@@ -18,7 +19,7 @@ require (
 )
 
 replace (
-	k8s.io/api => k8s.io/api v0.0.0-20200830011551-4022903d1fba
+	k8s.io/api => k8s.io/api v0.0.0-20200831211624-9a1561067c54
 	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20200830011411-94222d04a590
 	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20200830052217-08a1a1826d93
 	k8s.io/client-go => k8s.io/client-go v0.0.0-20200830171815-57f65489c11a
