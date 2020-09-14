@@ -612,7 +612,7 @@
 		},
 		{
 			"ImportPath": "go.etcd.io/etcd",
-			"Rev": "ae9734ed278b"
+			"Rev": "dd1b699fc489"
 		},
 		{
 			"ImportPath": "go.opencensus.io",
@@ -764,27 +764,27 @@
 		},
 		{
 			"ImportPath": "k8s.io/api",
-			"Rev": "73d7eb3bb026"
+			"Rev": "c34296b27d33"
 		},
 		{
 			"ImportPath": "k8s.io/apimachinery",
-			"Rev": "ba0f2f062330"
+			"Rev": "1173d23fd476"
 		},
 		{
 			"ImportPath": "k8s.io/apiserver",
-			"Rev": "f309e4dff6e9"
+			"Rev": "add1986a0380"
 		},
 		{
 			"ImportPath": "k8s.io/client-go",
-			"Rev": "b643ec487eb7"
+			"Rev": "909a5a393582"
 		},
 		{
 			"ImportPath": "k8s.io/code-generator",
-			"Rev": "5a311e69ffcf"
+			"Rev": "4116974d9b44"
 		},
 		{
 			"ImportPath": "k8s.io/component-base",
-			"Rev": "1d2c8187d823"
+			"Rev": "c985e940ef8f"
 		},
 		{
 			"ImportPath": "k8s.io/gengo",
