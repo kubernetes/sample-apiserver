@@ -760,27 +760,27 @@
 		},
 		{
 			"ImportPath": "k8s.io/api",
-			"Rev": "d9813e0d77df"
+			"Rev": "2d800ca79443"
 		},
 		{
 			"ImportPath": "k8s.io/apimachinery",
-			"Rev": "2f881bd9ad1b"
+			"Rev": "4440c6847dae"
 		},
 		{
 			"ImportPath": "k8s.io/apiserver",
-			"Rev": "54add8e3abb3"
+			"Rev": "51f3461ac61a"
 		},
 		{
 			"ImportPath": "k8s.io/client-go",
-			"Rev": "6f060a2946c6"
+			"Rev": "e9b0f31f935b"
 		},
 		{
 			"ImportPath": "k8s.io/code-generator",
-			"Rev": "29e28b150e42"
+			"Rev": "6539861c3c48"
 		},
 		{
 			"ImportPath": "k8s.io/component-base",
-			"Rev": "1374c43fb9b9"
+			"Rev": "6401e5fe0504"
 		},
 		{
 			"ImportPath": "k8s.io/gengo",
@@ -804,7 +804,7 @@
 		},
 		{
 			"ImportPath": "sigs.k8s.io/apiserver-network-proxy/konnectivity-client",
-			"Rev": "v0.0.9"
+			"Rev": "v0.0.15"
 		},
 		{
 			"ImportPath": "sigs.k8s.io/structured-merge-diff/v4",
