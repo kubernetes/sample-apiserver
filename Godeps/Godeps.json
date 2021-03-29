@@ -296,7 +296,7 @@
 		},
 		{
 			"ImportPath": "github.com/gogo/protobuf",
-			"Rev": "v1.3.1"
+			"Rev": "v1.3.2"
 		},
 		{
 			"ImportPath": "github.com/golang/glog",
@@ -484,7 +484,7 @@
 		},
 		{
 			"ImportPath": "github.com/kisielk/errcheck",
-			"Rev": "v1.2.0"
+			"Rev": "v1.5.0"
 		},
 		{
 			"ImportPath": "github.com/kisielk/gotool",
@@ -744,7 +744,7 @@
 		},
 		{
 			"ImportPath": "github.com/yuin/goldmark",
-			"Rev": "v1.1.27"
+			"Rev": "v1.2.1"
 		},
 		{
 			"ImportPath": "go.etcd.io/bbolt",
@@ -804,7 +804,7 @@
 		},
 		{
 			"ImportPath": "golang.org/x/sync",
-			"Rev": "cd5d95a43a6e"
+			"Rev": "67f06af15bc9"
 		},
 		{
 			"ImportPath": "golang.org/x/sys",
@@ -820,7 +820,7 @@
 		},
 		{
 			"ImportPath": "golang.org/x/tools",
-			"Rev": "c1934b75d054"
+			"Rev": "113979e3529a"
 		},
 		{
 			"ImportPath": "golang.org/x/xerrors",
@@ -912,27 +912,27 @@
 		},
 		{
 			"ImportPath": "k8s.io/api",
-			"Rev": "d610c6e6c135"
+			"Rev": "4cbcd86ea749"
 		},
 		{
 			"ImportPath": "k8s.io/apimachinery",
-			"Rev": "2641dba65d8c"
+			"Rev": "640a6275d2b0"
 		},
 		{
 			"ImportPath": "k8s.io/apiserver",
-			"Rev": "7d08ac32c4b9"
+			"Rev": "395cee214d8e"
 		},
 		{
 			"ImportPath": "k8s.io/client-go",
-			"Rev": "717704b917f6"
+			"Rev": "720ea497dc06"
 		},
 		{
 			"ImportPath": "k8s.io/code-generator",
-			"Rev": "3f1cbd4ff5a7"
+			"Rev": "48c1e31cd8b3"
 		},
 		{
 			"ImportPath": "k8s.io/component-base",
-			"Rev": "bf590380a8b5"
+			"Rev": "e1576f54c4ca"
 		},
 		{
 			"ImportPath": "k8s.io/gengo",
