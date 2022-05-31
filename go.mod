@@ -7,11 +7,11 @@ go 1.18
 require (
 	github.com/google/gofuzz v1.1.0
 	github.com/spf13/cobra v1.4.0
-	k8s.io/apimachinery v0.0.0-20220509181918-47789511e916
-	k8s.io/apiserver v0.0.0-20220509185031-01a24e4270ef
-	k8s.io/client-go v0.0.0-20220509183031-24209264f769
-	k8s.io/code-generator v0.0.0-20220509181537-9f887a7281d8
-	k8s.io/component-base v0.0.0-20220509184231-9da133a032bf
+	k8s.io/apimachinery v0.0.0-20220527204257-be3a79b26814
+	k8s.io/apiserver v0.0.0-20220531235728-33da27cc171f
+	k8s.io/client-go v0.0.0-20220530124808-f88de91ae5c1
+	k8s.io/code-generator v0.0.0-20220512215755-7d977b3e5454
+	k8s.io/component-base v0.0.0-20220531235246-ba9c052508ce
 	k8s.io/kube-openapi v0.0.0-20220328201542-3ee0da9b0b42
 	k8s.io/utils v0.0.0-20220210201930-3a6ce19ff2f9
 )
@@ -93,7 +93,7 @@ require (
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
-	k8s.io/api v0.0.0-20220509182417-9b88471ea2b1 // indirect
+	k8s.io/api v0.0.0-20220531234821-832b1f4dc5da // indirect
 	k8s.io/gengo v0.0.0-20211129171323-c02415ce4185 // indirect
 	k8s.io/klog/v2 v2.60.1 // indirect
 	sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.0.30 // indirect
@@ -103,10 +103,10 @@ require (
 )
 
 replace (
-	k8s.io/api => k8s.io/api v0.0.0-20220509182417-9b88471ea2b1
-	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20220509181918-47789511e916
-	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20220509185031-01a24e4270ef
-	k8s.io/client-go => k8s.io/client-go v0.0.0-20220509183031-24209264f769
-	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20220509181537-9f887a7281d8
-	k8s.io/component-base => k8s.io/component-base v0.0.0-20220509184231-9da133a032bf
+	k8s.io/api => k8s.io/api v0.0.0-20220531234821-832b1f4dc5da
+	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20220527204257-be3a79b26814
+	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20220531235728-33da27cc171f
+	k8s.io/client-go => k8s.io/client-go v0.0.0-20220530124808-f88de91ae5c1
+	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20220512215755-7d977b3e5454
+	k8s.io/component-base => k8s.io/component-base v0.0.0-20220531235246-ba9c052508ce
 )
