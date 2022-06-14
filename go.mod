@@ -7,11 +7,11 @@ go 1.18
 require (
 	github.com/google/gofuzz v1.1.0
 	github.com/spf13/cobra v1.4.0
-	k8s.io/apimachinery v0.0.0-20220613074648-b90ea24d2fd6
-	k8s.io/apiserver v0.0.0-20220614075808-d4d8126908a9
-	k8s.io/client-go v0.0.0-20220613195210-2a9f95519059
-	k8s.io/code-generator v0.0.0-20220613194458-a2acbb4ade5c
-	k8s.io/component-base v0.0.0-20220613195522-9227fb076997
+	k8s.io/apimachinery v0.0.0-20220614194717-c5be38573c73
+	k8s.io/apiserver v0.0.0-20220614200351-5e46aae63f47
+	k8s.io/client-go v0.0.0-20220614195233-830d4c462418
+	k8s.io/code-generator v0.0.0-20220614194514-4e8f8f5e9126
+	k8s.io/component-base v0.0.0-20220614195841-c528ad5e18a8
 	k8s.io/kube-openapi v0.0.0-20220603121420-31174f50af60
 	k8s.io/utils v0.0.0-20220210201930-3a6ce19ff2f9
 )
@@ -38,7 +38,7 @@ require (
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/gnostic v0.5.7-v3refs // indirect
-	github.com/google/go-cmp v0.5.5 // indirect
+	github.com/google/go-cmp v0.5.6 // indirect
 	github.com/google/uuid v1.1.2 // indirect
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway v1.16.0 // indirect
@@ -87,13 +87,13 @@ require (
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/genproto v0.0.0-20220310185008-1973136f34c6 // indirect
-	google.golang.org/grpc v1.44.0 // indirect
+	google.golang.org/grpc v1.47.0 // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.0.0-20220613074849-6b0201da8019 // indirect
+	k8s.io/api v0.0.0-20220614194928-60387f6ceb7c // indirect
 	k8s.io/gengo v0.0.0-20211129171323-c02415ce4185 // indirect
 	k8s.io/klog/v2 v2.60.1 // indirect
 	sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.0.30 // indirect
@@ -103,10 +103,10 @@ require (
 )
 
 replace (
-	k8s.io/api => k8s.io/api v0.0.0-20220613074849-6b0201da8019
-	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20220613074648-b90ea24d2fd6
-	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20220614075808-d4d8126908a9
-	k8s.io/client-go => k8s.io/client-go v0.0.0-20220613195210-2a9f95519059
-	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20220613194458-a2acbb4ade5c
-	k8s.io/component-base => k8s.io/component-base v0.0.0-20220613195522-9227fb076997
+	k8s.io/api => k8s.io/api v0.0.0-20220614194928-60387f6ceb7c
+	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20220614194717-c5be38573c73
+	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20220614200351-5e46aae63f47
+	k8s.io/client-go => k8s.io/client-go v0.0.0-20220614195233-830d4c462418
+	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20220614194514-4e8f8f5e9126
+	k8s.io/component-base => k8s.io/component-base v0.0.0-20220614195841-c528ad5e18a8
 )
