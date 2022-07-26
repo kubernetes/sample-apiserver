@@ -7,13 +7,13 @@ go 1.18
 require (
 	github.com/google/gofuzz v1.1.0
 	github.com/spf13/cobra v1.4.0
-	k8s.io/apimachinery v0.0.0-20220727000102-7fb03423f864
-	k8s.io/apiserver v0.0.0-20220727001712-f53b8299068d
-	k8s.io/client-go v0.0.0-20220727000546-cc879cd5b66e
-	k8s.io/code-generator v0.0.0-20220726212509-22db44c58f5a
-	k8s.io/component-base v0.0.0-20220727001241-c9db45da9b0d
+	k8s.io/apimachinery v0.0.0
+	k8s.io/apiserver v0.0.0
+	k8s.io/client-go v0.0.0
+	k8s.io/code-generator v0.0.0
+	k8s.io/component-base v0.0.0
 	k8s.io/kube-openapi v0.0.0-20220627174259-011e075b9cb8
-	k8s.io/utils v0.0.0-20220210201930-3a6ce19ff2f9
+	k8s.io/utils v0.0.0-20220725171434-9bab9ef40391
 )
 
 require (
@@ -93,7 +93,7 @@ require (
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.0.0-20220727000259-04aced3612cf // indirect
+	k8s.io/api v0.0.0 // indirect
 	k8s.io/gengo v0.0.0-20211129171323-c02415ce4185 // indirect
 	k8s.io/klog/v2 v2.70.1 // indirect
 	sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.0.32 // indirect
@@ -103,10 +103,11 @@ require (
 )
 
 replace (
-	k8s.io/api => k8s.io/api v0.0.0-20220727000259-04aced3612cf
-	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20220727000102-7fb03423f864
-	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20220727001712-f53b8299068d
-	k8s.io/client-go => k8s.io/client-go v0.0.0-20220727000546-cc879cd5b66e
-	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20220726212509-22db44c58f5a
-	k8s.io/component-base => k8s.io/component-base v0.0.0-20220727001241-c9db45da9b0d
+	k8s.io/api => ../api
+	k8s.io/apimachinery => ../apimachinery
+	k8s.io/apiserver => ../apiserver
+	k8s.io/client-go => ../client-go
+	k8s.io/code-generator => ../code-generator
+	k8s.io/component-base => ../component-base
+	k8s.io/sample-apiserver => ../sample-apiserver
 )
