@@ -7,11 +7,11 @@ go 1.18
 require (
 	github.com/google/gofuzz v1.1.0
 	github.com/spf13/cobra v1.4.0
-	k8s.io/apimachinery v0.0.0-20220722160307-915d89afb4cb
-	k8s.io/apiserver v0.0.0-20220726161224-7f7a01acf81a
-	k8s.io/client-go v0.0.0-20220722162234-b2097e607c19
-	k8s.io/code-generator v0.0.0-20220719123406-a08f67b4c688
-	k8s.io/component-base v0.0.0-20220726160733-a30295a8559b
+	k8s.io/apimachinery v0.0.0-20220727000102-7fb03423f864
+	k8s.io/apiserver v0.0.0-20220727001712-f53b8299068d
+	k8s.io/client-go v0.0.0-20220727000546-cc879cd5b66e
+	k8s.io/code-generator v0.0.0-20220726212509-22db44c58f5a
+	k8s.io/component-base v0.0.0-20220727001241-c9db45da9b0d
 	k8s.io/kube-openapi v0.0.0-20220627174259-011e075b9cb8
 	k8s.io/utils v0.0.0-20220210201930-3a6ce19ff2f9
 )
@@ -93,7 +93,7 @@ require (
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.0.0-20220725160253-f6f0d0e54216 // indirect
+	k8s.io/api v0.0.0-20220727000259-04aced3612cf // indirect
 	k8s.io/gengo v0.0.0-20211129171323-c02415ce4185 // indirect
 	k8s.io/klog/v2 v2.70.1 // indirect
 	sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.0.32 // indirect
@@ -103,10 +103,10 @@ require (
 )
 
 replace (
-	k8s.io/api => k8s.io/api v0.0.0-20220725160253-f6f0d0e54216
-	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20220722160307-915d89afb4cb
-	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20220726161224-7f7a01acf81a
-	k8s.io/client-go => k8s.io/client-go v0.0.0-20220722162234-b2097e607c19
-	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20220719123406-a08f67b4c688
-	k8s.io/component-base => k8s.io/component-base v0.0.0-20220726160733-a30295a8559b
+	k8s.io/api => k8s.io/api v0.0.0-20220727000259-04aced3612cf
+	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20220727000102-7fb03423f864
+	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20220727001712-f53b8299068d
+	k8s.io/client-go => k8s.io/client-go v0.0.0-20220727000546-cc879cd5b66e
+	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20220726212509-22db44c58f5a
+	k8s.io/component-base => k8s.io/component-base v0.0.0-20220727001241-c9db45da9b0d
 )
