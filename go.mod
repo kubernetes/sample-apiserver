@@ -8,10 +8,10 @@ require (
 	github.com/google/gofuzz v1.1.0
 	github.com/spf13/cobra v1.6.0
 	k8s.io/apimachinery v0.0.0-20221116134806-067949de242e
-	k8s.io/apiserver v0.0.0-20221109053719-767537116ca9
-	k8s.io/client-go v0.0.0-20221108173010-769443557e04
+	k8s.io/apiserver v0.0.0-20221117032420-b2b956c51d42
+	k8s.io/client-go v0.0.0-20221116135827-968ba8d06935
 	k8s.io/code-generator v0.0.0-20221107193021-11d5c4c49cbf
-	k8s.io/component-base v0.0.0-20221109013135-4e8a9589a311
+	k8s.io/component-base v0.0.0-20221116140657-28d9ad4489e9
 	k8s.io/kube-openapi v0.0.0-20221012153701-172d655c2280
 	k8s.io/utils v0.0.0-20221107191617-1a15be271d1d
 )
@@ -94,7 +94,7 @@ require (
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.0.0-20221108053748-98c1aa6b3d0a // indirect
+	k8s.io/api v0.0.0-20221116135212-053624e78dd8 // indirect
 	k8s.io/gengo v0.0.0-20220902162205-c0856e24416d // indirect
 	k8s.io/klog/v2 v2.80.1 // indirect
 	k8s.io/kms v0.0.0-20221028080743-a9ba1c11c0c6 // indirect
@@ -105,11 +105,11 @@ require (
 )
 
 replace (
-	k8s.io/api => k8s.io/api v0.0.0-20221108053748-98c1aa6b3d0a
+	k8s.io/api => k8s.io/api v0.0.0-20221116135212-053624e78dd8
 	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20221116134806-067949de242e
-	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20221109053719-767537116ca9
-	k8s.io/client-go => k8s.io/client-go v0.0.0-20221108173010-769443557e04
+	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20221117032420-b2b956c51d42
+	k8s.io/client-go => k8s.io/client-go v0.0.0-20221116135827-968ba8d06935
 	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20221107193021-11d5c4c49cbf
-	k8s.io/component-base => k8s.io/component-base v0.0.0-20221109013135-4e8a9589a311
+	k8s.io/component-base => k8s.io/component-base v0.0.0-20221116140657-28d9ad4489e9
 	k8s.io/kms => k8s.io/kms v0.0.0-20221028080743-a9ba1c11c0c6
 )
