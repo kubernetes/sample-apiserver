@@ -8,7 +8,7 @@ require (
 	github.com/google/gofuzz v1.1.0
 	github.com/spf13/cobra v1.4.0
 	k8s.io/apimachinery v0.0.0-20221116094540-dba1916fc567
-	k8s.io/apiserver v0.0.0-20221116100210-35b303bf1a07
+	k8s.io/apiserver v0.0.0-20221202100805-ae30333cb5c2
 	k8s.io/client-go v0.0.0-20221116095051-d8a162e21a65
 	k8s.io/code-generator v0.0.0-20221116094341-7f792f752aa1
 	k8s.io/component-base v0.0.0-20221116095701-b5d87a698ca2
@@ -104,7 +104,7 @@ require (
 replace (
 	k8s.io/api => k8s.io/api v0.0.0-20221116094747-a5cb4fed59cf
 	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20221116094540-dba1916fc567
-	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20221116100210-35b303bf1a07
+	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20221202100805-ae30333cb5c2
 	k8s.io/client-go => k8s.io/client-go v0.0.0-20221116095051-d8a162e21a65
 	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20221116094341-7f792f752aa1
 	k8s.io/component-base => k8s.io/component-base v0.0.0-20221116095701-b5d87a698ca2
