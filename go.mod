@@ -7,11 +7,11 @@ go 1.19
 require (
 	github.com/google/gofuzz v1.1.0
 	github.com/spf13/cobra v1.6.0
-	k8s.io/apimachinery v0.0.0-20221208055745-5d4cdd22b0f7
-	k8s.io/apiserver v0.0.0-20221208065907-4a8722b9db55
-	k8s.io/client-go v0.0.0-20221208062233-95a14c3f4bc4
-	k8s.io/code-generator v0.0.0-20221208054844-6063700ba34d
-	k8s.io/component-base v0.0.0-20221207035525-9c5f85259cb9
+	k8s.io/apimachinery v0.26.1-rc.0
+	k8s.io/apiserver v0.26.1-rc.0
+	k8s.io/client-go v0.26.1-rc.0
+	k8s.io/code-generator v0.26.1-rc.0
+	k8s.io/component-base v0.26.1-rc.0
 	k8s.io/kube-openapi v0.0.0-20221012153701-172d655c2280
 	k8s.io/utils v0.0.0-20221107191617-1a15be271d1d
 )
@@ -94,10 +94,10 @@ require (
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.0.0-20221208060720-07ac8fe9ce91 // indirect
+	k8s.io/api v0.26.1-rc.0 // indirect
 	k8s.io/gengo v0.0.0-20220902162205-c0856e24416d // indirect
 	k8s.io/klog/v2 v2.80.1 // indirect
-	k8s.io/kms v0.0.0-20221208063806-3bf04e13ad9a // indirect
+	k8s.io/kms v0.26.1-rc.0 // indirect
 	sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.0.33 // indirect
 	sigs.k8s.io/json v0.0.0-20220713155537-f223a00ba0e2 // indirect
 	sigs.k8s.io/structured-merge-diff/v4 v4.2.3 // indirect
@@ -105,11 +105,11 @@ require (
 )
 
 replace (
-	k8s.io/api => k8s.io/api v0.0.0-20221208060720-07ac8fe9ce91
-	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20221208055745-5d4cdd22b0f7
-	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20221208065907-4a8722b9db55
-	k8s.io/client-go => k8s.io/client-go v0.0.0-20221208062233-95a14c3f4bc4
-	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20221208054844-6063700ba34d
-	k8s.io/component-base => k8s.io/component-base v0.0.0-20221207035525-9c5f85259cb9
-	k8s.io/kms => k8s.io/kms v0.0.0-20221208063806-3bf04e13ad9a
+	k8s.io/api => k8s.io/api v0.26.1-rc.0
+	k8s.io/apimachinery => k8s.io/apimachinery v0.26.1-rc.0
+	k8s.io/apiserver => k8s.io/apiserver v0.26.1-rc.0
+	k8s.io/client-go => k8s.io/client-go v0.26.1-rc.0
+	k8s.io/code-generator => k8s.io/code-generator v0.26.1-rc.0
+	k8s.io/component-base => k8s.io/component-base v0.26.1-rc.0
+	k8s.io/kms => k8s.io/kms v0.26.1-rc.0
 )
