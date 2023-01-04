@@ -7,11 +7,11 @@ go 1.19
 require (
 	github.com/google/gofuzz v1.1.0
 	github.com/spf13/cobra v1.6.0
-	k8s.io/apimachinery v0.0.0-20221223015414-47a8bb64c845
-	k8s.io/apiserver v0.0.0-20230103214059-3cd8de3b76e2
-	k8s.io/client-go v0.0.0-20230102172837-3e0d99053357
-	k8s.io/code-generator v0.0.0-20221227155940-b6a476b86b59
-	k8s.io/component-base v0.0.0-20221223033131-522c0db97a9d
+	k8s.io/apimachinery v0.0.0-20230104022610-6c409361e35e
+	k8s.io/apiserver v0.0.0-20230107081833-5cad05425649
+	k8s.io/client-go v0.0.0-20230107075050-26d70e3a1c44
+	k8s.io/code-generator v0.0.0-20230104182600-c63a8ccca435
+	k8s.io/component-base v0.0.0-20230107080731-dd4ae6d7c516
 	k8s.io/kube-openapi v0.0.0-20221012153701-172d655c2280
 	k8s.io/utils v0.0.0-20221107191617-1a15be271d1d
 )
@@ -79,7 +79,7 @@ require (
 	golang.org/x/crypto v0.1.0 // indirect
 	golang.org/x/mod v0.7.0 // indirect
 	golang.org/x/net v0.4.0 // indirect
-	golang.org/x/oauth2 v0.0.0-20220223155221-ee480838109b // indirect
+	golang.org/x/oauth2 v0.3.0 // indirect
 	golang.org/x/sync v0.1.0 // indirect
 	golang.org/x/sys v0.3.0 // indirect
 	golang.org/x/term v0.3.0 // indirect
@@ -106,10 +106,10 @@ require (
 
 replace (
 	k8s.io/api => k8s.io/api v0.0.0-20221223233726-92fe7a3ca2f4
-	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20221223015414-47a8bb64c845
-	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20230103214059-3cd8de3b76e2
-	k8s.io/client-go => k8s.io/client-go v0.0.0-20230102172837-3e0d99053357
-	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20221227155940-b6a476b86b59
-	k8s.io/component-base => k8s.io/component-base v0.0.0-20221223033131-522c0db97a9d
+	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20230104022610-6c409361e35e
+	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20230107081833-5cad05425649
+	k8s.io/client-go => k8s.io/client-go v0.0.0-20230107075050-26d70e3a1c44
+	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20230104182600-c63a8ccca435
+	k8s.io/component-base => k8s.io/component-base v0.0.0-20230107080731-dd4ae6d7c516
 	k8s.io/kms => k8s.io/kms v0.0.0-20221223035546-6bcec3321a14
 )
