@@ -7,8 +7,8 @@ go 1.19
 require (
 	github.com/google/gofuzz v1.1.0
 	github.com/spf13/cobra v1.6.0
-	k8s.io/apimachinery v0.0.0-20221208055745-5d4cdd22b0f7
-	k8s.io/apiserver v0.0.0-20230110182433-7b39ac140522
+	k8s.io/apimachinery v0.0.0-20230111232008-373a5f752d44
+	k8s.io/apiserver v0.0.0-20230112074716-81b63bfb3256
 	k8s.io/client-go v0.0.0-20221227214233-0c34939c9bcb
 	k8s.io/code-generator v0.0.0-20221208054844-6063700ba34d
 	k8s.io/component-base v0.0.0-20230110174730-0b623d3c56e9
@@ -38,7 +38,7 @@ require (
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
-	github.com/google/cel-go v0.12.5 // indirect
+	github.com/google/cel-go v0.12.6 // indirect
 	github.com/google/gnostic v0.5.7-v3refs // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
 	github.com/google/uuid v1.1.2 // indirect
@@ -106,8 +106,8 @@ require (
 
 replace (
 	k8s.io/api => k8s.io/api v0.0.0-20221227185931-07a9cbc7b3b1
-	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20221208055745-5d4cdd22b0f7
-	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20230110182433-7b39ac140522
+	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20230111232008-373a5f752d44
+	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20230112074716-81b63bfb3256
 	k8s.io/client-go => k8s.io/client-go v0.0.0-20221227214233-0c34939c9bcb
 	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20221208054844-6063700ba34d
 	k8s.io/component-base => k8s.io/component-base v0.0.0-20230110174730-0b623d3c56e9
