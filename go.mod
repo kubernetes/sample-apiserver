@@ -8,8 +8,8 @@ require (
 	github.com/google/gofuzz v1.2.0
 	github.com/spf13/cobra v1.7.0
 	k8s.io/apimachinery v0.0.0-20230503174314-7ecc58659e5e
-	k8s.io/apiserver v0.0.0-20230503185704-1ea353dbf64b
-	k8s.io/client-go v0.0.0-20230503180226-bea472626f88
+	k8s.io/apiserver v0.0.0-20230506172115-055116923f88
+	k8s.io/client-go v0.0.0-20230505090544-bbdc95deee6f
 	k8s.io/code-generator v0.0.0-20230503172937-f7315244e4ce
 	k8s.io/component-base v0.0.0-20230503184328-d8237c55bb0d
 	k8s.io/kube-openapi v0.0.0-20230501164219-8b0f38b5fd1f
@@ -63,9 +63,9 @@ require (
 	github.com/prometheus/procfs v0.8.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/stoewer/go-strcase v1.2.0 // indirect
-	go.etcd.io/etcd/api/v3 v3.5.7 // indirect
-	go.etcd.io/etcd/client/pkg/v3 v3.5.7 // indirect
-	go.etcd.io/etcd/client/v3 v3.5.7 // indirect
+	go.etcd.io/etcd/api/v3 v3.5.8 // indirect
+	go.etcd.io/etcd/client/pkg/v3 v3.5.8 // indirect
+	go.etcd.io/etcd/client/v3 v3.5.8 // indirect
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.35.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.35.1 // indirect
 	go.opentelemetry.io/otel v1.10.0 // indirect
@@ -97,7 +97,7 @@ require (
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.0.0-20230503175222-2ef5057a4265 // indirect
+	k8s.io/api v0.0.0-20230503175224-7a87286591e4 // indirect
 	k8s.io/gengo v0.0.0-20220902162205-c0856e24416d // indirect
 	k8s.io/klog/v2 v2.100.1 // indirect
 	k8s.io/kms v0.0.0-20230503185131-41fec3e2b985 // indirect
@@ -107,10 +107,10 @@ require (
 )
 
 replace (
-	k8s.io/api => k8s.io/api v0.0.0-20230503175222-2ef5057a4265
+	k8s.io/api => k8s.io/api v0.0.0-20230503175224-7a87286591e4
 	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20230503174314-7ecc58659e5e
-	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20230503185704-1ea353dbf64b
-	k8s.io/client-go => k8s.io/client-go v0.0.0-20230503180226-bea472626f88
+	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20230506172115-055116923f88
+	k8s.io/client-go => k8s.io/client-go v0.0.0-20230505090544-bbdc95deee6f
 	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20230503172937-f7315244e4ce
 	k8s.io/component-base => k8s.io/component-base v0.0.0-20230503184328-d8237c55bb0d
 	k8s.io/kms => k8s.io/kms v0.0.0-20230503185131-41fec3e2b985
