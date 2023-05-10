@@ -724,8 +724,8 @@ k8s.io/apiserver v0.0.0-20230508212509-72447f49e106 h1:OsKL1sJZ090nECFpFSFcZzZNE
 k8s.io/apiserver v0.0.0-20230508212509-72447f49e106/go.mod h1:JukaXy92ci9bXuH2xewlLjEcsMudj9t2/lkbD2BS+I0=
 k8s.io/client-go v0.0.0-20230509212518-783d0d33626e h1:LpWwrdVPWBo4qvabkUmgiTVVrG60WB2Aq7vL/+CuFVY=
 k8s.io/client-go v0.0.0-20230509212518-783d0d33626e/go.mod h1:cEaa9OUfUngJoratq5HOLPAqYQuGXvAXcib8cBvOLhQ=
-k8s.io/code-generator v0.0.0-20230509180209-89a7a4d0e489 h1:7+xdqf/J4TXWmjCIzth4AjfqwQ2z1OAXbHXXNtjHJsE=
-k8s.io/code-generator v0.0.0-20230509180209-89a7a4d0e489/go.mod h1:5KkJ186arJseOZ830Y6GUtO2hjor5gmZlCdp+3CfiG0=
+k8s.io/code-generator v0.0.0-20230510163507-6027f1188125 h1:E4reSiOP9PixK4O3nhpQQby6yEgx0d5wwlbUJ0mYI0g=
+k8s.io/code-generator v0.0.0-20230510163507-6027f1188125/go.mod h1:5KkJ186arJseOZ830Y6GUtO2hjor5gmZlCdp+3CfiG0=
 k8s.io/component-base v0.0.0-20230510051351-394420edbb3f h1:fRDW72RPFuh2ICNsCZCnEG/0tiKMDRyL/YVJ1RyVL74=
 k8s.io/component-base v0.0.0-20230510051351-394420edbb3f/go.mod h1:OZt7sB3oDI0Zde3l1u9cPMS4sDIg62oCaaGt3ifkLBg=
 k8s.io/gengo v0.0.0-20220902162205-c0856e24416d h1:U9tB195lKdzwqicbJvyJeOXV7Klv+wNAWENRnXEGi08=
