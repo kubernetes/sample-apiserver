@@ -721,8 +721,8 @@ k8s.io/api v0.0.0-20230504161039-c9f384e22127 h1:U2jrPtLFbReRvbjjX0yP4v21gPYABHR
 k8s.io/api v0.0.0-20230504161039-c9f384e22127/go.mod h1:PKBWfLQVUAXCXN4OieI6iUFDXYhNyU3yXNkUkYo+TEc=
 k8s.io/apimachinery v0.0.0-20230504155441-b207ce547a90 h1:EG74qR81ZW0XSzMLAZlWqqFpb0WBglMPemY43aul0JI=
 k8s.io/apimachinery v0.0.0-20230504155441-b207ce547a90/go.mod h1:HUvk6wrOP4v22AIYqeCGSQ6xWCHo41J9d6psb3temAg=
-k8s.io/apiserver v0.0.0-20230504174530-f90a1ebf3448 h1:6RfQBUSGDJuMqof9RxkHnphToeGJmJFg5bAbwSsBLD4=
-k8s.io/apiserver v0.0.0-20230504174530-f90a1ebf3448/go.mod h1:05GlxRkOijculCSY/gKjCe2u9qeIv0GCkTT91FnNhAo=
+k8s.io/apiserver v0.0.0-20230511200502-6d29734aec9e h1:SXS3POXXieWdPN6D3ErvONNevUr+aWRyfwRQuC5aa18=
+k8s.io/apiserver v0.0.0-20230511200502-6d29734aec9e/go.mod h1:qicBtpXVsVGFqAkaRo1PAdfdlrzI5v6KzgxTBC8nOqw=
 k8s.io/client-go v0.0.0-20230504163259-038b381bf689 h1:nuZEK9KQwglGLNIm+WTTHeAMbYmpm0qUTF/XAEF6yPI=
 k8s.io/client-go v0.0.0-20230504163259-038b381bf689/go.mod h1:b8AZzZ+BgCsgon/cCCUhdpcFZCSXBVh5KR/16vfoGKg=
 k8s.io/code-generator v0.0.0-20230504152813-eec869e1b034 h1:bI2NUtJkSn91ZwFgrqtbb7Dm66HOQ0NQ0F70i26S1QM=
@@ -743,8 +743,8 @@ k8s.io/utils v0.0.0-20221107191617-1a15be271d1d/go.mod h1:OLgZIPagt7ERELqWJFomSt
 rsc.io/binaryregexp v0.2.0/go.mod h1:qTv7/COck+e2FymRvadv62gMdZztPaShugOCi3I+8D8=
 rsc.io/quote/v3 v3.1.0/go.mod h1:yEA65RcK8LyAZtP9Kv3t0HmxON59tX3rD+tICJqUlj0=
 rsc.io/sampler v1.3.0/go.mod h1:T1hPZKmBbMNahiBKFy5HrXp6adAjACjK9JXDnKaTXpA=
-sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.0.36 h1:PUuX1qIFv309AT8hF/CdPKDmsG/hn/L8zRX7VvISM3A=
-sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.0.36/go.mod h1:WxjusMwXlKzfAs4p9km6XJRndVt2FROgMVCE4cdohFo=
+sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.0.37 h1:fAPTNEpzQMOLMGwOHNbUkR2xXTQwMJOZYNx+/mLlOh0=
+sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.0.37/go.mod h1:vfnxT4FXNT8eGvO+xi/DsyC/qHmdujqwrUa1WSspCsk=
 sigs.k8s.io/json v0.0.0-20220713155537-f223a00ba0e2 h1:iXTIw73aPyC+oRdyqqvVJuloN1p0AC/kzH07hu3NE+k=
 sigs.k8s.io/json v0.0.0-20220713155537-f223a00ba0e2/go.mod h1:B8JuhiUyNFVKdsE8h686QcCxMaH6HrOAZj4vswFpcB0=
 sigs.k8s.io/structured-merge-diff/v4 v4.2.3 h1:PRbqxJClWWYMNV1dhaG4NsibJbArud9kFxnAMREiWFE=
