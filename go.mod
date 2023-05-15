@@ -7,11 +7,11 @@ go 1.20
 require (
 	github.com/google/gofuzz v1.2.0
 	github.com/spf13/cobra v1.7.0
-	k8s.io/apimachinery v0.0.0-20230515165651-676b368d6d0d
-	k8s.io/apiserver v0.0.0-20230515171907-d81bcb05fe70
-	k8s.io/client-go v0.0.0-20230515170425-79d967dc5240
-	k8s.io/code-generator v0.0.0-20230515144928-f45259c65e17
-	k8s.io/component-base v0.0.0-20230515171225-a6ee97d851d0
+	k8s.io/apimachinery v0.0.0-20230515165652-960ab7bd923d
+	k8s.io/apiserver v0.0.0-20230515171909-6e07caeb52eb
+	k8s.io/client-go v0.0.0-20230515170427-435f839a9e41
+	k8s.io/code-generator v0.0.0-20230515165214-276d6b644159
+	k8s.io/component-base v0.0.0-20230515171227-724dd82328aa
 	k8s.io/kube-openapi v0.0.0-20230501164219-8b0f38b5fd1f
 	k8s.io/utils v0.0.0-20230406110748-d93618cff8a2
 	sigs.k8s.io/structured-merge-diff/v4 v4.2.3
@@ -63,9 +63,9 @@ require (
 	github.com/prometheus/procfs v0.8.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/stoewer/go-strcase v1.2.0 // indirect
-	go.etcd.io/etcd/api/v3 v3.5.8 // indirect
-	go.etcd.io/etcd/client/pkg/v3 v3.5.8 // indirect
-	go.etcd.io/etcd/client/v3 v3.5.8 // indirect
+	go.etcd.io/etcd/api/v3 v3.5.9 // indirect
+	go.etcd.io/etcd/client/pkg/v3 v3.5.9 // indirect
+	go.etcd.io/etcd/client/v3 v3.5.9 // indirect
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.35.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.35.1 // indirect
 	go.opentelemetry.io/otel v1.10.0 // indirect
@@ -97,21 +97,21 @@ require (
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.0.0-20230515170018-7c333a3dc11f // indirect
+	k8s.io/api v0.0.0-20230515170019-2f9553831ec2 // indirect
 	k8s.io/gengo v0.0.0-20220902162205-c0856e24416d // indirect
 	k8s.io/klog/v2 v2.100.1 // indirect
-	k8s.io/kms v0.0.0-20230515171440-26b86bf5b237 // indirect
+	k8s.io/kms v0.0.0-20230515171440-e664c8d39ad7 // indirect
 	sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.1.2 // indirect
 	sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd // indirect
 	sigs.k8s.io/yaml v1.3.0 // indirect
 )
 
 replace (
-	k8s.io/api => k8s.io/api v0.0.0-20230515170018-7c333a3dc11f
-	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20230515165651-676b368d6d0d
-	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20230515171907-d81bcb05fe70
-	k8s.io/client-go => k8s.io/client-go v0.0.0-20230515170425-79d967dc5240
-	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20230515144928-f45259c65e17
-	k8s.io/component-base => k8s.io/component-base v0.0.0-20230515171225-a6ee97d851d0
-	k8s.io/kms => k8s.io/kms v0.0.0-20230515171440-26b86bf5b237
+	k8s.io/api => k8s.io/api v0.0.0-20230515170019-2f9553831ec2
+	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20230515165652-960ab7bd923d
+	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20230515171909-6e07caeb52eb
+	k8s.io/client-go => k8s.io/client-go v0.0.0-20230515170427-435f839a9e41
+	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20230515165214-276d6b644159
+	k8s.io/component-base => k8s.io/component-base v0.0.0-20230515171227-724dd82328aa
+	k8s.io/kms => k8s.io/kms v0.0.0-20230515171440-e664c8d39ad7
 )
