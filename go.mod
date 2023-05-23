@@ -7,10 +7,10 @@ go 1.19
 require (
 	github.com/google/gofuzz v1.1.0
 	github.com/spf13/cobra v1.4.0
-	k8s.io/apimachinery v0.0.0-20230513005956-6b8613c85238
-	k8s.io/apiserver v0.0.0-20230513015414-146f845488b1
-	k8s.io/client-go v0.0.0-20230513011627-4aa6151f9be0
-	k8s.io/code-generator v0.0.0-20230513005412-8fa86b356d9e
+	k8s.io/apimachinery v0.0.0-20230523181811-c2a4808f5a24
+	k8s.io/apiserver v0.0.0-20230523190325-72805bf38714
+	k8s.io/client-go v0.0.0-20230523183204-81aa33ed764a
+	k8s.io/code-generator v0.0.0-20230523181350-ca3263f5b6d0
 	k8s.io/component-base v0.0.0-20230513013335-a44de70c684d
 	k8s.io/kube-openapi v0.0.0-20220328201542-3ee0da9b0b42
 	k8s.io/utils v0.0.0-20220210201930-3a6ce19ff2f9
@@ -39,7 +39,7 @@ require (
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/gnostic v0.5.7-v3refs // indirect
 	github.com/google/go-cmp v0.5.5 // indirect
-	github.com/google/uuid v1.1.2 // indirect
+	github.com/google/uuid v1.3.0 // indirect
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway v1.16.0 // indirect
 	github.com/imdario/mergo v0.3.5 // indirect
@@ -103,9 +103,9 @@ require (
 
 replace (
 	k8s.io/api => k8s.io/api v0.0.0-20230513010431-273129d3df41
-	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20230513005956-6b8613c85238
-	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20230513015414-146f845488b1
-	k8s.io/client-go => k8s.io/client-go v0.0.0-20230513011627-4aa6151f9be0
-	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20230513005412-8fa86b356d9e
+	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20230523181811-c2a4808f5a24
+	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20230523190325-72805bf38714
+	k8s.io/client-go => k8s.io/client-go v0.0.0-20230523183204-81aa33ed764a
+	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20230523181350-ca3263f5b6d0
 	k8s.io/component-base => k8s.io/component-base v0.0.0-20230513013335-a44de70c684d
 )
