@@ -7,12 +7,12 @@ go 1.20
 require (
 	github.com/google/gofuzz v1.2.0
 	github.com/spf13/cobra v1.7.0
-	k8s.io/apimachinery v0.0.0-20230516234833-8d8634786e1c
-	k8s.io/apiserver v0.0.0-20230516013442-503fadf9e775
-	k8s.io/client-go v0.0.0-20230517010017-2a5f18df73b7
-	k8s.io/code-generator v0.0.0-20230516165233-03cdae3b9a25
-	k8s.io/component-base v0.0.0-20230516012726-18782b4b48a0
-	k8s.io/kube-openapi v0.0.0-20230515203736-54b630e78af5
+	k8s.io/apimachinery v0.0.0
+	k8s.io/apiserver v0.0.0
+	k8s.io/client-go v0.0.0
+	k8s.io/code-generator v0.0.0
+	k8s.io/component-base v0.0.0
+	k8s.io/kube-openapi v0.0.0-20230524182850-78281498afbb
 	k8s.io/utils v0.0.0-20230406110748-d93618cff8a2
 	sigs.k8s.io/structured-merge-diff/v4 v4.2.3
 )
@@ -96,21 +96,22 @@ require (
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.0.0-20230515170019-2f9553831ec2 // indirect
+	k8s.io/api v0.0.0 // indirect
 	k8s.io/gengo v0.0.0-20220902162205-c0856e24416d // indirect
 	k8s.io/klog/v2 v2.100.1 // indirect
-	k8s.io/kms v0.0.0-20230515171440-e664c8d39ad7 // indirect
+	k8s.io/kms v0.0.0 // indirect
 	sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.1.2 // indirect
 	sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd // indirect
 	sigs.k8s.io/yaml v1.3.0 // indirect
 )
 
 replace (
-	k8s.io/api => k8s.io/api v0.0.0-20230515170019-2f9553831ec2
-	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20230516234833-8d8634786e1c
-	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20230516013442-503fadf9e775
-	k8s.io/client-go => k8s.io/client-go v0.0.0-20230517010017-2a5f18df73b7
-	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20230516165233-03cdae3b9a25
-	k8s.io/component-base => k8s.io/component-base v0.0.0-20230516012726-18782b4b48a0
-	k8s.io/kms => k8s.io/kms v0.0.0-20230515171440-e664c8d39ad7
+	k8s.io/api => ../api
+	k8s.io/apimachinery => ../apimachinery
+	k8s.io/apiserver => ../apiserver
+	k8s.io/client-go => ../client-go
+	k8s.io/code-generator => ../code-generator
+	k8s.io/component-base => ../component-base
+	k8s.io/kms => ../kms
+	k8s.io/sample-apiserver => ../sample-apiserver
 )
