@@ -7,14 +7,14 @@ go 1.20
 require (
 	github.com/google/gofuzz v1.2.0
 	github.com/spf13/cobra v1.7.0
-	k8s.io/apimachinery v0.0.0-20230901041540-0d057e543013
-	k8s.io/apiserver v0.0.0-20230901054518-e74fcfcb78ed
-	k8s.io/client-go v0.0.0-20230901044724-5e5ba6b91d64
-	k8s.io/code-generator v0.0.0-20230829153205-3ba1295f0ae7
-	k8s.io/component-base v0.0.0-20230901051635-6a97c85314ee
+	k8s.io/apimachinery v0.0.0-20230907021858-82362bc34ae0
+	k8s.io/apiserver v0.0.0-20230907032102-ea59eb345547
+	k8s.io/client-go v0.0.0-20230907024014-53c02afd1b4c
+	k8s.io/code-generator v0.0.0-20230907021158-6699f387e934
+	k8s.io/component-base v0.0.0-20230907030149-8deb88b04e9a
 	k8s.io/kube-openapi v0.0.0-20230717233707-2695361300d9
 	k8s.io/utils v0.0.0-20230406110748-d93618cff8a2
-	sigs.k8s.io/structured-merge-diff/v4 v4.2.3
+	sigs.k8s.io/structured-merge-diff/v4 v4.3.0
 )
 
 require (
@@ -99,21 +99,21 @@ require (
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.0.0-20230901043045-d68a18351c00 // indirect
+	k8s.io/api v0.0.0-20230907022840-7f63b7b88cb6 // indirect
 	k8s.io/gengo v0.0.0-20220902162205-c0856e24416d // indirect
 	k8s.io/klog/v2 v2.100.1 // indirect
-	k8s.io/kms v0.0.0-20230901053518-2b0cdaf495d2 // indirect
+	k8s.io/kms v0.0.0-20230907031232-abbc44379a34 // indirect
 	sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.1.2 // indirect
 	sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd // indirect
 	sigs.k8s.io/yaml v1.3.0 // indirect
 )
 
 replace (
-	k8s.io/api => k8s.io/api v0.0.0-20230901043045-d68a18351c00
-	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20230901041540-0d057e543013
-	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20230901054518-e74fcfcb78ed
-	k8s.io/client-go => k8s.io/client-go v0.0.0-20230901044724-5e5ba6b91d64
-	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20230829153205-3ba1295f0ae7
-	k8s.io/component-base => k8s.io/component-base v0.0.0-20230901051635-6a97c85314ee
-	k8s.io/kms => k8s.io/kms v0.0.0-20230901053518-2b0cdaf495d2
+	k8s.io/api => k8s.io/api v0.0.0-20230907022840-7f63b7b88cb6
+	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20230907021858-82362bc34ae0
+	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20230907032102-ea59eb345547
+	k8s.io/client-go => k8s.io/client-go v0.0.0-20230907024014-53c02afd1b4c
+	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20230907021158-6699f387e934
+	k8s.io/component-base => k8s.io/component-base v0.0.0-20230907030149-8deb88b04e9a
+	k8s.io/kms => k8s.io/kms v0.0.0-20230907031232-abbc44379a34
 )
