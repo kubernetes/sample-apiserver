@@ -8,7 +8,7 @@ require (
 	github.com/google/gofuzz v1.2.0
 	github.com/spf13/cobra v1.7.0
 	k8s.io/apimachinery v0.0.0-20231024171030-c18d2bfed439
-	k8s.io/apiserver v0.0.0-20231024172923-fd3f799a6d07
+	k8s.io/apiserver v0.0.0-20231025052416-0e3cbbf0fbfb
 	k8s.io/client-go v0.0.0-20231024171543-e2e59f3539ef
 	k8s.io/code-generator v0.0.0-20231024034032-0f8102fa0710
 	k8s.io/component-base v0.0.0-20231024040035-12d4256eb135
@@ -31,7 +31,7 @@ require (
 	github.com/emicklei/go-restful/v3 v3.11.0 // indirect
 	github.com/evanphx/json-patch v4.12.0+incompatible // indirect
 	github.com/felixge/httpsnoop v1.0.3 // indirect
-	github.com/fsnotify/fsnotify v1.6.0 // indirect
+	github.com/fsnotify/fsnotify v1.7.0 // indirect
 	github.com/go-logr/logr v1.2.4 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-openapi/jsonpointer v0.19.6 // indirect
@@ -99,7 +99,7 @@ require (
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.0.0-20231023194506-bfce70f1b5c8 // indirect
+	k8s.io/api v0.0.0-20231024171239-3942070de4fb // indirect
 	k8s.io/gengo v0.0.0-20230829151522-9cce18d56c01 // indirect
 	k8s.io/klog/v2 v2.100.1 // indirect
 	k8s.io/kms v0.0.0-20231023195612-e039984be9c9 // indirect
@@ -109,9 +109,9 @@ require (
 )
 
 replace (
-	k8s.io/api => k8s.io/api v0.0.0-20231023194506-bfce70f1b5c8
+	k8s.io/api => k8s.io/api v0.0.0-20231024171239-3942070de4fb
 	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20231024171030-c18d2bfed439
-	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20231024172923-fd3f799a6d07
+	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20231025052416-0e3cbbf0fbfb
 	k8s.io/client-go => k8s.io/client-go v0.0.0-20231024171543-e2e59f3539ef
 	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20231024034032-0f8102fa0710
 	k8s.io/component-base => k8s.io/component-base v0.0.0-20231024040035-12d4256eb135
