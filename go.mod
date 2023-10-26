@@ -7,11 +7,11 @@ go 1.21.3
 require (
 	github.com/google/gofuzz v1.2.0
 	github.com/spf13/cobra v1.7.0
-	k8s.io/apimachinery v0.0.0
-	k8s.io/apiserver v0.0.0
-	k8s.io/client-go v0.0.0
-	k8s.io/code-generator v0.0.0
-	k8s.io/component-base v0.0.0
+	k8s.io/apimachinery v0.0.0-20231026091025-0785eb2fbd30
+	k8s.io/apiserver v0.0.0-20231026092725-b62f732b857a
+	k8s.io/client-go v0.0.0-20231026091529-4028f5ba6e18
+	k8s.io/code-generator v0.0.0-20231026090828-f0a605abe6c7
+	k8s.io/component-base v0.0.0-20231026092130-42e32587411a
 	k8s.io/kube-openapi v0.0.0-20231010175941-2dd684a91f00
 	k8s.io/utils v0.0.0-20230726121419-3b25d923346b
 	sigs.k8s.io/structured-merge-diff/v4 v4.3.0
@@ -98,22 +98,21 @@ require (
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.0.0 // indirect
+	k8s.io/api v0.0.0-20231026091235-25009ae79765 // indirect
 	k8s.io/gengo v0.0.0-20230829151522-9cce18d56c01 // indirect
 	k8s.io/klog/v2 v2.100.1 // indirect
-	k8s.io/kms v0.0.0 // indirect
+	k8s.io/kms v0.0.0-20231026092351-09e5bfe49485 // indirect
 	sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.28.0 // indirect
 	sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd // indirect
 	sigs.k8s.io/yaml v1.3.0 // indirect
 )
 
 replace (
-	k8s.io/api => ../api
-	k8s.io/apimachinery => ../apimachinery
-	k8s.io/apiserver => ../apiserver
-	k8s.io/client-go => ../client-go
-	k8s.io/code-generator => ../code-generator
-	k8s.io/component-base => ../component-base
-	k8s.io/kms => ../kms
-	k8s.io/sample-apiserver => ../sample-apiserver
+	k8s.io/api => k8s.io/api v0.0.0-20231026091235-25009ae79765
+	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20231026091025-0785eb2fbd30
+	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20231026092725-b62f732b857a
+	k8s.io/client-go => k8s.io/client-go v0.0.0-20231026091529-4028f5ba6e18
+	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20231026090828-f0a605abe6c7
+	k8s.io/component-base => k8s.io/component-base v0.0.0-20231026092130-42e32587411a
+	k8s.io/kms => k8s.io/kms v0.0.0-20231026092351-09e5bfe49485
 )
