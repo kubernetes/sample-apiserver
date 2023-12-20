@@ -7,11 +7,11 @@ go 1.20
 require (
 	github.com/google/gofuzz v1.1.0
 	github.com/spf13/cobra v1.6.0
-	k8s.io/apimachinery v0.0.0-20231101131425-467db0e39959
-	k8s.io/apiserver v0.0.0-20231218180344-d594b32f2d99
-	k8s.io/client-go v0.0.0-20231218173536-6e852562a5e3
-	k8s.io/code-generator v0.0.0-20231218141912-f5987873bc34
-	k8s.io/component-base v0.0.0-20231218174708-68214f1bef46
+	k8s.io/apimachinery v0.27.9
+	k8s.io/apiserver v0.27.9
+	k8s.io/client-go v0.27.9
+	k8s.io/code-generator v0.27.9
+	k8s.io/component-base v0.27.9
 	k8s.io/kube-openapi v0.0.0-20230501164219-8b0f38b5fd1f
 	k8s.io/utils v0.0.0-20230209194617-a36077c30491
 	sigs.k8s.io/structured-merge-diff/v4 v4.2.3
@@ -99,21 +99,21 @@ require (
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.0.0-20231218172644-61e3b8f66f95 // indirect
+	k8s.io/api v0.27.9 // indirect
 	k8s.io/gengo v0.0.0-20220902162205-c0856e24416d // indirect
 	k8s.io/klog/v2 v2.90.1 // indirect
-	k8s.io/kms v0.0.0-20231101135256-b91162d4057f // indirect
+	k8s.io/kms v0.27.9 // indirect
 	sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.1.2 // indirect
 	sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd // indirect
 	sigs.k8s.io/yaml v1.3.0 // indirect
 )
 
 replace (
-	k8s.io/api => k8s.io/api v0.0.0-20231218172644-61e3b8f66f95
-	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20231101131425-467db0e39959
-	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20231218180344-d594b32f2d99
-	k8s.io/client-go => k8s.io/client-go v0.0.0-20231218173536-6e852562a5e3
-	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20231218141912-f5987873bc34
-	k8s.io/component-base => k8s.io/component-base v0.0.0-20231218174708-68214f1bef46
-	k8s.io/kms => k8s.io/kms v0.0.0-20231101135256-b91162d4057f
+	k8s.io/api => k8s.io/api v0.27.9
+	k8s.io/apimachinery => k8s.io/apimachinery v0.27.9
+	k8s.io/apiserver => k8s.io/apiserver v0.27.9
+	k8s.io/client-go => k8s.io/client-go v0.27.9
+	k8s.io/code-generator => k8s.io/code-generator v0.27.9
+	k8s.io/component-base => k8s.io/component-base v0.27.9
+	k8s.io/kms => k8s.io/kms v0.27.9
 )
