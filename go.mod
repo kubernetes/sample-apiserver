@@ -7,11 +7,11 @@ go 1.21
 require (
 	github.com/google/gofuzz v1.2.0
 	github.com/spf13/cobra v1.7.0
-	k8s.io/apimachinery v0.0.0-20240118211637-942edc444171
-	k8s.io/apiserver v0.0.0-20240118213451-da46024a72a1
-	k8s.io/client-go v0.0.0-20240118212157-7e651e598d76
-	k8s.io/code-generator v0.0.0-20240118211431-aed827f10d73
-	k8s.io/component-base v0.0.0-20240118212832-45f72f64bad7
+	k8s.io/apimachinery v0.0.0-20240118211638-f14778da5523
+	k8s.io/apiserver v0.0.0-20240118213452-9f9c32c4ac37
+	k8s.io/client-go v0.0.0-20240118212159-ffe7bf60ebbf
+	k8s.io/code-generator v0.0.0-20240118211431-5ad9f43b6468
+	k8s.io/component-base v0.0.0-20240118212833-be1cabd1bd81
 	k8s.io/kube-openapi v0.0.0-20231113174909-778a5567bc1e
 	k8s.io/utils v0.0.0-20230726121419-3b25d923346b
 	sigs.k8s.io/structured-merge-diff/v4 v4.4.1
@@ -97,9 +97,9 @@ require (
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.0.0-20240118211852-add4d306444d // indirect
+	k8s.io/api v0.0.0-20240118211853-d5724e467262 // indirect
 	k8s.io/gengo v0.0.0-20230829151522-9cce18d56c01 // indirect
-	k8s.io/klog/v2 v2.120.0 // indirect
+	k8s.io/klog/v2 v2.120.1 // indirect
 	k8s.io/kms v0.0.0-20231220174908-0e979309a09f // indirect
 	sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.28.0 // indirect
 	sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd // indirect
@@ -107,11 +107,11 @@ require (
 )
 
 replace (
-	k8s.io/api => k8s.io/api v0.0.0-20240118211852-add4d306444d
-	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20240118211637-942edc444171
-	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20240118213451-da46024a72a1
-	k8s.io/client-go => k8s.io/client-go v0.0.0-20240118212157-7e651e598d76
-	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20240118211431-aed827f10d73
-	k8s.io/component-base => k8s.io/component-base v0.0.0-20240118212832-45f72f64bad7
+	k8s.io/api => k8s.io/api v0.0.0-20240118211853-d5724e467262
+	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20240118211638-f14778da5523
+	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20240118213452-9f9c32c4ac37
+	k8s.io/client-go => k8s.io/client-go v0.0.0-20240118212159-ffe7bf60ebbf
+	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20240118211431-5ad9f43b6468
+	k8s.io/component-base => k8s.io/component-base v0.0.0-20240118212833-be1cabd1bd81
 	k8s.io/kms => k8s.io/kms v0.0.0-20231220174908-0e979309a09f
 )
