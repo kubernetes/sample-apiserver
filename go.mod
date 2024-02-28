@@ -7,11 +7,11 @@ go 1.21
 require (
 	github.com/google/gofuzz v1.2.0
 	github.com/spf13/cobra v1.7.0
-	k8s.io/apimachinery v0.0.0-20240221202133-0f2e9357997f
-	k8s.io/apiserver v0.0.0-20240222203853-f08c74c02dec
-	k8s.io/client-go v0.0.0-20240221202651-8c4efe8d079e
-	k8s.io/code-generator v0.0.0-20240226041948-011e65eea8da
-	k8s.io/component-base v0.0.0-20240221203243-4876638a4138
+	k8s.io/apimachinery v0.0.0
+	k8s.io/apiserver v0.0.0
+	k8s.io/client-go v0.0.0
+	k8s.io/code-generator v0.0.0
+	k8s.io/component-base v0.0.0
 	k8s.io/kube-openapi v0.0.0-20231113174909-778a5567bc1e
 	k8s.io/utils v0.0.0-20230726121419-3b25d923346b
 	sigs.k8s.io/structured-merge-diff/v4 v4.4.1
@@ -40,7 +40,7 @@ require (
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
-	github.com/google/cel-go v0.17.7 // indirect
+	github.com/google/cel-go v0.17.8 // indirect
 	github.com/google/gnostic-models v0.6.8 // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/uuid v1.3.0 // indirect
@@ -97,21 +97,22 @@ require (
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.0.0-20240221202343-ffee488e7bd8 // indirect
+	k8s.io/api v0.0.0 // indirect
 	k8s.io/gengo v0.0.0-20230829151522-9cce18d56c01 // indirect
 	k8s.io/klog/v2 v2.120.1 // indirect
-	k8s.io/kms v0.0.0-20240221203502-15393f39a6fb // indirect
+	k8s.io/kms v0.0.0 // indirect
 	sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.29.0 // indirect
 	sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd // indirect
 	sigs.k8s.io/yaml v1.3.0 // indirect
 )
 
 replace (
-	k8s.io/api => k8s.io/api v0.0.0-20240221202343-ffee488e7bd8
-	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20240221202133-0f2e9357997f
-	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20240222203853-f08c74c02dec
-	k8s.io/client-go => k8s.io/client-go v0.0.0-20240221202651-8c4efe8d079e
-	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20240226041948-011e65eea8da
-	k8s.io/component-base => k8s.io/component-base v0.0.0-20240221203243-4876638a4138
-	k8s.io/kms => k8s.io/kms v0.0.0-20240221203502-15393f39a6fb
+	k8s.io/api => ../api
+	k8s.io/apimachinery => ../apimachinery
+	k8s.io/apiserver => ../apiserver
+	k8s.io/client-go => ../client-go
+	k8s.io/code-generator => ../code-generator
+	k8s.io/component-base => ../component-base
+	k8s.io/kms => ../kms
+	k8s.io/sample-apiserver => ../sample-apiserver
 )
