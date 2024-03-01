@@ -8,10 +8,10 @@ require (
 	github.com/google/gofuzz v1.1.0
 	github.com/spf13/cobra v1.6.0
 	k8s.io/apimachinery v0.0.0-20240110172257-b26ebde6b493
-	k8s.io/apiserver v0.0.0-20240110182644-af3a0b1232fe
+	k8s.io/apiserver v0.0.0-20240111134132-94d3205e4980
 	k8s.io/client-go v0.0.0-20240110174155-eb811c875420
 	k8s.io/code-generator v0.0.0-20240110171613-f8ddb64b1d28
-	k8s.io/component-base v0.0.0-20240110180722-c0e3d65b3de0
+	k8s.io/component-base v0.0.0-20240209102103-aa5943b11fa0
 	k8s.io/kube-openapi v0.0.0-20230501164219-8b0f38b5fd1f
 	k8s.io/utils v0.0.0-20230209194617-a36077c30491
 	sigs.k8s.io/structured-merge-diff/v4 v4.2.3
@@ -111,9 +111,9 @@ require (
 replace (
 	k8s.io/api => k8s.io/api v0.0.0-20240110173104-766149202695
 	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20240110172257-b26ebde6b493
-	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20240110182644-af3a0b1232fe
+	k8s.io/apiserver => k8s.io/apiserver v0.0.0-20240111134132-94d3205e4980
 	k8s.io/client-go => k8s.io/client-go v0.0.0-20240110174155-eb811c875420
 	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20240110171613-f8ddb64b1d28
-	k8s.io/component-base => k8s.io/component-base v0.0.0-20240110180722-c0e3d65b3de0
+	k8s.io/component-base => k8s.io/component-base v0.0.0-20240209102103-aa5943b11fa0
 	k8s.io/kms => k8s.io/kms v0.0.0-20240110181541-4b9fbeb090cb
 )
