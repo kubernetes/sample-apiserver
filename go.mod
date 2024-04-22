@@ -9,8 +9,8 @@ require (
 	github.com/spf13/cobra v1.7.0
 	k8s.io/apimachinery v0.0.0-20240418133208-0ee3e6150890
 	k8s.io/apiserver v0.0.0-20240422174816-1c1727b297a6
-	k8s.io/client-go v0.0.0-20240422173645-5b2b83af7254
-	k8s.io/code-generator v0.0.0-20240422141125-5ae098a374a1
+	k8s.io/client-go v0.0.0-20240423013647-02e371e43736
+	k8s.io/code-generator v0.0.0-20240423014140-a3972270948f
 	k8s.io/component-base v0.0.0-20240422174256-1d5dec5f8b14
 	k8s.io/kube-openapi v0.0.0-20240228011516-70dd3763d340
 	k8s.io/utils v0.0.0-20230726121419-3b25d923346b
