@@ -8,7 +8,7 @@ require (
 	github.com/google/gofuzz v1.2.0
 	github.com/spf13/cobra v1.8.0
 	k8s.io/apimachinery v0.0.0-20240530220031-733a95eb52c3
-	k8s.io/apiserver v0.0.0-20240531005652-bc08936e9805
+	k8s.io/apiserver v0.0.0-20240531045124-948099599c42
 	k8s.io/client-go v0.0.0-20240531003927-52e5651101ed
 	k8s.io/code-generator v0.0.0-20240531004635-2ec7af029e9a
 	k8s.io/component-base v0.0.0-20240531004836-3486e8d18caf
