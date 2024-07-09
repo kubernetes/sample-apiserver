@@ -8,8 +8,8 @@ require (
 	github.com/google/gofuzz v1.2.0
 	github.com/spf13/cobra v1.8.1
 	github.com/stretchr/testify v1.9.0
-	k8s.io/apimachinery v0.0.0-20240707022528-c1f240355706
-	k8s.io/apiserver v0.0.0-20240707025103-3712259b242b
+	k8s.io/apimachinery v0.0.0-20240708182526-e126c655b814
+	k8s.io/apiserver v0.0.0-20240709024407-ad20d53f30fb
 	k8s.io/client-go v0.0.0-20240707023231-354ed1bc9f1f
 	k8s.io/code-generator v0.0.0-20240707024104-3f99c9a4a5f4
 	k8s.io/component-base v0.0.0-20240707024307-c741ec442cc3
