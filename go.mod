@@ -8,11 +8,11 @@ require (
 	github.com/google/gofuzz v1.2.0
 	github.com/spf13/cobra v1.8.1
 	github.com/stretchr/testify v1.9.0
-	k8s.io/apimachinery v0.0.0-20240713182533-d7e1c5311169
-	k8s.io/apiserver v0.0.0-20240713185020-2e2bf0d3280c
-	k8s.io/client-go v0.0.0-20240713183232-34751e103ae1
-	k8s.io/code-generator v0.0.0-20240713184033-e788e07fd2e9
-	k8s.io/component-base v0.0.0-20240713184224-e801fe99c4f5
+	k8s.io/apimachinery v0.31.0-beta.0
+	k8s.io/apiserver v0.31.0-beta.0
+	k8s.io/client-go v0.31.0-beta.0
+	k8s.io/code-generator v0.31.0-beta.0
+	k8s.io/component-base v0.31.0-beta.0
 	k8s.io/kube-openapi v0.0.0-20240228011516-70dd3763d340
 	k8s.io/utils v0.0.0-20240711033017-18e509b52bc8
 	sigs.k8s.io/structured-merge-diff/v4 v4.4.1
@@ -98,10 +98,10 @@ require (
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.0.0-20240713182828-fc8a03c10db3 // indirect
+	k8s.io/api v0.31.0-beta.0 // indirect
 	k8s.io/gengo/v2 v2.0.0-20240228010128-51d4e06bde70 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
-	k8s.io/kms v0.0.0-20240707024556-6e3528fa4c33 // indirect
+	k8s.io/kms v0.31.0-beta.0 // indirect
 	sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.30.3 // indirect
 	sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd // indirect
 	sigs.k8s.io/yaml v1.4.0 // indirect
