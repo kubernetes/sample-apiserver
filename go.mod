@@ -12,7 +12,7 @@ require (
 	k8s.io/apiserver v0.0.0-20240725212559-c8097e3f30c7
 	k8s.io/client-go v0.0.0-20240725210749-4536e5a391f8
 	k8s.io/code-generator v0.0.0-20240725171131-e64302e0e663
-	k8s.io/component-base v0.0.0-20240725171331-763ac17e073e
+	k8s.io/component-base v0.0.0-20240726211132-95f30f136fb2
 	k8s.io/kube-openapi v0.0.0-20240228011516-70dd3763d340
 	k8s.io/utils v0.0.0-20240711033017-18e509b52bc8
 	sigs.k8s.io/structured-merge-diff/v4 v4.4.1
