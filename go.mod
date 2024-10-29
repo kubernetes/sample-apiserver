@@ -11,10 +11,10 @@ require (
 	github.com/spf13/cobra v1.8.1
 	github.com/stretchr/testify v1.9.0
 	k8s.io/apimachinery v0.0.0-20241025000453-124c262107b0
-	k8s.io/apiserver v0.0.0-20241029184940-14c29cd5d775
+	k8s.io/apiserver v0.0.0-20241029184942-918f35033989
 	k8s.io/client-go v0.0.0-20241029174614-a887e579c095
 	k8s.io/code-generator v0.0.0-20241028221908-930e4b7216c3
-	k8s.io/component-base v0.0.0-20241026030853-5011e6d3ee9a
+	k8s.io/component-base v0.0.0-20241029182107-908934093ad7
 	k8s.io/kube-openapi v0.0.0-20240827152857-f7e401e7b4c2
 	k8s.io/utils v0.0.0-20240711033017-18e509b52bc8
 	sigs.k8s.io/structured-merge-diff/v4 v4.4.1
@@ -43,6 +43,7 @@ require (
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
+	github.com/google/btree v1.0.1 // indirect
 	github.com/google/cel-go v0.21.0 // indirect
 	github.com/google/gnostic-models v0.6.8 // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
