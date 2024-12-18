@@ -12,11 +12,11 @@ require (
 	github.com/google/gofuzz v1.2.0
 	github.com/spf13/cobra v1.8.1
 	github.com/stretchr/testify v1.9.0
-	k8s.io/apimachinery v0.0.0-20241214014415-767f17a6afea
-	k8s.io/apiserver v0.0.0-20241214021008-f5b4a603791a
-	k8s.io/client-go v0.0.0-20241214015128-61ee2c5802c7
+	k8s.io/apimachinery v0.0.0-20241218005452-a1a247aa259f
+	k8s.io/apiserver v0.0.0-20241218060408-c7fb780f6be8
+	k8s.io/client-go v0.0.0-20241215015103-67da6d1a4174
 	k8s.io/code-generator v0.0.0-20241214015924-a377fc713557
-	k8s.io/component-base v0.0.0-20241214020124-b7fbd0d55e44
+	k8s.io/component-base v0.0.0-20241218055610-6f2a8d010d0b
 	k8s.io/kube-openapi v0.0.0-20241212222426-2c72e554b1e7
 	k8s.io/utils v0.0.0-20241104100929-3ea5e8cea738
 	sigs.k8s.io/structured-merge-diff/v4 v4.4.2
