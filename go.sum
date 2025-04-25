@@ -27,8 +27,8 @@ github.com/emicklei/go-restful/v3 v3.11.0 h1:rAQeMHw1c7zTmncogyy8VvRZwtkmkZ4FxER
 github.com/emicklei/go-restful/v3 v3.11.0/go.mod h1:6n3XBCmQQb25CM2LCACGz8ukIrRry+4bhvbpWn3mrbc=
 github.com/felixge/httpsnoop v1.0.4 h1:NFTV2Zj1bL4mc9sqWACXbQFVBBg2W3GPvqp8/ESS2Wg=
 github.com/felixge/httpsnoop v1.0.4/go.mod h1:m8KPJKqk1gH5J9DgRY2ASl2lWCfGKXixSwevea8zH2U=
-github.com/fsnotify/fsnotify v1.7.0 h1:8JEhPFa5W2WU7YfeZzPNqzMP6Lwt7L2715Ggo0nosvA=
-github.com/fsnotify/fsnotify v1.7.0/go.mod h1:40Bi/Hjc2AVfZrqy+aj+yEI+/bRxZnMJyTJwOpGvigM=
+github.com/fsnotify/fsnotify v1.9.0 h1:2Ml+OJNzbYCTzsxtv8vKSFD9PbJjmhYF14k/jKC7S9k=
+github.com/fsnotify/fsnotify v1.9.0/go.mod h1:8jBTzvmWwFyi3Pb8djgCCO5IBqzKJ/Jwo8TRcHyHii0=
 github.com/fxamacker/cbor/v2 v2.7.0 h1:iM5WgngdRBanHcxugY4JySA0nk1wZorNOpTgCMedv5E=
 github.com/fxamacker/cbor/v2 v2.7.0/go.mod h1:pxXPTn3joSm21Gbwsv0w9OSA2y1HFR9qXEeXQVeNoDQ=
 github.com/go-logr/logr v1.2.2/go.mod h1:jdQByPbusPIv2/zmleS9BjJVeZ6kBagPoEUsqbVz/1A=
@@ -268,12 +268,12 @@ gopkg.in/natefinch/lumberjack.v2 v2.2.1/go.mod h1:YD8tP3GAjkrDg1eZH7EGmyESg/lsYs
 gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
 gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
 gopkg.in/yaml.v3 v3.0.1/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
-k8s.io/api v0.0.0-20250425021431-9aab596060e1 h1:8vmKELg2cJUXdXJMXlJ+nfNT8pLxBEEDAbIl4rYBbfk=
-k8s.io/api v0.0.0-20250425021431-9aab596060e1/go.mod h1:PEZtCkQxQ/XohDih7vofdKAdIIiS9kFruj1lF/EUMLs=
+k8s.io/api v0.0.0-20250425132438-7421a41940e1 h1:mRwXqVpiOQ15p5WGIu7+p2Jg7nzo0xzJusziieVZP2o=
+k8s.io/api v0.0.0-20250425132438-7421a41940e1/go.mod h1:PEZtCkQxQ/XohDih7vofdKAdIIiS9kFruj1lF/EUMLs=
 k8s.io/apimachinery v0.0.0-20250423231524-954960919938 h1:yoIMbzO4of8M4auqFKjNsbFlHJG9jCuoD+4sUJUPdn4=
 k8s.io/apimachinery v0.0.0-20250423231524-954960919938/go.mod h1:tJ77gZ1upNffdrQVxg+oIoEmvSIyTbz3RIPi9HKw+nw=
-k8s.io/apiserver v0.0.0-20250425113608-201e7749f225 h1:IwMzdVWiwKG8WoSUPAozXYXtiheRE786AbsHcqfWCOA=
-k8s.io/apiserver v0.0.0-20250425113608-201e7749f225/go.mod h1:MlPqUot2wqGVCGGrXhuVFd1hf48umZ2P1hf2FLA4ybE=
+k8s.io/apiserver v0.0.0-20250425193703-a50d13fe86a6 h1:NOxJjfhQytUlEUCJ0sjx3ztvABBvy5/o+S4LkMtK5OE=
+k8s.io/apiserver v0.0.0-20250425193703-a50d13fe86a6/go.mod h1:hS2BGDu4J9ZQjLfT7WGL0ocj1JKluKFNj5SH3br5jDY=
 k8s.io/client-go v0.0.0-20250424231738-17ad09eb27d1 h1:s+mXJdtZJ/Vytj91hdsQK8yaNWT4bqgX/uIcxMtITbM=
 k8s.io/client-go v0.0.0-20250424231738-17ad09eb27d1/go.mod h1:PpQYJuVviDSWBRVDFJ7g5oEAudZ+Aiz0bTIBQBVU2qo=
 k8s.io/code-generator v0.0.0-20250423233509-2989947a8d78 h1:OlSf4Kxsjlldrbdj1BZzLoAs+wtWFzS7B/4IDgbr6bY=
