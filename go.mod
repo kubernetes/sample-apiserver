@@ -10,10 +10,10 @@ require (
 	github.com/spf13/cobra v1.8.1
 	github.com/stretchr/testify v1.10.0
 	k8s.io/apimachinery v0.0.0-20250516032956-da3bba90543c
-	k8s.io/apiserver v0.0.0-20250520155923-2055ba24cd4b
-	k8s.io/client-go v0.0.0-20250520193707-cd9e9393ec86
+	k8s.io/apiserver v0.0.0-20250526140635-4b98f13de730
+	k8s.io/client-go v0.0.0-20250526134158-e75871c73119
 	k8s.io/code-generator v0.0.0-20250520113907-ae11bdb9bcf5
-	k8s.io/component-base v0.0.0-20250520155120-c849f9a4b209
+	k8s.io/component-base v0.0.0-20250524015836-6ea5fdfa0cf4
 	k8s.io/kube-openapi v0.0.0-20250318190949-c8a335a9a2ff
 	k8s.io/utils v0.0.0-20250502105355-0f33e8f1c979
 	sigs.k8s.io/randfill v1.0.0
