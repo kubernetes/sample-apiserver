@@ -9,11 +9,11 @@ godebug default=go1.24
 require (
 	github.com/spf13/cobra v1.9.1
 	github.com/stretchr/testify v1.10.0
-	k8s.io/apimachinery v0.0.0-20250606195423-d5745c2f38f8
-	k8s.io/apiserver v0.0.0-20250610201405-8a7311dce3ce
-	k8s.io/client-go v0.0.0-20250609120107-9638111dc7f5
-	k8s.io/code-generator v0.0.0-20250606201726-8b776bad901b
-	k8s.io/component-base v0.0.0-20250610200514-42a6c90f512f
+	k8s.io/apimachinery v0.0.0
+	k8s.io/apiserver v0.0.0
+	k8s.io/client-go v0.0.0
+	k8s.io/code-generator v0.0.0
+	k8s.io/component-base v0.0.0
 	k8s.io/kube-openapi v0.0.0-20250318190949-c8a335a9a2ff
 	k8s.io/utils v0.0.0-20250604170112-4c0f3b243397
 	sigs.k8s.io/randfill v1.0.0
@@ -66,9 +66,9 @@ require (
 	github.com/spf13/pflag v1.0.6 // indirect
 	github.com/stoewer/go-strcase v1.3.0 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
-	go.etcd.io/etcd/api/v3 v3.6.0 // indirect
-	go.etcd.io/etcd/client/pkg/v3 v3.6.0 // indirect
-	go.etcd.io/etcd/client/v3 v3.6.0 // indirect
+	go.etcd.io/etcd/api/v3 v3.6.1 // indirect
+	go.etcd.io/etcd/client/pkg/v3 v3.6.1 // indirect
+	go.etcd.io/etcd/client/v3 v3.6.1 // indirect
 	go.opentelemetry.io/auto/sdk v1.1.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.60.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.58.0 // indirect
@@ -100,11 +100,21 @@ require (
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.0.0-20250610195658-be9d9f7dc6a8 // indirect
+	k8s.io/api v0.0.0 // indirect
 	k8s.io/gengo/v2 v2.0.0-20250604051438-85fd79dbfd9f // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
-	k8s.io/kms v0.0.0-20250527175117-e6cd4d7331a4 // indirect
+	k8s.io/kms v0.0.0 // indirect
 	sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.31.2 // indirect
 	sigs.k8s.io/json v0.0.0-20241010143419-9aa6b5e7a4b3 // indirect
 	sigs.k8s.io/yaml v1.4.0 // indirect
+)
+
+replace (
+	k8s.io/api => ../api
+	k8s.io/apimachinery => ../apimachinery
+	k8s.io/apiserver => ../apiserver
+	k8s.io/client-go => ../client-go
+	k8s.io/code-generator => ../code-generator
+	k8s.io/component-base => ../component-base
+	k8s.io/kms => ../kms
 )
