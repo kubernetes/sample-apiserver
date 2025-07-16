@@ -9,11 +9,11 @@ godebug default=go1.24
 require (
 	github.com/spf13/cobra v1.9.1
 	github.com/stretchr/testify v1.10.0
-	k8s.io/apimachinery v0.0.0-20250717170243-9b71f293aa0c
-	k8s.io/apiserver v0.0.0-20250717172916-cdcc918aad94
-	k8s.io/client-go v0.0.0-20250717170920-715e46ed5728
-	k8s.io/code-generator v0.0.0-20250717171935-80736d7b4bd3
-	k8s.io/component-base v0.0.0-20250717172125-4e07767df717
+	k8s.io/apimachinery v0.0.0
+	k8s.io/apiserver v0.0.0
+	k8s.io/client-go v0.0.0
+	k8s.io/code-generator v0.0.0
+	k8s.io/component-base v0.0.0
 	k8s.io/kube-openapi v0.0.0-20250710124328-f3f2b991d03b
 	k8s.io/utils v0.0.0-20250604170112-4c0f3b243397
 	sigs.k8s.io/randfill v1.0.0
@@ -21,7 +21,7 @@ require (
 )
 
 require (
-	cel.dev/expr v0.23.1 // indirect
+	cel.dev/expr v0.24.0 // indirect
 	github.com/NYTimes/gziphandler v1.1.1 // indirect
 	github.com/antlr4-go/antlr/v4 v4.13.0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
@@ -43,7 +43,7 @@ require (
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/google/btree v1.1.3 // indirect
-	github.com/google/cel-go v0.25.0 // indirect
+	github.com/google/cel-go v0.26.0 // indirect
 	github.com/google/gnostic-models v0.7.0 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
@@ -102,11 +102,21 @@ require (
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.0.0-20250717170527-b7a83e2941aa // indirect
+	k8s.io/api v0.0.0 // indirect
 	k8s.io/gengo/v2 v2.0.0-20250604051438-85fd79dbfd9f // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
-	k8s.io/kms v0.0.0-20250716213631-bbefe5cb7a2e // indirect
+	k8s.io/kms v0.0.0 // indirect
 	sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.31.2 // indirect
 	sigs.k8s.io/json v0.0.0-20241014173422-cfa47c3a1cc8 // indirect
 	sigs.k8s.io/yaml v1.5.0 // indirect
+)
+
+replace (
+	k8s.io/api => ../api
+	k8s.io/apimachinery => ../apimachinery
+	k8s.io/apiserver => ../apiserver
+	k8s.io/client-go => ../client-go
+	k8s.io/code-generator => ../code-generator
+	k8s.io/component-base => ../component-base
+	k8s.io/kms => ../kms
 )
