@@ -9,11 +9,11 @@ godebug default=go1.24
 require (
 	github.com/spf13/cobra v1.9.1
 	github.com/stretchr/testify v1.10.0
-	k8s.io/apimachinery v0.0.0-20250715090235-1ebcba2516a6
-	k8s.io/apiserver v0.0.0-20250715092944-09d5e11cc197
-	k8s.io/client-go v0.0.0-20250715090929-f78427e36774
-	k8s.io/code-generator v0.0.0-20250715091943-73dcfb33f8eb
-	k8s.io/component-base v0.0.0-20250715092145-ef3b5b450d5d
+	k8s.io/apimachinery v0.0.0-20250716210236-a75d3d8a0f22
+	k8s.io/apiserver v0.0.0-20250717052119-f05b6859944a
+	k8s.io/client-go v0.0.0-20250717090920-a21e7a8bf0d6
+	k8s.io/code-generator v0.0.0-20250717091922-907f0a108c1c
+	k8s.io/component-base v0.0.0-20250715211315-7e84d47542a1
 	k8s.io/kube-openapi v0.0.0-20250710124328-f3f2b991d03b
 	k8s.io/utils v0.0.0-20250604170112-4c0f3b243397
 	sigs.k8s.io/randfill v1.0.0
@@ -105,7 +105,7 @@ require (
 	k8s.io/api v0.0.0-20250715090528-7da28ad7db85 // indirect
 	k8s.io/gengo/v2 v2.0.0-20250604051438-85fd79dbfd9f // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
-	k8s.io/kms v0.0.0-20250701212550-c0cb85aa532f // indirect
+	k8s.io/kms v0.0.0-20250716213631-bbefe5cb7a2e // indirect
 	sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.31.2 // indirect
 	sigs.k8s.io/json v0.0.0-20241014173422-cfa47c3a1cc8 // indirect
 	sigs.k8s.io/yaml v1.5.0 // indirect
