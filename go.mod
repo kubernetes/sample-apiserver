@@ -105,7 +105,7 @@ require (
 	k8s.io/api v0.0.0-20250725104527-a5cc2d7de38d // indirect
 	k8s.io/gengo/v2 v2.0.0-20250604051438-85fd79dbfd9f // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
-	k8s.io/kms v0.0.0-20250716213631-bbefe5cb7a2e // indirect
+	k8s.io/kms v0.0.0-20250808195814-fdcaab077c28 // indirect
 	sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.31.2 // indirect
 	sigs.k8s.io/json v0.0.0-20241014173422-cfa47c3a1cc8 // indirect
 	sigs.k8s.io/yaml v1.6.0 // indirect

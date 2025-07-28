@@ -286,8 +286,8 @@ k8s.io/gengo/v2 v2.0.0-20250604051438-85fd79dbfd9f h1:SLb+kxmzfA87x4E4brQzB33VBb
 k8s.io/gengo/v2 v2.0.0-20250604051438-85fd79dbfd9f/go.mod h1:EJykeLsmFC60UQbYJezXkEsG2FLrt0GPNkU5iK5GWxU=
 k8s.io/klog/v2 v2.130.1 h1:n9Xl7H1Xvksem4KFG4PYbdQCQxqc/tTUyrgXaOhHSzk=
 k8s.io/klog/v2 v2.130.1/go.mod h1:3Jpz1GvMt720eyJH1ckRHK1EDfpxISzJ7I9OYgaDtPE=
-k8s.io/kms v0.0.0-20250716213631-bbefe5cb7a2e h1:x1L/FfTWigDAx+W8RaUFi7qeHlE0gjX6+HqwMVz7h3Q=
-k8s.io/kms v0.0.0-20250716213631-bbefe5cb7a2e/go.mod h1:SKJNbZX2eJwX2/wmF4lZnp4nCVJXJ5Bx4N+SN/atd2g=
+k8s.io/kms v0.0.0-20250808195814-fdcaab077c28 h1:SaJZ90UgT9ZgjL6+LMnP3Wg46EYNAYqx3CDLNuyTJA4=
+k8s.io/kms v0.0.0-20250808195814-fdcaab077c28/go.mod h1:SKJNbZX2eJwX2/wmF4lZnp4nCVJXJ5Bx4N+SN/atd2g=
 k8s.io/kube-openapi v0.0.0-20250710124328-f3f2b991d03b h1:MloQ9/bdJyIu9lb1PzujOPolHyvO06MXG5TUIj2mNAA=
 k8s.io/kube-openapi v0.0.0-20250710124328-f3f2b991d03b/go.mod h1:UZ2yyWbFTpuhSbFhv24aGNOdoRdJZgsIObGBUaYVsts=
 k8s.io/utils v0.0.0-20250604170112-4c0f3b243397 h1:hwvWFiBzdWw1FhfY1FooPn3kzWuJ8tmbZBHi4zVsl1Y=
