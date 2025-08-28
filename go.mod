@@ -11,8 +11,8 @@ require (
 	github.com/stretchr/testify v1.10.0
 	k8s.io/apimachinery v0.0.0-20250828034517-c9de3735ccce
 	k8s.io/apiserver v0.0.0-20250828041434-ad4acd27c397
-	k8s.io/client-go v0.0.0-20250828035317-bccbbb3816a6
-	k8s.io/code-generator v0.0.0-20250828040325-23126097aee7
+	k8s.io/client-go v0.0.0-20250828075143-9d1c3580ed26
+	k8s.io/code-generator v0.0.0-20250828075556-1fe13b901cc4
 	k8s.io/component-base v0.0.0-20250828040533-e5d5aef6084e
 	k8s.io/kube-openapi v0.0.0-20250710124328-f3f2b991d03b
 	k8s.io/utils v0.0.0-20250604170112-4c0f3b243397
