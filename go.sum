@@ -276,10 +276,10 @@ k8s.io/apimachinery v0.0.0-20250829003346-d74026bbe3be h1:cv96JiuMEcVvWfNseDFT2n
 k8s.io/apimachinery v0.0.0-20250829003346-d74026bbe3be/go.mod h1:aXQFfw29vPFeqIZi6zVsJ6THktHXUdruiGSHQ0B8m5M=
 k8s.io/apiserver v0.0.0-20250828170351-204e1a5ae220 h1:mZlL1wlvBMgWiZ2erLxTLVMlTksIzQqZgeMc0JPCAug=
 k8s.io/apiserver v0.0.0-20250828170351-204e1a5ae220/go.mod h1:C9OJODuJTW7KUhp/FB03h0NLLLcjRNDUg6u434HawuA=
-k8s.io/client-go v0.0.0-20250828164049-29207cde88b2 h1:mc8Kgz2eChYRuhnbiJgD2arPAijoC5kSu6fc0rx4qvA=
-k8s.io/client-go v0.0.0-20250828164049-29207cde88b2/go.mod h1:Bct00wf8EXIrNJyxzODjal2se7sykJJFENRSMeZpzk4=
-k8s.io/code-generator v0.0.0-20250829004319-31ac4ba6aba9 h1:k+Uf3VMLuhGYPQj6qGnkaYXMKdX4rfuF67CdSaLqcbM=
-k8s.io/code-generator v0.0.0-20250829004319-31ac4ba6aba9/go.mod h1:Y+q6UrFrejIg0x/kLl1b2A2nIwnBnZhYdz7qNqJ/t6s=
+k8s.io/client-go v0.0.0-20250829165710-7b14b96bf8e4 h1:XX667PF8BrRk/EUiaVnXe1oPIDj6UH/QCe/rqVTz/lk=
+k8s.io/client-go v0.0.0-20250829165710-7b14b96bf8e4/go.mod h1:YrveOZP1e07XMVjhwyY367lgs5eEWWtJL+46MF6A3+0=
+k8s.io/code-generator v0.0.0-20250829165710-8ffd2350cfe6 h1:WCX9qCcwbptYPD2nZ+MxEIk5ictDeldrMgl8D2axEYI=
+k8s.io/code-generator v0.0.0-20250829165710-8ffd2350cfe6/go.mod h1:Y+q6UrFrejIg0x/kLl1b2A2nIwnBnZhYdz7qNqJ/t6s=
 k8s.io/component-base v0.0.0-20250828165502-ec7df7aab07f h1:QwDLdEt8WUyDLR/jKStm7ECcIZoeAW4NGSicX0SSoqQ=
 k8s.io/component-base v0.0.0-20250828165502-ec7df7aab07f/go.mod h1:vSOVdRMNT1vkiZCEDMrEUAmW2MkeLBjI/gJnRXKX2ZM=
 k8s.io/gengo/v2 v2.0.0-20250604051438-85fd79dbfd9f h1:SLb+kxmzfA87x4E4brQzB33VBbT2+x7Zq9ROIHmGn9Q=
