@@ -9,11 +9,11 @@ godebug default=go1.24
 require (
 	github.com/spf13/cobra v1.9.1
 	github.com/stretchr/testify v1.10.0
-	k8s.io/apimachinery v0.0.0-20250829003346-d74026bbe3be
-	k8s.io/apiserver v0.0.0-20250828170351-204e1a5ae220
-	k8s.io/client-go v0.0.0-20250829165710-7b14b96bf8e4
-	k8s.io/code-generator v0.0.0-20250829165710-8ffd2350cfe6
-	k8s.io/component-base v0.0.0-20250828165502-ec7df7aab07f
+	k8s.io/apimachinery v0.0.0-20250830163350-eb2c6e0d1ec4
+	k8s.io/apiserver v0.0.0-20250830170123-6db1a1e84ddd
+	k8s.io/client-go v0.0.0-20250830164107-2a8d855d0d97
+	k8s.io/code-generator v0.0.0-20250830165113-d60abde5a822
+	k8s.io/component-base v0.0.0-20250830165319-75dce96cfea7
 	k8s.io/kube-openapi v0.0.0-20250710124328-f3f2b991d03b
 	k8s.io/utils v0.0.0-20250604170112-4c0f3b243397
 	sigs.k8s.io/randfill v1.0.0
@@ -57,7 +57,6 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.3-0.20250322232337-35a7c28c31ee // indirect
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
-	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/prometheus/client_golang v1.22.0 // indirect
 	github.com/prometheus/client_model v0.6.2 // indirect
@@ -98,11 +97,11 @@ require (
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20250528174236-200df99c418a // indirect
 	google.golang.org/grpc v1.72.2 // indirect
 	google.golang.org/protobuf v1.36.6 // indirect
-	gopkg.in/evanphx/json-patch.v4 v4.12.0 // indirect
+	gopkg.in/evanphx/json-patch.v4 v4.13.0 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.0.0-20250828203631-658c42fece85 // indirect
+	k8s.io/api v0.0.0-20250830163657-b903cd06836a // indirect
 	k8s.io/gengo/v2 v2.0.0-20250604051438-85fd79dbfd9f // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
 	k8s.io/kms v0.0.0-20250828165801-c86d8f91ad08 // indirect
