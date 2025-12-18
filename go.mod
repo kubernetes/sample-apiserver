@@ -10,10 +10,10 @@ require (
 	github.com/spf13/cobra v1.10.0
 	github.com/stretchr/testify v1.11.1
 	k8s.io/apimachinery v0.0.0-20251218062153-94056eccfb12
-	k8s.io/apiserver v0.0.0-20251218144801-855be38953bd
+	k8s.io/apiserver v0.0.0-20251218144803-947c15821c59
 	k8s.io/client-go v0.0.0-20251218063306-1aef261f0ad5
 	k8s.io/code-generator v0.0.0-20251218023844-9e814c2dceb6
-	k8s.io/component-base v0.0.0-20251204225730-8cb15f10375f
+	k8s.io/component-base v0.0.0-20251218143937-776ef6f15e6f
 	k8s.io/kube-openapi v0.0.0-20250910181357-589584f1c912
 	k8s.io/utils v0.0.0-20251002143259-bc988d571ff4
 	sigs.k8s.io/randfill v1.0.0
@@ -47,7 +47,8 @@ require (
 	github.com/google/gnostic-models v0.7.0 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
-	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0 // indirect
+	github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus v1.0.1 // indirect
+	github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.3.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.26.3 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
