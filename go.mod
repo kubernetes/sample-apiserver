@@ -9,10 +9,10 @@ godebug default=go1.25
 require (
 	github.com/spf13/cobra v1.10.0
 	github.com/stretchr/testify v1.11.1
-	k8s.io/apimachinery v0.0.0-20251204222123-56aa7d5cc8bb
-	k8s.io/apiserver v0.0.0-20251204230936-a52843043e97
-	k8s.io/client-go v0.0.0-20251205023354-a296bd743c2d
-	k8s.io/code-generator v0.0.0-20251204225359-ce3f9b635c2d
+	k8s.io/apimachinery v0.0.0-20251218062152-a9de6f8b12f4
+	k8s.io/apiserver v0.0.0-20251218065946-045a035da69b
+	k8s.io/client-go v0.0.0-20251218063304-ca2dee6d058e
+	k8s.io/code-generator v0.0.0-20251218023844-9e814c2dceb6
 	k8s.io/component-base v0.0.0-20251204225730-8cb15f10375f
 	k8s.io/kube-openapi v0.0.0-20250910181357-589584f1c912
 	k8s.io/utils v0.0.0-20251002143259-bc988d571ff4
@@ -65,9 +65,9 @@ require (
 	github.com/spf13/pflag v1.0.9 // indirect
 	github.com/stoewer/go-strcase v1.3.0 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
-	go.etcd.io/etcd/api/v3 v3.6.5 // indirect
-	go.etcd.io/etcd/client/pkg/v3 v3.6.5 // indirect
-	go.etcd.io/etcd/client/v3 v3.6.5 // indirect
+	go.etcd.io/etcd/api/v3 v3.6.6 // indirect
+	go.etcd.io/etcd/client/pkg/v3 v3.6.6 // indirect
+	go.etcd.io/etcd/client/v3 v3.6.6 // indirect
 	go.opentelemetry.io/auto/sdk v1.1.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.60.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.61.0 // indirect
@@ -101,7 +101,7 @@ require (
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.0.0-20251204222646-382014e64b8e // indirect
+	k8s.io/api v0.0.0-20251218062647-56ee7b10ed3f // indirect
 	k8s.io/gengo/v2 v2.0.0-20250922181213-ec3ebc5fd46b // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
 	k8s.io/kms v0.0.0-20251204230241-5c729e7c0a92 // indirect
