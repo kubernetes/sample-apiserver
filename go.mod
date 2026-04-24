@@ -9,11 +9,11 @@ godebug default=go1.26
 require (
 	github.com/spf13/cobra v1.10.2
 	github.com/stretchr/testify v1.11.1
-	k8s.io/apimachinery v0.0.0-20260424110436-5138150d0bbc
-	k8s.io/apiserver v0.0.0-20260424113702-a640ccbbd905
-	k8s.io/client-go v0.0.0-20260424111355-1f2893e6110a
-	k8s.io/code-generator v0.0.0-20260424112400-c459c16f4dc7
-	k8s.io/component-base v0.0.0-20260424112635-fb93ad6f1763
+	k8s.io/apimachinery v0.0.0-20260424110437-f75bcf7bc970
+	k8s.io/apiserver v0.0.0-20260424113704-96785f982459
+	k8s.io/client-go v0.0.0-20260424111358-5834c79c33cb
+	k8s.io/code-generator v0.0.0-20260424112401-ef724af2e226
+	k8s.io/component-base v0.0.0-20260424112638-91c34d95ebe1
 	k8s.io/kube-openapi v0.0.0-20260317180543-43fb72c5454a
 	k8s.io/utils v0.0.0-20260210185600-b8788abfbbc2
 	sigs.k8s.io/randfill v1.0.0
@@ -34,7 +34,7 @@ require (
 	github.com/emicklei/go-restful/v3 v3.13.0 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/fsnotify/fsnotify v1.9.0 // indirect
-	github.com/fxamacker/cbor/v2 v2.9.0 // indirect
+	github.com/fxamacker/cbor/v2 v2.9.1 // indirect
 	github.com/go-logr/logr v1.4.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-openapi/jsonpointer v0.21.0 // indirect
@@ -100,7 +100,7 @@ require (
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.0.0-20260424110828-103005c29633 // indirect
+	k8s.io/api v0.0.0-20260424110830-aca5bee66d09 // indirect
 	k8s.io/gengo/v2 v2.0.0-20250922181213-ec3ebc5fd46b // indirect
 	k8s.io/klog/v2 v2.140.0 // indirect
 	k8s.io/kms v0.0.0-20260424113022-1481e3abba5a // indirect
