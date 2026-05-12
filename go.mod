@@ -10,9 +10,9 @@ require (
 	github.com/spf13/cobra v1.10.2
 	github.com/stretchr/testify v1.11.1
 	k8s.io/apimachinery v0.0.0-20260509204146-64dfe1db2af5
-	k8s.io/apiserver v0.0.0-20260509211346-45e9e19e6e96
+	k8s.io/apiserver v0.0.0-20260511220942-ffc9243fd202
 	k8s.io/client-go v0.0.0-20260509205101-ca52b81a2940
-	k8s.io/code-generator v0.0.0-20260509210052-5595d1310975
+	k8s.io/code-generator v0.0.0-20260509210054-faabf5447e64
 	k8s.io/component-base v0.0.0-20260509210330-c73ee568534a
 	k8s.io/kube-openapi v0.0.0-20260509150519-312035bf509b
 	k8s.io/utils v0.0.0-20260210185600-b8788abfbbc2
@@ -118,3 +118,5 @@ require (
 	sigs.k8s.io/json v0.0.0-20250730193827-2d320260d730 // indirect
 	sigs.k8s.io/yaml v1.6.0 // indirect
 )
+
+replace k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20260509200517-6d42bfdcfb2b
