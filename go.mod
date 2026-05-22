@@ -10,9 +10,9 @@ require (
 	github.com/spf13/cobra v1.10.2
 	github.com/stretchr/testify v1.11.1
 	k8s.io/apimachinery v0.0.0-20260519223618-a7225b106d19
-	k8s.io/apiserver v0.0.0-20260519231136-09b32e33179b
-	k8s.io/client-go v0.0.0-20260519224611-26991d8106d6
-	k8s.io/code-generator v0.0.0-20260519225640-8e32a1a6ff2d
+	k8s.io/apiserver v0.0.0-20260522221556-1240a848c751
+	k8s.io/client-go v0.0.0-20260522215153-c39cf12e4304
+	k8s.io/code-generator v0.0.0-20260522220124-ede19841a38c
 	k8s.io/component-base v0.0.0-20260519225942-66ce6685f442
 	k8s.io/kube-openapi v0.0.0-20260519202549-bbf5c5577288
 	k8s.io/utils v0.0.0-20260210185600-b8788abfbbc2
@@ -109,7 +109,7 @@ require (
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.0.0-20260519224023-584177ddd374 // indirect
+	k8s.io/api v0.0.0-20260522014606-dda3f55e69b8 // indirect
 	k8s.io/gengo/v2 v2.0.0-20260408192533-25e2208e0dc3 // indirect
 	k8s.io/klog/v2 v2.140.0 // indirect
 	k8s.io/kms v0.0.0-20260519230410-9dd8f74ea8c4 // indirect
