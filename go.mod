@@ -9,11 +9,11 @@ godebug default=go1.26
 require (
 	github.com/spf13/cobra v1.10.2
 	github.com/stretchr/testify v1.11.1
-	k8s.io/apimachinery v0.0.0-20260519223618-a7225b106d19
-	k8s.io/apiserver v0.0.0-20260522221556-1240a848c751
-	k8s.io/client-go v0.0.0-20260522215153-c39cf12e4304
-	k8s.io/code-generator v0.0.0-20260522220124-ede19841a38c
-	k8s.io/component-base v0.0.0-20260519225942-66ce6685f442
+	k8s.io/apimachinery v0.0.0-20260522214236-b77c0c3f1e68
+	k8s.io/apiserver v0.0.0-20260522221558-07756f01c15d
+	k8s.io/client-go v0.0.0-20260522215159-7b85db3954c6
+	k8s.io/code-generator v0.0.0-20260522220126-912ac1c1f2f6
+	k8s.io/component-base v0.0.0-20260522220414-52c9b47cf474
 	k8s.io/kube-openapi v0.0.0-20260519202549-bbf5c5577288
 	k8s.io/utils v0.0.0-20260210185600-b8788abfbbc2
 	sigs.k8s.io/randfill v1.0.0
@@ -90,15 +90,15 @@ require (
 	go.uber.org/zap v1.27.1 // indirect
 	go.yaml.in/yaml/v2 v2.4.4 // indirect
 	go.yaml.in/yaml/v3 v3.0.4 // indirect
-	golang.org/x/crypto v0.50.0 // indirect
+	golang.org/x/crypto v0.52.0 // indirect
 	golang.org/x/exp v0.0.0-20260410095643-746e56fc9e2f // indirect
 	golang.org/x/mod v0.35.0 // indirect
-	golang.org/x/net v0.53.0 // indirect
+	golang.org/x/net v0.54.0 // indirect
 	golang.org/x/oauth2 v0.36.0 // indirect
 	golang.org/x/sync v0.20.0 // indirect
-	golang.org/x/sys v0.43.0 // indirect
-	golang.org/x/term v0.42.0 // indirect
-	golang.org/x/text v0.36.0 // indirect
+	golang.org/x/sys v0.45.0 // indirect
+	golang.org/x/term v0.43.0 // indirect
+	golang.org/x/text v0.37.0 // indirect
 	golang.org/x/time v0.15.0 // indirect
 	golang.org/x/tools v0.44.0 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20260414002931-afd174a4e478 // indirect
@@ -109,11 +109,11 @@ require (
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.0.0-20260522014606-dda3f55e69b8 // indirect
+	k8s.io/api v0.0.0-20260522214638-8e297d0e4ac0 // indirect
 	k8s.io/gengo/v2 v2.0.0-20260408192533-25e2208e0dc3 // indirect
 	k8s.io/klog/v2 v2.140.0 // indirect
-	k8s.io/kms v0.0.0-20260519230410-9dd8f74ea8c4 // indirect
-	k8s.io/streaming v0.0.0-20260424110149-99242c80ea4f // indirect
+	k8s.io/kms v0.0.0-20260522220828-a62edda12428 // indirect
+	k8s.io/streaming v0.0.0-20260522213954-2d09b613db5a // indirect
 	sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.34.0 // indirect
 	sigs.k8s.io/json v0.0.0-20250730193827-2d320260d730 // indirect
 	sigs.k8s.io/yaml v1.6.0 // indirect
