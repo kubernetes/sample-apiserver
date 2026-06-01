@@ -9,11 +9,11 @@ godebug default=go1.26
 require (
 	github.com/spf13/cobra v1.10.2
 	github.com/stretchr/testify v1.11.1
-	k8s.io/apimachinery v0.0.0-20260528165152-23de3b4e1a5d
-	k8s.io/apiserver v0.0.0-20260530011906-e610a27a4b16
-	k8s.io/client-go v0.0.0-20260528210130-5d252d37f730
-	k8s.io/code-generator v0.0.0-20260529050604-6331cfec3c8c
-	k8s.io/component-base v0.0.0-20260530010758-d7e6e618d967
+	k8s.io/apimachinery v0.0.0
+	k8s.io/apiserver v0.0.0
+	k8s.io/client-go v0.0.0
+	k8s.io/code-generator v0.0.0
+	k8s.io/component-base v0.0.0
 	k8s.io/kube-openapi v0.0.0-20260519202549-bbf5c5577288
 	k8s.io/utils v0.0.0-20260210185600-b8788abfbbc2
 	sigs.k8s.io/randfill v1.0.0
@@ -51,7 +51,6 @@ require (
 	github.com/go-openapi/swag/stringutils v0.25.4 // indirect
 	github.com/go-openapi/swag/typeutils v0.25.4 // indirect
 	github.com/go-openapi/swag/yamlutils v0.25.4 // indirect
-	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/google/cel-go v0.27.0 // indirect
 	github.com/google/gnostic-models v0.7.0 // indirect
@@ -73,9 +72,9 @@ require (
 	github.com/prometheus/procfs v0.19.2 // indirect
 	github.com/spf13/pflag v1.0.10 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
-	go.etcd.io/etcd/api/v3 v3.6.11 // indirect
-	go.etcd.io/etcd/client/pkg/v3 v3.6.11 // indirect
-	go.etcd.io/etcd/client/v3 v3.6.11 // indirect
+	go.etcd.io/etcd/api/v3 v3.7.0-rc.0 // indirect
+	go.etcd.io/etcd/client/pkg/v3 v3.7.0-rc.0 // indirect
+	go.etcd.io/etcd/client/v3 v3.7.0-rc.0 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.68.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.68.0 // indirect
@@ -109,12 +108,23 @@ require (
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.0.0-20260527210648-a675ef64dc8c // indirect
+	k8s.io/api v0.0.0 // indirect
 	k8s.io/gengo/v2 v2.0.0-20260408192533-25e2208e0dc3 // indirect
 	k8s.io/klog/v2 v2.140.0 // indirect
-	k8s.io/kms v0.0.0-20260530011210-62ace1345706 // indirect
-	k8s.io/streaming v0.0.0-20260523133956-f00c6a52dfc6 // indirect
+	k8s.io/kms v0.0.0 // indirect
+	k8s.io/streaming v0.0.0 // indirect
 	sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.34.0 // indirect
 	sigs.k8s.io/json v0.0.0-20250730193827-2d320260d730 // indirect
 	sigs.k8s.io/yaml v1.6.0 // indirect
+)
+
+replace (
+	k8s.io/api => ../api
+	k8s.io/apimachinery => ../apimachinery
+	k8s.io/apiserver => ../apiserver
+	k8s.io/client-go => ../client-go
+	k8s.io/code-generator => ../code-generator
+	k8s.io/component-base => ../component-base
+	k8s.io/kms => ../kms
+	k8s.io/streaming => ../streaming
 )
