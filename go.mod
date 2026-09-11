@@ -9,11 +9,11 @@ godebug default=go1.27
 require (
 	github.com/spf13/cobra v1.10.2
 	github.com/stretchr/testify v1.12.1
-	k8s.io/apimachinery v0.0.0-20260910012034-a34869e33a20
-	k8s.io/apiserver v0.0.0-20260910000358-fe00a036afeb
-	k8s.io/client-go v0.0.0-20260909155859-e00b95407b94
+	k8s.io/apimachinery v0.0.0-20260910220915-6c11c83c4505
+	k8s.io/apiserver v0.0.0-20260911143439-9f066755a6a6
+	k8s.io/client-go v0.0.0-20260910221834-f02d4420aca6
 	k8s.io/code-generator v0.0.0-20260910074922-c8ab0908ba74
-	k8s.io/component-base v0.0.0-20260908221437-960dbf2ec1f4
+	k8s.io/component-base v0.0.0-20260911142345-c58055e8ea54
 	k8s.io/kube-openapi v0.0.0-20260908163437-c4db2bdfbfe6
 	k8s.io/utils v0.0.0-20260626114624-be93311217bd
 	sigs.k8s.io/randfill v1.0.0
@@ -99,15 +99,15 @@ require (
 	golang.org/x/tools v0.48.0 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20260526163538-3dc84a4a5aaa // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260526163538-3dc84a4a5aaa // indirect
-	google.golang.org/grpc v1.82.1 // indirect
+	google.golang.org/grpc v1.82.2 // indirect
 	google.golang.org/protobuf v1.36.12 // indirect
 	gopkg.in/evanphx/json-patch.v4 v4.13.0 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
-	k8s.io/api v0.0.0-20260910074134-ba65e05bfb3c // indirect
+	k8s.io/api v0.0.0-20260910221315-1dc86240dd84 // indirect
 	k8s.io/gengo/v2 v2.0.0-20260408192533-25e2208e0dc3 // indirect
 	k8s.io/klog/v2 v2.140.0 // indirect
-	k8s.io/kms v0.0.0-20260908181845-11c77799c62e // indirect
+	k8s.io/kms v0.0.0-20260911142736-6cba54f24502 // indirect
 	k8s.io/streaming v0.0.0-20260904174501-68d535607555 // indirect
 	sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.36.0 // indirect
 	sigs.k8s.io/json v0.0.0-20250730193827-2d320260d730 // indirect
