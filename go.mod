@@ -9,12 +9,12 @@ godebug default=go1.27
 require (
 	github.com/spf13/cobra v1.10.2
 	github.com/stretchr/testify v1.12.1
-	k8s.io/apimachinery v0.0.0-20260925215314-8a0dc0f99314
-	k8s.io/apiserver v0.0.0-20260928143040-5c048d62128a
-	k8s.io/client-go v0.0.0-20260928140634-9c9465bcab15
-	k8s.io/code-generator v0.0.0-20260925221520-97939d943937
-	k8s.io/component-base v0.0.0-20260928141609-47e70ad67081
-	k8s.io/kube-openapi v0.0.0-20260908163437-c4db2bdfbfe6
+	k8s.io/apimachinery v0.0.0-20260928175409-f7a546a433d8
+	k8s.io/apiserver v0.0.0-20260928183829-4599d635cdc3
+	k8s.io/client-go v0.0.0-20260928180644-ddb9899b8e91
+	k8s.io/code-generator v0.0.0-20260928182027-4a3a0e780382
+	k8s.io/component-base v0.0.0-20260928182355-1055e257dd23
+	k8s.io/kube-openapi v0.0.0-20260927153434-4ef312c1c17d
 	k8s.io/utils v0.0.0-20260626114624-be93311217bd
 	sigs.k8s.io/randfill v1.0.0
 	sigs.k8s.io/structured-merge-diff/v7 v7.0.0
@@ -104,7 +104,7 @@ require (
 	gopkg.in/evanphx/json-patch.v4 v4.13.0 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
-	k8s.io/api v0.0.0-20260925215733-743963837084 // indirect
+	k8s.io/api v0.0.0-20260928175925-6d6ed4609b9f // indirect
 	k8s.io/gengo/v2 v2.0.0-20260408192533-25e2208e0dc3 // indirect
 	k8s.io/klog/v2 v2.140.0 // indirect
 	k8s.io/kms v0.0.0-20260925222223-6a71a14a6188 // indirect
