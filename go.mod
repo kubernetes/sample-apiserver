@@ -10,10 +10,10 @@ require (
 	github.com/spf13/cobra v1.10.2
 	github.com/stretchr/testify v1.12.1
 	k8s.io/apimachinery v0.0.0-20261102164403-9b85b23ad678
-	k8s.io/apiserver v0.0.0-20261103131215-0f639234bb8a
+	k8s.io/apiserver v0.0.0-20261103212501-f76dd1572e3f
 	k8s.io/client-go v0.0.0-20261103005455-2f8d58824f79
 	k8s.io/code-generator v0.0.0-20261102170501-ab3dc8130221
-	k8s.io/component-base v0.0.0-20261102170743-0dbefe7fa314
+	k8s.io/component-base v0.0.0-20261103211149-06422decc836
 	k8s.io/kube-openapi v0.0.0-20261014044854-ca3452a79603
 	k8s.io/utils v0.0.0-20260626114624-be93311217bd
 	sigs.k8s.io/randfill v1.0.0
@@ -53,10 +53,11 @@ require (
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/kylelemons/godebug v1.1.0 // indirect
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
+	github.com/pandatix/go-abnf v0.5.5 // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
 	github.com/prometheus/client_golang v1.25.0 // indirect
 	github.com/prometheus/client_model v0.6.3 // indirect
-	github.com/prometheus/common v0.72.0 // indirect
+	github.com/prometheus/common v0.73.1 // indirect
 	github.com/prometheus/procfs v0.22.0 // indirect
 	github.com/spf13/pflag v1.0.10 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
